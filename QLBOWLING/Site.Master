@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - DreamGame</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -51,8 +51,8 @@
                             <div class="col-sm-8">
                                 <div class="top_1l clearfix">
                                     <ul>
-                                        <li><i class="fa fa-envelope-o col_1"></i><a class="col_2" href="#">info@gmail.com</a></li>
-                                        <li class="col_2"><i class="fa fa-street-view col_1"></i>3rd Floor Best World.</li>
+                                        <li><i class="fa fa-envelope-o col_1"></i><a class="col_2" href="#">dreamgame@gmail.com</a></li>
+                                        <li class="col_2"><i class="fa fa-street-view col_1"></i>4rd Floor AEON MAIL.</li>
                                         <li><i class="fa fa-phone col_1"></i><a class="col_2" href="#">+123 4567 890</a></li>
                                     </ul>
                                 </div>
@@ -79,12 +79,12 @@
                         <div class="header_t1 clearfix">
                             <div class="col-sm-4">
                                 <div class="header_t1l clearfix">
-                                    <h2><a class="col" href="Index.aspx"><i class="fa fa-shield col_1"></i>FOOT <span class="col_1">GOAL </span></a></h2>
+                                    <h2><a class="col" href="Index.aspx"><i class="fa fa-shield col_1"></i>DREAM <span class="col_1">GAME </span></a></h2>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="header_t1m clearfix">
-                                    <p class="col_2">Official Website For Foot Goal</p>
+                                    <p class="col_2">Official Website For BOWLING</p>
                                 </div>
                             </div>
                             <div class="col-sm-4">

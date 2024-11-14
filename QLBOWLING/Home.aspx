@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="QLBOWLING._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="QLBOWLING._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -10,43 +10,43 @@
                 <div class="carousel-inner cont-slider">
 
                     <div class="item active">
-                        <img alt="abc" class="iw" src="img/1.jpg">
+                        <img alt="abc" class="iw" src="Images/Bowling.jpg">
                     </div>
                     <div class="item">
-                        <img alt="abc" class="iw" src="img/2.jpg">
+                        <img alt="abc" class="iw" src="Images/Bowling2.jpg">
                     </div>
                     <div class="item">
-                        <img alt="abc" class="iw" src="img/3.jpg">
+                        <img alt="abc" class="iw" src="Images/Bowling3.jpg">
                     </div>
                     <div class="item">
-                        <img alt="abc" class="iw" src="img/4.jpg">
+                        <img alt="abc" class="iw" src="Images/Bowling4.jpg">
                     </div>
                     <div class="item">
-                        <img alt="abc" class="iw" src="img/5.jpg">
+                        <img alt="abc" class="iw" src="Images/Bowling5">
                     </div>
                     <div class="item ">
-                        <img alt="abc" class="iw" src="img/6.jpg">
+                        <img alt="abc" class="iw" src="Images/Bowling3.jpg">
                     </div>
                 </div>
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
-                        <img alt="" src="img/1.jpg">
+                        <img alt="" src="Images/Bowling.jpg">
                     </li>
                     <li class="" data-slide-to="1" data-target="#article-photo-carousel">
-                        <img alt="" src="img/2.jpg">
+                        <img alt="" src="Images/Bowling2.jpg">
                     </li>
                     <li class="" data-slide-to="2" data-target="#article-photo-carousel">
-                        <img alt="" src="img/3.jpg">
+                        <img alt="" src="Images/Bowling3.jpg">
                     </li>
                     <li class="" data-slide-to="3" data-target="#article-photo-carousel">
-                        <img alt="" src="img/4.jpg">
+                        <img alt="" src="Images/Bowling4.jpg">
                     </li>
                     <li class="" data-slide-to="4" data-target="#article-photo-carousel">
-                        <img alt="" src="img/5.jpg">
+                        <img alt="" src="Images/Bowling5.jpg">
                     </li>
                     <li class="" data-slide-to="5" data-target="#article-photo-carousel">
-                        <img alt="" src="img/6.jpg">
+                        <img alt="" src="Images/Bowling3.jpg">
                     </li>
                 </ol>
             </div>
@@ -54,8 +54,7 @@
                 <h1>TEAMWORK IS AT THE CORE<br>
                     OF OUR SUCCESS </h1>
                 <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit Integer Nec Odio Praesent Libero.</p>
-                <h5><a class="button" href="#">READ MORE <i class="fa fa-chevron-right"></i></a></h5>
-                <h5><a class="button_1" href="#">SEE MORE <i class="fa fa-chevron-right"></i></a></h5>
+                <h5><a class="button" href="Booking.aspx">Booking now <i class="fa fa-chevron-right"></i></a></h5>
             </div>
         </div>
 

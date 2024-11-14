@@ -54,6 +54,7 @@
                                         <li><i class="fa fa-envelope-o col_1"></i><a class="col_2" href="#">dreamgame@gmail.com</a></li>
                                         <li class="col_2"><i class="fa fa-street-view col_1"></i>4rd Floor AEON MAIL.</li>
                                         <li><i class="fa fa-phone col_1"></i><a class="col_2" href="#">+123 4567 890</a></li>
+                                        <li><i class="bi bi-door-open-fill"></i><a class="col_2" href="Login.aspx">Login</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -79,7 +80,7 @@
                         <div class="header_t1 clearfix">
                             <div class="col-sm-4">
                                 <div class="header_t1l clearfix">
-                                    <h2><a class="col" href="Index.aspx"><i class="fa fa-shield col_1"></i>DREAM <span class="col_1">GAME </span></a></h2>
+                                    <h2><a class="col" href="Home.aspx"><i class="fa fa-shield col_1"></i>DREAM <span class="col_1">GAME </span></a></h2>
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -120,7 +121,8 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li><a class="m_tag active_tab" href="Index.aspx">Home</a></li>
+                                <li><a class="m_tag active_tab" href="Home.aspx">Home</a></li>
+                                <li><a class="m_tag " href="Booking.aspx">Booking</a></li>
                                 <li><a class="m_tag" href="About.aspx">About</a></li>
                                 <li><a class="m_tag" href="Services.aspx">Services</a></li>
                                 <li class="dropdown">
@@ -228,7 +230,7 @@
                                     <ul class="mgt">
                                         <li>
                                             <a href="#">Our Policy</a>
-                                            <a href="#">Shipping</a>
+
                                             <a href="#">Terms & Conditions</a>
                                             <a class="border_none" href="#">Refund Policy</a>
                                         </li>
@@ -237,7 +239,7 @@
                             </div>
                             <div class="col-sm-7 space_left">
                                 <div class="footer_bl  text-right clearfix">
-                                    <p class="mgt">© 2013 Your Website Name. All Rights Reserved | Design by <a class="col_1" href="http://www.templateonweb.com">TemplateOnWeb</a></p>
+                                    <p class="mgt">© 2024 DREAM GAME | Design by <a class="col_1" href="http://www.templateonweb.com">TTCN-BOWLING</a></p>
                                 </div>
                             </div>
                         </div>
@@ -252,5 +254,25 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/MainScript.js") %>
     </asp:PlaceHolder>
+   
+    
+    <%--test--%>
+     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+ 
+ </asp:ContentPlaceHolder>
+
+ <div id="content">
+    	<div id="title">
+         <asp:Label ID="lblTieuDe" runat="server" Text="Label" Font-Size="X-Large" ForeColor="#663300" Height="50px" Font-Names="Curlz MT" Font-Bold="True" CssClass="title">Sản phẩm nổi bật</asp:Label>
+     </div>
+     <div style="clear:both;"></div>
+    	<div id="left_content">
+        	<div class="list">
+            	 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+      
+             </asp:ContentPlaceHolder>
+         </div>
+        	 
+     </div>
 </body>
 </html>

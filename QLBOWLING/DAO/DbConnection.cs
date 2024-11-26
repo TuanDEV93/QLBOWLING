@@ -11,7 +11,7 @@ namespace QLBOWLING.DAO
         public SqlConnection cnn;
         public DbConnection()
         {
-            string strcnn = "Data Source=.\\SQLEXPRESS;Initial Catalog=ShopQuanAo;Trusted_Connection=True;";
+            string strcnn = "Data Source=DESKTOP-HBMUEHM\\SQLEXPRESS;Initial Catalog=DreamGame;Trusted_Connection=True;";
             cnn = new SqlConnection(strcnn);
         }
         public void Open()

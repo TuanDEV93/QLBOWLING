@@ -1,0 +1,367 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="QLBOWLING.Admin.Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <title><%: Page.Title %> | DreamGame - Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <link href="~/Content/Admin/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Admin/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Admin/app.min.css" rel="stylesheet" type="text/css">
+</head>
+<body data-layout="horizontal">
+    <form id="form1" runat="server">
+        <div id="wrapper">
+            <header id="topnav">
+                <!-- Topbar Start -->
+                <div class="navbar-custom">
+                    <div class="container-fluid">
+                        <ul class="list-unstyled topnav-menu float-right mb-0">
+                            <li class="dropdown notification-list">
+                                <!-- Mobile menu toggle-->
+                                <a class="navbar-toggle nav-link">
+                                    <div class="lines">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <!-- End mobile menu toggle-->
+                            </li>
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <i class="mdi mdi-bell noti-icon"></i>
+                                    <span class="badge badge-success rounded-circle noti-icon-badge">4</span>
+                                    <div class="noti-dot">
+                                        <span class="dot"></span>
+                                        <span class="pulse"></span>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                                    <!-- item-->
+                                    <div class="dropdown-item noti-title">
+                                        <h5 class="font-16 m-0">
+                                            <span class="float-right">
+                                                <a href="#" class="text-dark">
+                                                    <small>Xóa tất cả</small>
+                                                </a>
+                                            </span>Thông báo
+                                        </h5>
+                                    </div>
+
+                                    <div class="slimscroll noti-scroll">
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0)" class="dropdown-item notify-item">
+                                            <div class="notify-icon bg-success">
+                                                <i class="mdi mdi-settings-outline"></i>
+                                            </div>
+                                            <p class="notify-details">
+                                                Cài đặt mới
+                                                        <small class="text-muted">Có sẵn các cài đặt mới</small>
+                                            </p>
+                                        </a>
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0)" class="dropdown-item notify-item">
+                                            <div class="notify-icon bg-info">
+                                                <i class="mdi mdi-bell-outline"></i>
+                                            </div>
+                                            <p class="notify-details">
+                                                Cập nhật
+                                                        <small class="text-muted">Có 2 bản cập nhật mới</small>
+                                            </p>
+                                        </a>
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0)" class="dropdown-item notify-item">
+                                            <div class="notify-icon bg-danger">
+                                                <i class="mdi mdi-account-plus"></i>
+                                            </div>
+                                            <p class="notify-details">
+                                                Người dùng mới
+                                                        <small class="text-muted">Bạn có 10 tin nhắn chưa đọc</small>
+                                            </p>
+                                        </a>
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0)" class="dropdown-item notify-item">
+                                            <div class="notify-icon bg-info">
+                                                <i class="mdi mdi-comment-account-outline"></i>
+                                            </div>
+                                            <p class="notify-details">
+                                                Người dùng đã bình luận
+                                                        <small class="text-muted">4 ngày trước</small>
+                                            </p>
+                                        </a>
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0)" class="dropdown-item notify-item">
+                                            <div class="notify-icon bg-secondary">
+                                                <i class="mdi mdi-heart"></i>
+                                            </div>
+                                            <p class="notify-details">
+                                                Người dùng đã quan tâm
+                                                        <b>Admin</b>
+                                                <small class="text-muted">13 ngày trước</small>
+                                            </p>
+                                        </a>
+                                    </div>
+
+                                    <!-- All-->
+                                    <a href="javascript:void(0)" class="dropdown-item text-center text-primary notify-item notify-all">See all Notification
+                                                <i class="fi-arrow-right"></i>
+                                    </a>
+
+                                </div>
+                            </li>
+
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <i class="mdi mdi-email noti-icon"></i>
+                                    <span class="badge badge-danger rounded-circle noti-icon-badge">8</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                                    <!-- item-->
+                                    <div class="dropdown-item noti-title">
+                                        <h5 class="font-16 m-0">
+                                            <span class="float-right">
+                                                <a href="#" class="text-dark">
+                                                    <small>Xóa tất cả</small>
+                                                </a>
+                                            </span>Tin nhắn
+                                        </h5>
+                                    </div>
+
+                                    <div class="slimscroll noti-scroll">
+
+                                        <div class="inbox-widget">
+                                            <a href="#">
+                                                <div class="inbox-item">
+                                                    <div class="inbox-item-img">
+                                                        <img src="assets\images\users\avatar-1.jpg" class="rounded-circle" alt=""></div>
+                                                    <p class="inbox-item-author">Tên người dùng</p>
+                                                    <p class="inbox-item-text text-truncate">Nội dung tin nhắn</p>
+                                                </div>
+                                            </a>
+                                            <a href="#">
+                                                <div class="inbox-item">
+                                                    <div class="inbox-item-img">
+                                                        <img src="assets\images\users\avatar-2.jpg" class="rounded-circle" alt=""></div>
+                                                    <p class="inbox-item-author">Tên người dùng</p>
+                                                    <p class="inbox-item-text text-truncate">Nội dung tin nhắn</p>
+                                                </div>
+                                            </a>
+                                            <a href="#">
+                                                <div class="inbox-item">
+                                                    <div class="inbox-item-img">
+                                                        <img src="assets\images\users\avatar-3.jpg" class="rounded-circle" alt=""></div>
+                                                    <p class="inbox-item-author">Tên người dùng</p>
+                                                    <p class="inbox-item-text text-truncate">Nội dung tin nhắn</p>
+                                                </div>
+                                            </a>
+                                            <a href="#">
+                                                <div class="inbox-item">
+                                                    <div class="inbox-item-img">
+                                                        <img src="assets\images\users\avatar-4.jpg" class="rounded-circle" alt=""></div>
+                                                    <p class="inbox-item-author">Tên người dùng</p>
+                                                    <p class="inbox-item-text text-truncate">Nội dung tin nhắn</p>
+                                                </div>
+                                            </a>
+                                            <a href="#">
+                                                <div class="inbox-item">
+                                                    <div class="inbox-item-img">
+                                                        <img src="assets\images\users\avatar-5.jpg" class="rounded-circle" alt=""></div>
+                                                    <p class="inbox-item-author">Tên người dùng</p>
+                                                    <p class="inbox-item-text text-truncate">Nội dung tin nhắn</p>
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <!-- end inbox-widget -->
+
+                                    </div>
+
+                                    <!-- All-->
+                                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">See all Messages
+                                                <i class="fi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <img src="assets\images\users\avatar-1.jpg" alt="user-image" class="rounded-circle">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                    <!-- item-->
+                                    <div class="dropdown-header noti-title">
+                                        <h6 class="text-overflow m-0">Xin chào!</h6>
+                                    </div>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-account-outline"></i>
+                                        <span>Hồ sơ</span>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-settings-outline"></i>
+                                        <span>Cài đặt</span>
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-logout-variant"></i>
+                                        <span>Đăng xuất</span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!-- LOGO -->
+                        <div class="logo-box">
+                            <a href="index.html" class="logo text-center">
+                                <span class="logo-lg">
+                                    <img src="assets\images\logo.png" alt="" height="30">
+                                </span>
+                                <span class="logo-sm">
+                                    <img src="assets\images\logo-sm.png" alt="" height="22">
+                                </span>
+                            </a>
+                        </div>
+
+
+                        <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+
+                            <li class="d-none d-sm-block">
+                                <div class="app-search">
+                                    <div class="app-search-box">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                                            <div class="input-group-append">
+                                                <button class="btn" type="submit">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!-- end Topbar -->
+
+                <div class="topbar-menu">
+                    <div class="container-fluid">
+                        <div id="navigation">
+                            <!-- Navigation Menu-->
+                            <ul class="navigation-menu">
+                                <li class="">
+                                    <a href="#"><i class="mdi mdi-view-dashboard"></i>Bảng điều khiển</a>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <i class="mdi mdi-bowling"></i>Sân bowling
+                                    </a>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="#">
+                                        <i class="mdi mdi-account-group"></i>Nhân viên
+                                    </a>
+                                    <ul class="submenu">
+                                        <li><a href="#">Danh sách Nhân viên</a></li>
+                                        <li><a href="#">Thêm nhân viên</a></li>
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <i class="mdi mdi-diamond-stone"></i>Khách hàng
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <i class="mdi mdi-book-multiple"></i>Thanh toán
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <i class="mdi mdi-gift"></i>Khuyến mãi
+                                    </a>
+                                </li>
+
+                                <li class="has-submenu">
+                                    <a href="#"><i class="mdi mdi-comment-text"></i>Bài viết
+                                    </a>
+                                    <ul class="submenu">
+                                        <li><a href="blogs-blog-list.html">Danh sách bài viết</a></li>
+                                        <li><a href="blogs-blog-add.html">Thêm bài viết</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="has-submenu">
+                                    <a href="#"><i class="mdi mdi-chart-areaspline-variant"></i>Thống kê báo cáo
+                                    </a>
+                                    <ul class="submenu">
+                                        <li><a href="#">Tổng quan</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                            <!-- End navigation menu -->
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <!-- end #navigation -->
+                    </div>
+                    <!-- end container -->
+                </div>
+                <!-- end navbar-custom -->
+            </header>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title">Tổng quan</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                2024 &copy; Zircos theme by <a href="#">Coderthemes</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </form>
+    <!-- Vendor js -->
+    <script src="../Scripts/Admin/vendor.min.js"></script>
+
+    <script src="../Scripts/Admin/dashboard.init.js"></script>
+
+    <!-- App js -->
+    <script src="../Scripts/Admin/app.min.js"></script>
+</body>
+</html>

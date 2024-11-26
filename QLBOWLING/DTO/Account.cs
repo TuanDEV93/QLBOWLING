@@ -7,6 +7,12 @@ namespace QLBOWLING.DTO
 {
     public class Account
     {
+        private int MaKH;
+        public int MAKH
+        {
+            get { return MaKH; }
+            set { MaKH = value; }
+        }
         private string UserName;
         public string Username
         { get { return UserName; }
@@ -29,6 +35,20 @@ namespace QLBOWLING.DTO
         public bool type
         { get { return Type; }
           set { Type = value; }
+        }
+
+        private string Address;
+        public string ADDRESS
+        {
+            get { return Address; }
+            set { Address = value; }
+        }
+
+        private string Phone;
+        public string PHONE
+        {
+            get { return Phone; }
+            set { Phone = value; }
         }
     }
 }

@@ -134,6 +134,7 @@
     <Content Include="Images\menu_bg.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="QuanLy.aspx" />
+    <Content Include="Register.aspx" />
     <Content Include="Scripts\Admin\app.min.js" />
     <Content Include="Scripts\Admin\dashboard.init.js" />
     <Content Include="Scripts\Admin\vendor.min.js" />
@@ -279,6 +280,13 @@
     </Compile>
     <Compile Include="QuanLy.aspx.designer.cs">
       <DependentUpon>QuanLy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Services.aspx.cs">
       <DependentUpon>Services.aspx</DependentUpon>

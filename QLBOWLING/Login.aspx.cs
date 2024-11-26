@@ -30,6 +30,19 @@ namespace QLBOWLING
             int flag = bus.DangNhapThanhCong(username, password);
 
             if (flag == 0)
+            int role = bus.DangNhapThanhCong(username, password);
+
+            if (role == 1)
+            {
+                Session["Username"] = username;
+
+                ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
+                "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
+
+                Response.AddHeader("REFRESH", "1;URL=Admin/Dashboard.aspx");
+            }
+            else
+                if (role == 2)
             {
                 Session["Username"] = username;
 
@@ -40,6 +53,7 @@ namespace QLBOWLING
             }
             else
                 if (flag == 1)
+                if (role == 3) 
             {
                 Session["Username"] = username;
 
@@ -47,6 +61,7 @@ namespace QLBOWLING
                 "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
 
                 Response.AddHeader("REFRESH", "1;URL=About.aspx");
+                Response.AddHeader("REFRESH", "1;URL=Services.aspx");
             }
             else
             {

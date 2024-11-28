@@ -273,12 +273,12 @@
                                     <a href="#"><i class="mdi mdi-view-dashboard"></i>Bảng điều khiển</a>
                                 </li>
                                 <li class="">
-                                    <a href="#">
+                                    <a href="BowlingAlley.aspx">
                                         <i class="mdi mdi-bowling"></i>Sân bowling
                                     </a>
                                 </li>
                                 <li class="has-submenu">
-                                    <a href="#">
+                                    <a href="Staff.aspx">
                                         <i class="mdi mdi-account-group"></i>Nhân viên
                                     </a>
                                     <ul class="submenu">
@@ -336,7 +336,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Tổng quan</h4>
+                                    <h4 class="page-title"><%: Page.Title %></h4>
                                 </div>
                             </div>
                         </div>

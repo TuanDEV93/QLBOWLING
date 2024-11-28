@@ -1,5 +1,11 @@
 ﻿$(document).ready(function () {
-
+	var url = window.location.href + ".aspx";
+	$('.navbar-nav').find('.active_tab').removeClass('active_tab');
+	$('.navbar-nav li .m_tag').each(function () {
+		if (this.href == url) {
+			$(this).addClass('active_tab');
+		}
+	}); 
 	/*****Fixed Menu******/
 	var secondaryNav = $('.cd-secondary-nav'),
 		secondaryNavTopPosition = secondaryNav.offset().top;

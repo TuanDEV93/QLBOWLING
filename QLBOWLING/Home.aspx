@@ -54,7 +54,7 @@
                 <h1>TEAMWORK IS AT THE CORE<br>
                     OF OUR SUCCESS </h1>
                 <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit Integer Nec Odio Praesent Libero.</p>
-                <h5><a class="button" href="Booking.aspx">Booking now <i class="fa fa-chevron-right"></i></a></h5>
+                <h5><a class="button" href="Lane.aspx">Booking now <i class="fa fa-chevron-right"></i></a></h5>
             </div>
         </div>
 

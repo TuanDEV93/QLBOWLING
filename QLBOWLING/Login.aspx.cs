@@ -17,7 +17,7 @@ namespace QLBOWLING
             if (Session["Username"] != null)
             {
                 Response.Redirect("Home.aspx");
-            }    
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -27,9 +27,19 @@ namespace QLBOWLING
 
             BUS_Account bus = new BUS_Account();
 
-            int flag = bus.DangNhapThanhCong(username, password);
+            int role = bus.DangNhapThanhCong(username, password);
 
-            if (flag == 0)
+            if (role == 1)
+            {
+                Session["Username"] = username;
+
+                ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
+                "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
+
+                Response.AddHeader("REFRESH", "1;URL=Admin/Dashboard.aspx");
+            }
+            else
+                if (role == 2)
             {
                 Session["Username"] = username;
 
@@ -39,21 +49,21 @@ namespace QLBOWLING
                 Response.AddHeader("REFRESH", "1;URL=Home.aspx");
             }
             else
-                if (flag == 1)
+                if (role == 3)
             {
                 Session["Username"] = username;
 
                 ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
                 "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
 
-                Response.AddHeader("REFRESH", "1;URL=About.aspx");
+                Response.AddHeader("REFRESH", "1;URL=Services.aspx");
             }
             else
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
                 "showSuccessMessage('Sai tên đăng nhập hoặc mật khẩu', 'error');", true);
             }
-        
+
 
         }
     }

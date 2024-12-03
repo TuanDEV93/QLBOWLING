@@ -8,7 +8,7 @@
                 border-radius: 20px;
                 background-color: #99FFFF;
                 border: none;
-                padding: 10px 20px;
+                padding: 10px 20px; 
                 text-align: center;
                 font-size: 16px;
                 transition: background-color 0.3s ease, transform 0.3s ease;
@@ -85,6 +85,10 @@
                 font-size: 23px;
                 padding-right:10px;
             }
+
+            .btnRegister {
+                padding-left: 5px;
+            }
         </style>
     </head>
     <table class="nav-justified">
@@ -127,7 +131,8 @@
         <tr>
             <td class="auto-style2" colspan="1" style="text-align: right;" rowspan="1">&nbsp;</td>
             <td class="auto-style2" style="text-align: left;" rowspan="1">
-                <asp:Label ID="lblNotification" runat="server" Text="Label" Visible="False" BackColor="White" ForeColor="Red"></asp:Label>
+                <asp:Label ID="Label2" runat="server" Text="Bạn chưa có tài khoản ?"></asp:Label>
+                <asp:LinkButton ID="btnRegister" runat="server" CssClass="btnRegister" PostBackUrl="~/Register.aspx">Đăng Kí</asp:LinkButton>
             </td>
             <td style="width: 1237px">&nbsp;</td>
         </tr>
@@ -136,7 +141,7 @@
     <div id="successMessage" class="message-box hidden">
             <span class="icon"></span>
             <span class="message"></span>
-        </div>
+    </div>
 
     <script>
         function showSuccessMessage(message, type) {

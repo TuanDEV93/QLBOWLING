@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
-
 namespace QLBOWLING
 {
     public partial class SiteMaster : MasterPage
@@ -21,16 +17,16 @@ namespace QLBOWLING
                     lblUserName.Visible = true;
                     btnLogout.Visible = true;
                     btnLogin.Visible = false;
-                }    
+                }
                 else
                 {
                     lblUserName.Visible = false;
                     btnLogout.Visible = false;
                     btnLogin.Visible = true;
-                }    
-            }    
+                }
+            }
+            
         }
-
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Clear();

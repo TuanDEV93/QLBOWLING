@@ -51,12 +51,21 @@ namespace QLBOWLING
         protected global::System.Web.UI.WebControls.Button btnLogin;
 
         /// <summary>
-        /// lblNotification control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNotification;
+        protected global::System.Web.UI.WebControls.Label Label2;
+
+        /// <summary>
+        /// btnRegister control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnRegister;
     }
 }

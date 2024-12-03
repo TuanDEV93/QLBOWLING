@@ -12,8 +12,7 @@ namespace QLBOWLING.DTO
         {
             get { return UserID; }
             set { UserID = value; }
-        }
-
+        }  
         private string UserName;
         public string Username
         {
@@ -40,6 +39,20 @@ namespace QLBOWLING.DTO
         {
             get { return Type; }
             set { Type = value; }
+        }
+
+        private string Address;
+        public string ADDRESS
+        {
+            get { return Address; }
+            set { Address = value; }
+        }
+
+        private string Phone;
+        public string PHONE
+        {
+            get { return Phone; }
+            set { Phone = value; }
         }
 
         private string Address;

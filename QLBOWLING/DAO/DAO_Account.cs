@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
+
+using Microsoft.Ajax.Utilities;
 using QLBOWLING.DTO;
-using System.Data.Common;
+
 
 namespace QLBOWLING.DAO
 {
@@ -13,6 +15,11 @@ namespace QLBOWLING.DAO
     {
         public void GhiThongTinKhachHang(Account account)
         {
+
+            int flag = -1;
+        public void GhiThongTinKhachHang (Account account)
+        {
+
             DAO_Account dao = new DAO_Account();
             dao.Open();
             string query = "INSERT INTO Account (UserName,DisplayName,PassWord,Type,Address,Phone) values ('" + account.Username + "','" + account.displayName + "','" + account.passWord + "','3','" + account.ADDRESS + "','" + account.PHONE + "') ";
@@ -22,7 +29,9 @@ namespace QLBOWLING.DAO
             dao.Close();
         }
 
+
         public int TrungTenDangNhap(string Username)
+
         {
             DAO_Account dao = new DAO_Account();
             dao.Open();
@@ -37,7 +46,9 @@ namespace QLBOWLING.DAO
 
         }
 
-        public int TrungSoDienThoai(string Phone)
+
+        public int TrungSoDienThoai (string Phone)
+
         {
             DAO_Account dao = new DAO_Account();
             dao.Open();
@@ -47,11 +58,15 @@ namespace QLBOWLING.DAO
             if (reader.HasRows)
             {
                 return 1;
-            }
+
+        public int DangNhapThanhCong(string Username, string Password)
+
+            }    
             return 0;
         }
 
-        public int DangNhapThanhCong(string Username, string Password)
+        public int DangNhapThanhCong (string Username, string Password)
+
         {
             int role = -1;
             DAO_Account dao = new DAO_Account();
@@ -62,11 +77,28 @@ namespace QLBOWLING.DAO
             if (reader.HasRows)
             {
                 reader.Read();
+
+                bool isAdmin = Convert.ToBoolean(reader.GetInt32(3));
+
+
+
+                if (isAdmin == true) 
+                {
+                    flag = 1;
+                }
+                else 
+                { 
+                    flag = 0; 
+                }
+
                 role = reader.GetInt32(4);
             }
             cmd.Dispose();
             reader.Dispose();
             dao.Close();
+
+            return flag;
+
             return role;
         }
     

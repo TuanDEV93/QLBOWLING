@@ -24,8 +24,9 @@ namespace QLBOWLING
             if (Page.IsValid)
             {
                 BUS_Account bus = new BUS_Account();
-                int verifyUsername = bus.TrungTenDangNhap(txtUsername.Text.Trim());
-                int verifyPhone = bus.TrungSoDienThoai(txtPhone.Text.Trim());
+
+                int verifyUsername = bus.TrungTenDangNhap (txtUsername.Text.Trim());
+                int verifyPhone = bus.TrungSoDienThoai (txtPhone.Text.Trim());
 
                 if (verifyUsername == 1)
                 {
@@ -45,7 +46,9 @@ namespace QLBOWLING
                     account.passWord = txtPassword.Text;
                     account.ADDRESS = txtAddress.Text;
                     account.PHONE = txtPhone.Text;
-                    bus.GhiThongTinKhachHang(account);
+
+                    bus.GhiThongTinKhachHang (account);
+
                     ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
                     "showNotificationMessage('Đăng kí thành công!', 'success');", true);
                     XoaThongTin();

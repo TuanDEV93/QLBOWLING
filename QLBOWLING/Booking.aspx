@@ -14,7 +14,7 @@
             }
 
             .time-slot {
-                padding: 10px 15px;
+                padding: 20px 25px;
                 text-align: center;
                 border-radius: 5px;
                 font-weight: bold;

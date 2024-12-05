@@ -119,9 +119,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Tên</th>
-                                <th>SDT</th>
-                                <th>Địa chỉ</th>
-                                <th>Ngày</th>
+                                <th>Số CCCD</th>
+                                <th>SĐT</th>
+                                <th>Email</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -132,9 +132,9 @@
                                 <td>
                                     <h5 class="m-0 font-15">Tên người dùng</h5>
                                 </td>
+                                <td>012345678999</td>
                                 <td>+12 3456 789</td>
-                                <td>HN</td>
-                                <td>07/08/2016</td>
+                                <td>Vidu@email.com</td>
                             </tr>
                             <tr>
                                 <th>
@@ -143,9 +143,9 @@
                                 <td>
                                     <h5 class="m-0 font-15">Tên người dùng</h5>
                                 </td>
-                                <td>Chưa đăng ký</td>
-                                <td>Chưa đăng ký</td>
-                                <td>Chưa đăng ký</td>
+                                <td>012345678999</td>
+                                <td>+12 3456 789</td>
+                                <td>Vidu@email.com</td>
                             </tr>
                         </tbody>
                     </table>
@@ -179,7 +179,7 @@
                                 </th>
                                 <td>
                                     <h5 class="m-0 font-15">Louis Hansen</h5>
-                                    <p class="m-0 text-muted"><small>Web designer</small></p>
+                                    <p class="m-0 text-muted"><small>Quản lý</small></p>
                                 </td>
                                 <td>+12 3456 789</td>
                                 <td>USA</td>
@@ -192,7 +192,7 @@
                                 </th>
                                 <td>
                                     <h5 class="m-0 font-15">Craig Hause</h5>
-                                    <p class="m-0 text-muted"><small>Programmer</small></p>
+                                    <p class="m-0 text-muted"><small>Nhân viên</small></p>
                                 </td>
                                 <td>+89 345 6789</td>
                                 <td>Canada</td>

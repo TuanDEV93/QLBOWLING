@@ -270,7 +270,7 @@
                             <!-- Navigation Menu-->
                             <ul class="navigation-menu">
                                 <li class="">
-                                    <a href="#"><i class="mdi mdi-view-dashboard"></i>Bảng điều khiển</a>
+                                    <a href="Dashboard.aspx"><i class="mdi mdi-view-dashboard"></i>Bảng điều khiển</a>
                                 </li>
                                 <li class="">
                                     <a href="BowlingAlley.aspx">
@@ -282,12 +282,12 @@
                                         <i class="mdi mdi-account-group"></i>Nhân viên
                                     </a>
                                     <ul class="submenu">
-                                        <li><a href="#">Danh sách Nhân viên</a></li>
-                                        <li><a href="#">Thêm nhân viên</a></li>
+                                        <li><a href="Staff.aspx">Danh sách Nhân viên</a></li>
+                                        <li><a href="AddStaff.aspx">Thêm nhân viên</a></li>
                                     </ul>
                                 </li>
                                 <li class="">
-                                    <a href="#">
+                                    <a href="Customer.aspx">
                                         <i class="mdi mdi-diamond-stone"></i>Khách hàng
                                     </a>
                                 </li>

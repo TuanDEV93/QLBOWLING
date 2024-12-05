@@ -17,54 +17,58 @@
     <form id="form1" runat="server">
         <div id="main_container">
 
-	        <div class="header">
-                <div class="logo"><a href="#"><img src="images/logo.gif" alt="" title="" border="0" /></a></div>
-                <div class="right_header">Welcome 
-                    <asp:Label ID="lblTenDangNhap" runat="server"></asp:Label>, <a href="TrangChu.aspx">Về trang chủ</a> | <a href="ThoatDangNhap.aspx" class="logout">Thoát</a></div>
+            <div class="header">
+                <div class="logo"><a href="#">
+                    <img src="images/logo.gif" alt="" title="" border="0" /></a></div>
+                <div class="right_header">
+                    Welcome 
+                    <asp:Label ID="lblTenDangNhap" runat="server"></asp:Label>, <a href="TrangChu.aspx">Về trang chủ</a> | <a href="ThoatDangNhap.aspx" class="logout">Thoát</a>
+                </div>
                 <div id="clock_a"></div>
             </div>
-    
-        <div class="main_content">
-    
+
+            <div class="main_content">
+
                 <div class="menu">
                     <ul>
-                    <li><a class="current" href="QuanLy.aspx">Trang Admin</a></li>
-                    <li><a href="QuanLyKhachHang.aspx">Quản Lý Khách Hàng<!--[if IE 7]><!--></a><!--<![endif]-->
-                   
-                    </li>
-                    <li><a href="QuanLySanPham.aspx">Quản Lý Sản Phẩm<!--[if IE 7]><!--></a><!--<![endif]-->
-                 
-                    </li>
-                    <li><a href="QuanLyHoaDon.aspx">Quản Lý Hóa Đơn<!--[if IE 7]><!--></a><!--<![endif]-->
-                 
-                    </li>
-                   
-                    <li><a href="QuanLyBinhLuan.aspx">Quản Lý Bình Luận</a></li>
-                    <li><a href="ThongKe.aspx">Thống Kê</a></li>
+                        <li><a class="current" href="QuanLy.aspx">Trang Admin</a></li>
+                        <li><a href="QuanLyKhachHang.aspx">Quản Lý Khách Hàng<!--[if IE 7]><!--></a><!--<![endif]-->
+
+                        </li>
+                        <li><a href="QuanLySanPham.aspx">Quản Lý Sản Phẩm<!--[if IE 7]><!--></a><!--<![endif]-->
+
+                        </li>
+                        <li><a href="QuanLyHoaDon.aspx">Quản Lý Hóa Đơn<!--[if IE 7]><!--></a><!--<![endif]-->
+
+                        </li>
+
+                        <li><a href="ThongKe.aspx">Thống Kê</a></li>
                     </ul>
-                </div> 
-        <div class="center_content">  
-    
-     	 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-             
-         </asp:ContentPlaceHolder>
-    
-  	    </div>   <!--end of center content -->               
-                    
-                    
-    
-    
-        <div class="clear"></div>
-        </div> <!--end of main content-->
-	
-    
-        <div class="footer">
-    
-    	    <div class="left_footer">IN ADMIN PANEL | Powered by <a href="http://indeziner.com">DreamGame</a></div>
-    	    <div class="right_footer"><a href="http://indeziner.com"><img src="images/indeziner_logo.gif" alt="" title="" border="0" /></a></div>
-    
+                </div>
+                <div class="center_content">
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                </div>
+                <!--end of center content -->
+
+
+
+
+                <div class="clear"></div>
+            </div>
+            <!--end of main content-->
+
+
+            <div class="footer">
+
+                <div class="left_footer">IN ADMIN PANEL | Powered by <a href="http://indeziner.com">DreamGame</a></div>
+                <div class="right_footer"><a href="http://indeziner.com">
+                    <img src="images/indeziner_logo.gif" alt="" title="" border="0" /></a></div>
+
+            </div>
         </div>
-    </div>		
-</form>
+    </form>
 </body>
 </html>

@@ -19,6 +19,7 @@ namespace QLBOWLING.DTO
                 get
                 {
                     return Status? "btn btn-success" : "btn btn-danger";
+
                 }
             }
         }

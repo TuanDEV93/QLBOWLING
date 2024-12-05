@@ -290,12 +290,18 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAO\DAO_Account.cs" />
-    <Compile Include="DAO\DAO_Booking.cs" />
-    <Compile Include="DAO\DAO_Lane.cs" />
+
     <Compile Include="DAO\DbConnection.cs" />
     <Compile Include="DTO\Account.cs" />
-    <Compile Include="DTO\Booking.cs" />
-    <Compile Include="DTO\Lane.cs" />
+    <Compile Include="DTO\Customer.cs" />
+    <Compile Include="GiaoDienAdmin.Master.cs">
+      <DependentUpon>GiaoDienAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GiaoDienAdmin.Master.designer.cs">
+      <DependentUpon>GiaoDienAdmin.Master</DependentUpon>
+    </Compile>
+
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

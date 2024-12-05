@@ -38,12 +38,14 @@ namespace QLBOWLING.DTO
             set { phone = value; }
         }
 
+
         private DateTime bookingDate;
 
         public DateTime BookingDate
         {
             get { return bookingDate; }
             set { bookingDate = value; }
+
         }
 
         private string timeSlot;
@@ -59,7 +61,6 @@ namespace QLBOWLING.DTO
             get { return isBooked; }
             set { isBooked = value; }
         }
-        
         private int playerCount;
 
         public int PlayerCount
@@ -81,5 +82,6 @@ namespace QLBOWLING.DTO
             get { return customerId; }
             set { customerId = value; }
         }
+
     }
 }

@@ -8,7 +8,7 @@
                 border-radius: 20px;
                 background-color: #99FFFF;
                 border: none;
-                padding: 10px 20px; 
+                padding: 10px 20px;
                 text-align: center;
                 font-size: 16px;
                 transition: background-color 0.3s ease, transform 0.3s ease;
@@ -106,8 +106,8 @@
                 </div>
             </td>
             <td class="auto-style2" rowspan="1">
-                <asp:TextBox ID="txtUsername" runat="server" Placeholder="Enter your username" 
-                             Style="padding-left: 55px; width: 70%; height: 45px; box-sizing: border-box; border:1px solid #ccc; border-radius:25px"></asp:TextBox>
+                <asp:TextBox ID="txtUsername" runat="server" Placeholder="Nhập tên đăng nhập..." 
+                    Style="padding-left: 55px; width: 70%; height: 45px; box-sizing: border-box; border:1px solid #ccc; border-radius:25px"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -117,8 +117,9 @@
                 </div>
             </td>
             <td class="auto-style3" rowspan="1">
-                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" Placeholder="Enter your password" 
-                             Style="padding-left: 55px; width: 70%; height: 45px; box-sizing: border-box; border:1px solid #ccc; border-radius:25px"></asp:TextBox>
+
+                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" Placeholder="Nhập mật khẩu..." 
+                     Style="padding-left: 55px; width: 70%; height: 45px; box-sizing: border-box; border:1px solid #ccc; border-radius:25px"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -144,7 +145,6 @@
             <span class="icon"></span>
             <span class="message"></span>
         </div>
-
     </div>
 
     <script>

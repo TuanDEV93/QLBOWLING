@@ -24,9 +24,9 @@ namespace QLBOWLING
             if (Page.IsValid)
             {
                 BUS_Account bus = new BUS_Account();
-
                 int verifyUsername = bus.TrungTenDangNhap (txtUsername.Text.Trim());
                 int verifyPhone = bus.TrungSoDienThoai (txtPhone.Text.Trim());
+                int verifyEmail = bus.TrungEmail (txtEmail.Text.Trim());
 
                 if (verifyUsername == 1)
                 {
@@ -38,20 +38,25 @@ namespace QLBOWLING
                     ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
                     "showNotificationMessage('Số điện thoại này đã có người sử dụng !', 'error');", true);
                 }
+                else if (verifyEmail == 1) 
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
+                    "showNotificationMessage('Email này đã có người sử dụng !', 'error');", true);
+                }  
                 else
                 {
-                    Account account = new Account();
-                    account.Username = txtUsername.Text;
-                    account.displayName = txtFullname.Text;
-                    account.passWord = txtPassword.Text;
-                    account.ADDRESS = txtAddress.Text;
-                    account.PHONE = txtPhone.Text;
-
-                    bus.GhiThongTinKhachHang (account);
-
+                    Customer customer = new Customer();
+                    customer.customerName = txtUsername.Text;
+                    customer.passWord = txtPassword.Text;
+                    customer.displayName = txtFullname.Text;
+                    customer.EMAIL = txtEmail.Text;
+                    customer.ADDRESS = txtAddress.Text;
+                    customer.PHONE = txtPhone.Text;
+                    bus.GhiThongTinKhachHang (customer);
                     ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
                     "showNotificationMessage('Đăng kí thành công!', 'success');", true);
                     XoaThongTin();
+                    Response.AddHeader("REFRESH", "1;URL=Login.aspx");
                 }
             }
         }
@@ -63,6 +68,7 @@ namespace QLBOWLING
             txtFullname.Text = "";
             txtAddress.Text = "";
             txtPhone.Text = "";
+            txtEmail.Text = "";
         }
     }
 }

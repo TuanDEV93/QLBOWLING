@@ -21,6 +21,7 @@ namespace QLBOWLING.BUS
         public List<string> GetBookedTimeSlots(int laneID, DateTime date)
         {
             return bookingDAO.GetBookedTimeSlots(laneID, date); // Gọi phương thức qua đối tượng
+
         }
 
         // Lấy trạng thái các khung giờ (Đã đặt hay còn trống)
@@ -40,7 +41,6 @@ namespace QLBOWLING.BUS
             };
 
             // Lấy danh sách các khung giờ đã đặt từ DAO
-          
             List<string> bookedSlots = bookingDAO.GetBookedTimeSlots(laneID, date);
 
             // Tạo danh sách đối tượng DTO_Booking
@@ -64,4 +64,5 @@ namespace QLBOWLING.BUS
     }
 
 }
+
 

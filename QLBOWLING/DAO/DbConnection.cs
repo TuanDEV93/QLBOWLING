@@ -13,6 +13,7 @@ namespace QLBOWLING.DAO
         public DbConnection()
         {
             string strcnn = "Data Source=DESKTOP-H3558DE\\SQLEXPRESS;Initial Catalog=QLBowling;Trusted_Connection=True;";
+
             cnn = new SqlConnection(strcnn);
         }
         public void Open()

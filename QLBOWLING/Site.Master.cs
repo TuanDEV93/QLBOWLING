@@ -17,16 +17,16 @@ namespace QLBOWLING
                     lblUserName.Visible = true;
                     btnLogout.Visible = true;
                     btnLogin.Visible = false;
-                }
+                }    
                 else
                 {
                     lblUserName.Visible = false;
                     btnLogout.Visible = false;
                     btnLogin.Visible = true;
-                }
-            }
-            
+                }    
+            }    
         }
+
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Clear();

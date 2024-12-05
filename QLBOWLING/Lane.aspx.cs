@@ -30,6 +30,8 @@ namespace QLBOWLING
             string LaneName = ""; // Giá trị tìm kiếm theo tên
             int Status = -1; // -1 để bỏ qua, 0 hoặc 1 cho trạng thái cụ thể
 
+
+
             DataTable dt = busLane.LoadLane();
 
             // Thêm cột CssClass
@@ -37,6 +39,7 @@ namespace QLBOWLING
             foreach (DataRow row in dt.Rows)
             {
                 bool statusLane = Convert.ToBoolean(row["Status"]);
+
                 row["CssClass"] = statusLane ? "btn btn-success" : "btn btn-danger";
             }
 

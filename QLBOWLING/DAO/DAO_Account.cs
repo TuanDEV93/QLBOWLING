@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,24 +9,28 @@ using QLBOWLING.DTO;
 
 namespace QLBOWLING.DAO
 {
-    public class DAO_Account : DbConnection
+
+    public class DAO_Account:DbConnection
     {
-        public void GhiThongTinKhachHang(Account account)
+        public void GhiThongTinKhachHang (Customer customer)
         {
             DAO_Account dao = new DAO_Account();
             dao.Open();
-            string query = "INSERT INTO Account (UserName,DisplayName,PassWord,Role,Address,Phone) values ('" + account.Username + "','" + account.displayName + "','" + account.passWord + "','3','" + account.ADDRESS + "','" + account.PHONE + "') ";
+            string query = "INSERT INTO Customer (CustomerName,PassWord,DisplayName,Email,Phone,Address) values ('" + customer.customerName + "','" + customer.passWord + "','" + customer.displayName + "','" + customer.EMAIL + "','" + customer.PHONE + "','" + customer.ADDRESS + "') ";
+
             SqlCommand cmd = new SqlCommand(query, dao.cnn);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
             dao.Close();
         }
 
-        public int TrungTenDangNhap(string Username)
+
+        public int TrungTenDangNhap (string customerName)
         {
             DAO_Account dao = new DAO_Account();
             dao.Open();
-            string query = "SELECT * FROM Account WHERE Username = '" + Username + "'";
+            string query = "SELECT * FROM Customer WHERE CustomerName = '" + customerName + "'";
+
             SqlCommand cmd = new SqlCommand(query, dao.cnn);
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
@@ -37,11 +41,26 @@ namespace QLBOWLING.DAO
 
         }
 
-        public int TrungSoDienThoai(string Phone)
+
+        public int TrungSoDienThoai (string Phone)
         {
             DAO_Account dao = new DAO_Account();
             dao.Open();
-            string query = "SELECT * FROM Account WHERE PHONE = '" + Phone + "'";
+            string query = "SELECT * FROM Customer WHERE PHONE = '" + Phone + "'";
+            SqlCommand cmd = new SqlCommand(query, dao.cnn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                return 1;
+            }    
+            return 0;
+        }
+
+        public int TrungEmail (string Email)
+        {
+            DAO_Account dao = new DAO_Account();
+            dao.Open();
+            string query = "SELECT * FROM Customer WHERE EMAIL = '" + Email + "'";
             SqlCommand cmd = new SqlCommand(query, dao.cnn);
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
@@ -56,18 +75,44 @@ namespace QLBOWLING.DAO
             int role = -1;
             DAO_Account dao = new DAO_Account();
             dao.Open();
-            string query = "SELECT * FROM Account WHERE Username = '" + Username + "' AND passWord = '" + Password + "'";
-            SqlCommand cmd = new SqlCommand(query, dao.cnn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.HasRows)
+
+
+            string queryAccount = "SELECT Role FROM Account WHERE Username = @Username AND Password = @Password";
+            using (SqlCommand cmdAccount = new SqlCommand(queryAccount, dao.cnn))
             {
-                reader.Read();
-                role = reader.GetInt32(4);
+                cmdAccount.Parameters.AddWithValue("@Username", Username);
+                cmdAccount.Parameters.AddWithValue("@Password", Password);
+
+                using (SqlDataReader readerAccount = cmdAccount.ExecuteReader())
+                {
+                    if (readerAccount.HasRows)
+                    {
+                        readerAccount.Read();
+                        role = readerAccount.GetInt32(0);
+                        readerAccount.Close();
+                        return role;
+                    }
+                }
             }
-            cmd.Dispose();
-            reader.Dispose();
+
+            string queryCustomer = "SELECT CustomerId FROM Customer WHERE CustomerName = @CustomerName AND Password = @Password";
+            using (SqlCommand cmdCustomer = new SqlCommand(queryCustomer, dao.cnn))
+            {
+                cmdCustomer.Parameters.AddWithValue("@CustomerName", Username);
+                cmdCustomer.Parameters.AddWithValue("@Password", Password);
+
+                using (SqlDataReader readerCustomer = cmdCustomer.ExecuteReader())
+                {
+                    if (readerCustomer.HasRows)
+                    {
+                        role = 2;
+                    }
+                }
+            }
+
             dao.Close();
             return role;
         }
+
     }
 }

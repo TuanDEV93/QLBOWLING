@@ -21,6 +21,7 @@ namespace QLBOWLING
                 {
                     //txtLaneID.Text = laneID;
                     litTitle.Text = $"<h3>Thêm phiếu đặt sân {laneID}</h3>";
+
                 }
               
             }
@@ -62,6 +63,13 @@ namespace QLBOWLING
             }
 
 
+            if (string.IsNullOrWhiteSpace(txtDate.Text))
+            {
+                lblMessage1.Text = "Vui lòng nhập ngày.";
+                lblMessage1.ForeColor = System.Drawing.Color.Red;
+                lblMessage1.Visible = true;
+                return;
+            }
             if (ddlTimeSlot.SelectedIndex == 0)
             {
                 lblMessage2.Text = "Vui lòng chọn time slot.";
@@ -78,6 +86,15 @@ namespace QLBOWLING
                 return;
             }
 
+
+            if (!DateTime.TryParse(txtDate.Text, out date))
+            {
+                // Nếu ngày nhập không hợp lệ
+                lblMessage1.Text = "vui lòng nhập ngày hợp lệ.";
+                lblMessage1.ForeColor = System.Drawing.Color.Red;
+                lblMessage1.Visible = true;
+                return;
+            }
             //^: Đánh dấu bắt đầu của chuỗi.
             //0: Ký tự 0 phải xuất hiện ở đầu chuỗi.
             //\d: Đại diện cho một chữ số từ 0 đến 9.
@@ -98,6 +115,7 @@ namespace QLBOWLING
                 lblMessage3.Visible = true; // Show the label with the message
                 return;
             }
+
             if (!DateTime.TryParse(txtDate.Text, out date))
             {
                 // Nếu ngày nhập không hợp lệ
@@ -108,7 +126,6 @@ namespace QLBOWLING
             }
             int timeSlotValue;
            
-
             if (!int.TryParse(ddlTimeSlot.SelectedValue, out timeSlotValue))
             {
                 // Nếu không thể parse được, xử lý lỗi ở đây
@@ -119,6 +136,7 @@ namespace QLBOWLING
             }
 
             string timeSlotDisplay = ddlTimeSlot.SelectedItem.Text.ToString();
+
             // Lấy ngày và giờ hiện tại
             DateTime currentDateTime = DateTime.Today.AddHours(timeSlotValue);
 
@@ -138,17 +156,22 @@ namespace QLBOWLING
 
 
             int countPlayer = int.Parse(ddlCountPlayer.Text);
+
             int laneID = int.Parse(Request.QueryString["laneID"]);
+
+
             DTO_Booking booking = new DTO_Booking
             {
                 UserBooking= name,
                 Email = email,
                 Phone = phone,
+
                 BookingDate = DateTime.Parse(txtDate.Text),
                 TimeSlot = ddlTimeSlot.SelectedValue,
                 PlayerCount= int.Parse(ddlCountPlayer.SelectedValue),
                 LaneID = int.Parse(Request.QueryString["laneID"])
                 
+
             };
 
             // Gọi BUS_Booking để thêm mới
@@ -158,6 +181,7 @@ namespace QLBOWLING
 
             if (isSuccess)
             {
+
                 string script = "alert('Đặt sân thành công!');";
                 ClientScript.RegisterStartupScript(this.GetType(), "SuccessAlert", script, true);
             }
@@ -165,6 +189,7 @@ namespace QLBOWLING
             {
                 string script = "alert('Có lỗi xảy ra. Vui lòng thử lại.');";
                 ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
+
             }
         }
         protected void btnLoadTimeSlot_Click(object sender, EventArgs e)
@@ -173,7 +198,6 @@ namespace QLBOWLING
             {
                 // Lấy giá trị LaneID từ   QueryString nếu cần
                 int laneID = int.Parse(Request.QueryString["laneID"]);
-
                 // Kiểm tra nếu TextBox ngày trống
                 if (string.IsNullOrEmpty(txtDate.Text))
                 {
@@ -203,7 +227,9 @@ namespace QLBOWLING
             catch (Exception ex)
             {
                 // Xử lý lỗi khác
-                string script = "alert('Đã xảy ra lỗi khi tải khung giờ.');";
+
+                string script = "alert('Đã xảy ra lỗi khi tải khung giờ. Chi tiết: " + ex.Message.Replace("'", "\\'") + "');";
+
                 ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
             }
         }

@@ -102,7 +102,9 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-user"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtUsername" runat="server" Placeholder="Enter your username"
+
+                    <asp:TextBox ID="txtUsername" runat="server" Placeholder="Nhập tên đăng nhập..."
+
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -115,7 +117,8 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-lock"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Placeholder="Enter your password"
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Placeholder="Nhập mật khẩu..."
+
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -128,7 +131,9 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-user-circle"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtFullname" runat="server" Placeholder="Enter your full name"
+
+                    <asp:TextBox ID="txtFullname" runat="server" Placeholder="Nhập họ và tên..."
+
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -141,7 +146,8 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-map-marker-alt"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtAddress" runat="server" Placeholder="Enter your address"
+
+                    <asp:TextBox ID="txtAddress" runat="server" Placeholder="Nhập địa chỉ..."
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -154,7 +160,8 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-phone"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtPhone" runat="server" Placeholder="Enter your phone number"
+
+                    <asp:TextBox ID="txtPhone" runat="server" Placeholder="Nhập số điện thoại..."
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>

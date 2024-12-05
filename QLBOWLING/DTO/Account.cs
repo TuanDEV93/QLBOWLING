@@ -19,10 +19,12 @@ namespace QLBOWLING.DTO
         {
             get { return UserName; }
             set { UserName = value; }
+
         }
 
         private string DisplayName;
         public string displayName
+
         {
             get { return DisplayName; }
             set { DisplayName = value; }
@@ -30,16 +32,18 @@ namespace QLBOWLING.DTO
 
         private string PassWord;
         public string passWord
+
         {
             get { return PassWord; }
             set { PassWord = value; }
         }
 
-        private bool Type;
-        public bool type
+        private bool Role;
+        public bool ROLE
         {
-            get { return Type; }
-            set { Type = value; }
+            get { return Role; }
+            set { Role = value; }
+
         }
 
         private string Address;

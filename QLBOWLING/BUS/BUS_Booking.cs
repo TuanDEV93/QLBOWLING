@@ -20,8 +20,8 @@ namespace QLBOWLING.BUS
         // Lấy danh sách các khung giờ đã đặt
         public List<string> GetBookedTimeSlots(int laneID, DateTime date)
         {
-            DAO_Booking daoBooking = new DAO_Booking(); // Tạo đối tượng DAO_Booking
-            return daoBooking.GetBookedTimeSlots(laneID, date); // Gọi phương thức qua đối tượng
+            return bookingDAO.GetBookedTimeSlots(laneID, date); // Gọi phương thức qua đối tượng
+
         }
 
         // Lấy trạng thái các khung giờ (Đã đặt hay còn trống)
@@ -41,8 +41,7 @@ namespace QLBOWLING.BUS
             };
 
             // Lấy danh sách các khung giờ đã đặt từ DAO
-            DAO_Booking daoBooking = new DAO_Booking(); // Tạo đối tượng DAO_Booking
-            List<string> bookedSlots = daoBooking.GetBookedTimeSlots(laneID, date);
+            List<string> bookedSlots = bookingDAO.GetBookedTimeSlots(laneID, date);
 
             // Tạo danh sách đối tượng DTO_Booking
             List<DTO_Booking> timeSlotStatus = new List<DTO_Booking>();
@@ -58,29 +57,12 @@ namespace QLBOWLING.BUS
 
             return timeSlotStatus;
         }
-
-        public string LastErrorMessage { get; private set; }
-
-       
-            DbConnection db = new DbConnection();
-
-            public bool AddNewBooking(DTO_Booking booking)
-            {
-                string query = "INSERT INTO Booking (UserBooking, Email, Phone, Date, TimeSlot, CountPlayer, IdLane) " +
-                               "VALUES (@UserBooking, @Email, @Phone, @Date, @TimeSlot, @CountPlayer, @idLane)";
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-            new SqlParameter("@UserBooking", booking.UserBooking),
-            new SqlParameter("@Email", booking.Email),
-            new SqlParameter("@Phone", booking.Phone),
-            new SqlParameter("@Date", booking.Date),
-            new SqlParameter("@TimeSlot", booking.TimeSlot),
-            new SqlParameter("@CountPlayer", booking.CountPlayer),
-            new SqlParameter("@idLane", booking.IdLane)
-                };
-
-                return db.ExecuteNonQuery(query, parameters) > 0;
-            }
+        public bool AddNewBooking(DTO_Booking booking)
+        {
+           return bookingDAO.AddNewBooking(booking); // Gọi phương thức DAO thông qua đối tượng
         }
-
     }
+
+}
+
+

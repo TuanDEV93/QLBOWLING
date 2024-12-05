@@ -17,7 +17,8 @@ namespace QLBOWLING
             if (Session["Username"] != null)
             {
                 Response.Redirect("Home.aspx");
-            }
+
+            }    
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -34,37 +35,34 @@ namespace QLBOWLING
                 Session["Username"] = username;
 
                 ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
-                "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
+                    "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
 
                 Response.AddHeader("REFRESH", "1;URL=Admin/Dashboard.aspx");
             }
-            else
-                if (role == 2)
+            else if (role == 0)
             {
                 Session["Username"] = username;
 
                 ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
-                "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
+                    "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
+
+                Response.AddHeader("REFRESH", "1;URL=Services.aspx");
+            }
+            else if (role == 2)
+            {
+                Session["Username"] = username;
+
+                ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
+                    "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
 
                 Response.AddHeader("REFRESH", "1;URL=Home.aspx");
             }
             else
-                if (role == 3)
-            {
-                Session["Username"] = username;
-
-                ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
-                "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
-
-                Response.AddHeader("REFRESH", "1;URL=Services.aspx");
-            }
-            else
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
-                "showSuccessMessage('Sai tên đăng nhập hoặc mật khẩu', 'error');", true);
+                    "showSuccessMessage('Sai tên đăng nhập hoặc mật khẩu!', 'error');", true);
             }
-
-
         }
+
     }
 }

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - DreamGame</title>
 
-    <asp:PlaceHolder runat="server">
+    <asp:PlaceHolder  runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
@@ -56,7 +56,7 @@
                                         <li><i class="fa fa-phone col_1"></i><a class="col_2" href="#">+123 4567 890</a></li>
                                         <li>
                                             <i class="bi bi-door-open-fill"></i>
-                                            <asp:LinkButton ID="btnLogin" runat="server" CssClass="col_2" PostBackUrl="~/Login.aspx">Login</asp:LinkButton>
+                                            <asp:LinkButton ID="btnLogin" runat="server" CssClass="col_2" PostBackUrl="~/Login.aspx">Đăng Nhập</asp:LinkButton>
                                             <asp:Label ID="lblUserName" runat="server" CssClass="col_2" Text="" Visible="false"></asp:Label>
                                             <asp:LinkButton ID="btnLogout" runat="server" CssClass="col_2" Text="Thoát" OnClick="btnLogout_Click" Visible="false"></asp:LinkButton>
                                         </li>

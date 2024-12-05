@@ -20,12 +20,12 @@ namespace QLBOWLING.DAO
             using (SqlConnection connection = dbConnection.cnn)
             {
                 connection.Open();
-
-                string query = "SELECT TimeSlot FROM Booking WHERE idLane = @LaneID AND Date = @Date";
+                string query = "SELECT TimeSlot FROM Booking WHERE LaneID = @LaneID AND BookingDate = @BookingDate";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@LaneID", laneID);
-                    command.Parameters.AddWithValue("@Date", date);
+                    command.Parameters.AddWithValue("@BookingDate", date);
+
 
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
@@ -37,7 +37,9 @@ namespace QLBOWLING.DAO
             return bookedSlots;
         }
 
-        public void AddNewBooking(DTO_Booking booking)
+
+        public bool AddNewBooking(DTO_Booking booking)
+
         {
             using (SqlConnection connection = dbConnection.cnn)
             {
@@ -46,38 +48,47 @@ namespace QLBOWLING.DAO
 
                 try
                 {
-                    string query = "INSERT INTO dbo.Bookings (UserBooking, Email, Phone, Date, TimeSlot, CountPlayer, IdLane) " +
-                                   "VALUES (@UserBooking, @Email, @Phone, @Date, @TimeSlot, @CountPlayer, @idLane)";
+                    // Insert query
+                    string query = "INSERT INTO dbo.Booking (UserBooking, Email, Phone, BookingDate, TimeSlot, PlayerCount, LaneID, CustomerID) " +
+                                   "VALUES (@UserBooking, @Email, @Phone, @BookingDate, @TimeSlot, @PlayerCount, @LaneID, @CustomerID)";
 
                     using (SqlCommand command = new SqlCommand(query, connection, transaction))
                     {
-                        command.Parameters.AddWithValue("@UserBooking", booking.UserBooking);
-                        command.Parameters.AddWithValue("@Email", booking.Email);
-                        command.Parameters.AddWithValue("@Phone", booking.Phone);
-                        command.Parameters.AddWithValue("@Date", booking.Date);
-                        command.Parameters.AddWithValue("@TimeSlot", booking.TimeSlot);
-                        command.Parameters.AddWithValue("@CountPlayer", booking.CountPlayer);
-                        command.Parameters.AddWithValue("@LaneID", booking.IdLane);
-
+                        command.Parameters.Add(new SqlParameter("@UserBooking", booking.UserBooking));
+                        command.Parameters.Add(new SqlParameter("@Email", booking.Email));
+                        command.Parameters.Add(new SqlParameter("@Phone", booking.Phone));
+                        command.Parameters.Add(new SqlParameter("@BookingDate", booking.BookingDate));
+                        command.Parameters.Add(new SqlParameter("@TimeSlot", booking.TimeSlot));
+                        command.Parameters.Add(new SqlParameter("@PlayerCount", booking.PlayerCount));
+                        command.Parameters.Add(new SqlParameter("@LaneID", booking.LaneID));
+                        command.Parameters.Add(new SqlParameter("@CustomerID", 1  /*booking.CustomerID*/));
                         command.ExecuteNonQuery();
                     }
 
-                    string updateQuery = "UPDATE dbo.Lane SET StatusLane = @StatusLane WHERE LaneID = @LaneID";
+                    // Update lane status query
+                    string updateQuery = "UPDATE dbo.Lane SET Status = @Status WHERE LaneID = @LaneID";
+
                     using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection, transaction))
                     {
-                        updateCommand.Parameters.AddWithValue("@StatusLane", false);
-                        updateCommand.Parameters.AddWithValue("@ID", booking.IdLane);
+                        updateCommand.Parameters.Add(new SqlParameter("@Status", false));
+                        updateCommand.Parameters.Add(new SqlParameter("@LaneID", booking.LaneID));
                         updateCommand.ExecuteNonQuery();
                     }
 
+                    // Commit transaction
                     transaction.Commit();
+                    return true; // Return true on success
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    // Rollback transaction on error
                     transaction.Rollback();
-                    throw;
+                    Console.WriteLine($"Error: {ex.Message}");
+                    return false;
+
                 }
             }
         }
     }
 }
+

@@ -1,5 +1,4 @@
-
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="QLBOWLING.Register" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="QLBOWLING.Register" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <head>
@@ -103,7 +102,9 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-user"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtUsername" runat="server" Placeholder="Enter your username"
+
+                    <asp:TextBox ID="txtUsername" runat="server" Placeholder="Nhập tên đăng nhập..."
+
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -116,7 +117,8 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-lock"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Placeholder="Enter your password"
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Placeholder="Nhập mật khẩu..."
+
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -129,7 +131,9 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-user-circle"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtFullname" runat="server" Placeholder="Enter your full name"
+
+                    <asp:TextBox ID="txtFullname" runat="server" Placeholder="Nhập họ và tên..."
+
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -142,7 +146,8 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-map-marker-alt"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtAddress" runat="server" Placeholder="Enter your address"
+
+                    <asp:TextBox ID="txtAddress" runat="server" Placeholder="Nhập địa chỉ..."
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -155,7 +160,8 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-phone"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtPhone" runat="server" Placeholder="Enter your phone number"
+
+                    <asp:TextBox ID="txtPhone" runat="server" Placeholder="Nhập số điện thoại..."
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -188,32 +194,29 @@
     </div>
 
     <script>
-    function showNotificationMessage(message, type) {
-        const messageBox = document.getElementById('notificationMessage');
-        const icon = messageBox.querySelector('.icon');
-        const messageText = messageBox.querySelector('.message');
+        function showNotificationMessage(message, type) {
+            const messageBox = document.getElementById('notificationMessage');
+            const icon = messageBox.querySelector('.icon');
+            const messageText = messageBox.querySelector('.message');
 
-        messageText.textContent = message;
+            messageText.textContent = message;
 
-        if (type === 'success') {
-            icon.innerHTML = '<i class="fas fa-check-circle"></i>';
-        } else if (type === 'error') {
-            icon.innerHTML = '<i class="fas fa-times-circle"></i>';
-        }
+            if (type === 'success') {
+                icon.innerHTML = '<i class="fas fa-check-circle"></i>';
+            } else if (type === 'error') {
+                icon.innerHTML = '<i class="fas fa-times-circle"></i>';
+            }
 
-        messageBox.className = `message-box ${type} show`;
+            messageBox.className = `message-box ${type} show`;
 
-        setTimeout(() => {
-            messageBox.classList.remove('show');
             setTimeout(() => {
-                messageBox.classList.add('hidden');
-            }, 300);
-        }, 3000);
-    }
+                messageBox.classList.remove('show');
+                setTimeout(() => {
+                    messageBox.classList.add('hidden');
+                }, 300);
+            }, 3000);
+        }
     </script>
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-</asp:Content>
+

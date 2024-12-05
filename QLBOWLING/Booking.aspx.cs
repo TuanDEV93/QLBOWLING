@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Web.UI;
 using QLBOWLING.BUS;
+using QLBOWLING.DAO;
 using QLBOWLING.DTO;
 
 namespace QLBOWLING
@@ -18,7 +19,8 @@ namespace QLBOWLING
                 string laneID = Request.QueryString["laneID"];
                 if (!string.IsNullOrEmpty(laneID))
                 {
-                    txtLaneID.Text = laneID;
+                    //txtLaneID.Text = laneID;
+                    litTitle.Text = $"<h3>Thêm phiếu đặt sân {laneID}</h3>";
 
                 }
               
@@ -60,6 +62,7 @@ namespace QLBOWLING
                 return;
             }
 
+
             if (string.IsNullOrWhiteSpace(txtDate.Text))
             {
                 lblMessage1.Text = "Vui lòng nhập ngày.";
@@ -67,7 +70,6 @@ namespace QLBOWLING
                 lblMessage1.Visible = true;
                 return;
             }
-
             if (ddlTimeSlot.SelectedIndex == 0)
             {
                 lblMessage2.Text = "Vui lòng chọn time slot.";
@@ -83,6 +85,7 @@ namespace QLBOWLING
                 lblMessage5.Visible = true;
                 return;
             }
+
 
             if (!DateTime.TryParse(txtDate.Text, out date))
             {
@@ -112,8 +115,17 @@ namespace QLBOWLING
                 lblMessage3.Visible = true; // Show the label with the message
                 return;
             }
-            int timeSlotValue;
 
+            if (!DateTime.TryParse(txtDate.Text, out date))
+            {
+                // Nếu ngày nhập không hợp lệ
+                lblMessage1.Text = "vui lòng nhập ngày hợp lệ.";
+                lblMessage1.ForeColor = System.Drawing.Color.Red;
+                lblMessage1.Visible = true;
+                return;
+            }
+            int timeSlotValue;
+           
             if (!int.TryParse(ddlTimeSlot.SelectedValue, out timeSlotValue))
             {
                 // Nếu không thể parse được, xử lý lỗi ở đây
@@ -122,6 +134,7 @@ namespace QLBOWLING
                 lblMessage2.Visible = true;
                 return;
             }
+
             string timeSlotDisplay = ddlTimeSlot.SelectedItem.Text.ToString();
 
             // Lấy ngày và giờ hiện tại
@@ -143,42 +156,48 @@ namespace QLBOWLING
 
 
             int countPlayer = int.Parse(ddlCountPlayer.Text);
-            int laneID = int.Parse(txtLaneID.Text);
+
+            int laneID = int.Parse(Request.QueryString["laneID"]);
+
+
             DTO_Booking booking = new DTO_Booking
             {
                 UserBooking= name,
                 Email = email,
                 Phone = phone,
-                Date = DateTime.Parse(txtDate.Text),
+
+                BookingDate = DateTime.Parse(txtDate.Text),
                 TimeSlot = ddlTimeSlot.SelectedValue,
-                CountPlayer= int.Parse(ddlCountPlayer.SelectedValue),
-                IdLane = int.Parse(txtLaneID.Text)
+                PlayerCount= int.Parse(ddlCountPlayer.SelectedValue),
+                LaneID = int.Parse(Request.QueryString["laneID"])
+                
+
             };
 
             // Gọi BUS_Booking để thêm mới
             BUS_Booking busBooking = new BUS_Booking();
+
             bool isSuccess = busBooking.AddNewBooking(booking);
 
             if (isSuccess)
             {
-                lblMessage4.Text = "Đặt sân thành công!";
-                lblMessage4.ForeColor = System.Drawing.Color.Green;
-                lblMessage4.Visible = true;
+
+                string script = "alert('Đặt sân thành công!');";
+                ClientScript.RegisterStartupScript(this.GetType(), "SuccessAlert", script, true);
             }
             else
             {
-                lblMessage4.Text = "Có lỗi xảy ra. Vui lòng thử lại.";
-                lblMessage4.ForeColor = System.Drawing.Color.Red;
-                lblMessage4.Visible = true;
+                string script = "alert('Có lỗi xảy ra. Vui lòng thử lại.');";
+                ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
+
             }
         }
         protected void btnLoadTimeSlot_Click(object sender, EventArgs e)
         {
             try
             {
-                // Lấy giá trị LaneID từ TextBox (hoặc QueryString nếu cần)
-                int laneID = int.Parse(txtLaneID.Text);  // Giả sử có một TextBox cho LaneID
-
+                // Lấy giá trị LaneID từ   QueryString nếu cần
+                int laneID = int.Parse(Request.QueryString["laneID"]);
                 // Kiểm tra nếu TextBox ngày trống
                 if (string.IsNullOrEmpty(txtDate.Text))
                 {
@@ -208,7 +227,9 @@ namespace QLBOWLING
             catch (Exception ex)
             {
                 // Xử lý lỗi khác
+
                 string script = "alert('Đã xảy ra lỗi khi tải khung giờ. Chi tiết: " + ex.Message.Replace("'", "\\'") + "');";
+
                 ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
             }
         }

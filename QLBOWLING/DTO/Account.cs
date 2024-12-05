@@ -35,11 +35,11 @@ namespace QLBOWLING.DTO
             set { PassWord = value; }
         }
 
-        private bool Type;
-        public bool type
+        private bool Role;
+        public bool ROLE
         {
-            get { return Type; }
-            set { Type = value; }
+            get { return Role; }
+            set { Role = value; }
         }
 
         private string Address;

@@ -28,7 +28,7 @@ namespace QLBOWLING
             // Lấy dữ liệu từ BUS_Lane
             int LaneID = 0; // Hoặc giá trị lấy từ giao diện
             string LaneName = ""; // Giá trị tìm kiếm theo tên
-            int StatusLane = -1; // -1 để bỏ qua, 0 hoặc 1 cho trạng thái cụ thể
+            int Status = -1; // -1 để bỏ qua, 0 hoặc 1 cho trạng thái cụ thể
 
             DataTable dt = busLane.LoadLane();
 
@@ -36,7 +36,7 @@ namespace QLBOWLING
             dt.Columns.Add("CssClass", typeof(string));
             foreach (DataRow row in dt.Rows)
             {
-                bool statusLane = Convert.ToBoolean(row["StatusLane"]);
+                bool statusLane = Convert.ToBoolean(row["Status"]);
                 row["CssClass"] = statusLane ? "btn btn-success" : "btn btn-danger";
             }
 

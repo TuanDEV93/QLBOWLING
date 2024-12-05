@@ -15,7 +15,7 @@ namespace QLBOWLING.DAO
         {
             DAO_Account dao = new DAO_Account();
             dao.Open();
-            string query = "INSERT INTO Account (UserName,DisplayName,PassWord,Type,Address,Phone) values ('" + account.Username + "','" + account.displayName + "','" + account.passWord + "','3','" + account.ADDRESS + "','" + account.PHONE + "') ";
+            string query = "INSERT INTO Account (UserName,DisplayName,PassWord,Role,Address,Phone) values ('" + account.Username + "','" + account.displayName + "','" + account.passWord + "','3','" + account.ADDRESS + "','" + account.PHONE + "') ";
             SqlCommand cmd = new SqlCommand(query, dao.cnn);
             cmd.ExecuteNonQuery();
             cmd.Dispose();

@@ -314,6 +314,8 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAO\DAO_Account.cs" />
+    <Compile Include="DAO\DAO_Booking.cs" />
+    <Compile Include="DAO\DAO_Lane.cs" />
     <Compile Include="DAO\DbConnection.cs" />
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\Booking.cs" />

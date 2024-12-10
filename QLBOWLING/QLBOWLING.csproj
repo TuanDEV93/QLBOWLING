@@ -101,6 +101,8 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Admin\AddStaff.aspx" />
+    <Content Include="Admin\Bill.aspx" />
+    <Content Include="Admin\Booking.aspx" />
     <Content Include="Admin\BowlingAlley.aspx" />
     <Content Include="Admin\Customer.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
@@ -229,6 +231,20 @@
     <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Bill.aspx.cs">
+      <DependentUpon>Bill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Bill.aspx.designer.cs">
+      <DependentUpon>Bill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Booking.aspx.cs">
+      <DependentUpon>Booking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Booking.aspx.designer.cs">
+      <DependentUpon>Booking.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\BowlingAlley.aspx.cs">
       <DependentUpon>BowlingAlley.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -298,7 +314,6 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAO\DAO_Account.cs" />
-
     <Compile Include="DAO\DbConnection.cs" />
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\Booking.cs" />

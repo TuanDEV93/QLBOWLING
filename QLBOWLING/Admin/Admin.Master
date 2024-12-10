@@ -272,10 +272,14 @@
                                 <li class="">
                                     <a href="Dashboard.aspx"><i class="mdi mdi-view-dashboard"></i>Bảng điều khiển</a>
                                 </li>
-                                <li class="">
+                                <li class="has-submenu">
                                     <a href="BowlingAlley.aspx">
                                         <i class="mdi mdi-bowling"></i>Sân bowling
                                     </a>
+                                    <ul class="submenu">
+                                        <li><a href="BowlingAlley.aspx">Quản lý sân</a></li>
+                                        <li><a href="Booking.aspx">Quản lý đặt lịch</a></li>
+                                    </ul>
                                 </li>
                                 <li class="has-submenu">
                                     <a href="Staff.aspx">

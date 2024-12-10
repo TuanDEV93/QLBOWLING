@@ -10,10 +10,9 @@ namespace QLBOWLING.BUS
 {
     public class BUS_Account
     {
-
-        public void GhiThongTinKhachHang (Customer customer)
+        public void GhiThongTinKhachHang(Customer customer)
         {
-            DAO_Account dao = new DAO_Account ();
+            DAO_Account dao = new DAO_Account();
             dao.GhiThongTinKhachHang(customer);
         }
 
@@ -32,8 +31,7 @@ namespace QLBOWLING.BUS
             return dao.TrungSoDienThoai(Phone);
         }
 
-
-        public int TrungEmail (string Email)
+        public int TrungEmail(string Email)
         {
             DAO_Account dao = new DAO_Account();
             return dao.TrungEmail(Email);
@@ -43,6 +41,5 @@ namespace QLBOWLING.BUS
             DAO_Account dao = new DAO_Account();
             return dao.DangNhapThanhCong(Username, Password);
         }
-
     }
 }

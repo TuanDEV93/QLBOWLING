@@ -13,7 +13,6 @@ namespace QLBOWLING.DTO
             get { return UserID; }
             set { UserID = value; }
         }
-
         private string UserName;
         public string Username
         {
@@ -39,11 +38,10 @@ namespace QLBOWLING.DTO
         }
 
         private bool Role;
-        public bool ROLE
+        public bool role
         {
             get { return Role; }
             set { Role = value; }
-
         }
 
         private string Address;

@@ -35,11 +35,8 @@
         <div class="container">
             <div class="row">
                 <!-- Cột trái: Phiếu đặt sân -->
-                <div class="col-md-6">         
+                <div class="col-md-6">                  
                    <h3> <asp:Literal runat="server" ID="litTitle" Text=""></asp:Literal></h3>
-
-                    <h3>Thêm phiếu đặt sân</h3>
-
                     <div class="form-group">
                         <label for="name">Họ tên:</label>
                         <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Nhập tên của bạn"></asp:TextBox>
@@ -73,8 +70,6 @@
                          <asp:ListItem Text="5:30 PM - 6:30 PM" Value="5:30 PM - 6:30 PM"></asp:ListItem>
                          <asp:ListItem Text="7:00 PM - 8:00 PM" Value="7:00 PM - 8:00 PM"></asp:ListItem>
                          <asp:ListItem Text="8:30 PM - 9:30 PM" Value="8:30 PM - 9:30 PM"></asp:ListItem>
-
-
                      </asp:DropDownList>
                       <asp:Label ID="lblMessage2" runat="server" CssClass="text-danger" Enabled="False"></asp:Label>
                      </div>
@@ -95,8 +90,6 @@
                         <asp:TextBox ID="txtLaneID" runat="server" CssClass="form-control" ></asp:TextBox>
                     </div>
                     <asp:Button ID="btnSubmit" runat="server" Text="Đặt ngay" CssClass="btn btn-primary btn-block" OnClick ="btnSubmit_Click"/>
-
-                        
                 </div>
 
                 <!-- Cột phải: Bảng hiển thị khung giờ -->

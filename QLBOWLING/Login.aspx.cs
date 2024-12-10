@@ -17,7 +17,6 @@ namespace QLBOWLING
             if (Session["Username"] != null)
             {
                 Response.Redirect("Home.aspx");
-
             }    
         }
 

@@ -20,12 +20,12 @@ namespace QLBOWLING.DAO
             using (SqlConnection connection = dbConnection.cnn)
             {
                 connection.Open();
+
                 string query = "SELECT TimeSlot FROM Booking WHERE LaneID = @LaneID AND BookingDate = @BookingDate";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@LaneID", laneID);
                     command.Parameters.AddWithValue("@BookingDate", date);
-
 
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
@@ -37,9 +37,7 @@ namespace QLBOWLING.DAO
             return bookedSlots;
         }
 
-
         public bool AddNewBooking(DTO_Booking booking)
-
         {
             using (SqlConnection connection = dbConnection.cnn)
             {
@@ -85,7 +83,6 @@ namespace QLBOWLING.DAO
                     transaction.Rollback();
                     Console.WriteLine($"Error: {ex.Message}");
                     return false;
-
                 }
             }
         }

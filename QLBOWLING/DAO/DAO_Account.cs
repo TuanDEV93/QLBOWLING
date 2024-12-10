@@ -12,25 +12,22 @@ namespace QLBOWLING.DAO
 
     public class DAO_Account:DbConnection
     {
-        public void GhiThongTinKhachHang (Customer customer)
+        public void GhiThongTinKhachHang(Customer customer)
         {
             DAO_Account dao = new DAO_Account();
             dao.Open();
             string query = "INSERT INTO Customer (CustomerName,PassWord,DisplayName,Email,Phone,Address) values ('" + customer.customerName + "','" + customer.passWord + "','" + customer.displayName + "','" + customer.EMAIL + "','" + customer.PHONE + "','" + customer.ADDRESS + "') ";
-
             SqlCommand cmd = new SqlCommand(query, dao.cnn);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
             dao.Close();
         }
 
-
-        public int TrungTenDangNhap (string customerName)
+        public int TrungTenDangNhap(string customerName)
         {
             DAO_Account dao = new DAO_Account();
             dao.Open();
             string query = "SELECT * FROM Customer WHERE CustomerName = '" + customerName + "'";
-
             SqlCommand cmd = new SqlCommand(query, dao.cnn);
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
@@ -52,11 +49,11 @@ namespace QLBOWLING.DAO
             if (reader.HasRows)
             {
                 return 1;
-            }    
+            }
             return 0;
         }
 
-        public int TrungEmail (string Email)
+        public int TrungEmail(string Email)
         {
             DAO_Account dao = new DAO_Account();
             dao.Open();
@@ -75,8 +72,6 @@ namespace QLBOWLING.DAO
             int role = -1;
             DAO_Account dao = new DAO_Account();
             dao.Open();
-
-
             string queryAccount = "SELECT Role FROM Account WHERE Username = @Username AND Password = @Password";
             using (SqlCommand cmdAccount = new SqlCommand(queryAccount, dao.cnn))
             {

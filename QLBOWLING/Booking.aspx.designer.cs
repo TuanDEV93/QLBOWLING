@@ -24,7 +24,6 @@ namespace QLBOWLING
         protected global::System.Web.UI.WebControls.Literal litTitle;
 
         /// <summary>
-
         /// txtName control.
         /// </summary>
         /// <remarks>

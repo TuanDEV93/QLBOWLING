@@ -1,4 +1,3 @@
-
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="QLBOWLING.Register" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -32,22 +31,22 @@
                 color: white;
             }
 
-            .message-box.success {
-                background-color: #4caf50;
-            }
+                .message-box.success {
+                    background-color: #4caf50;
+                }
 
-            .message-box.error {
-                background-color: #f44336;
-            }
+                .message-box.error {
+                    background-color: #f44336;
+                }
 
-            .message-box.show {
-                opacity: 1;
-                transform: translateX(0);
-            }
+                .message-box.show {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
 
-            .message-box.hidden {
-                display: none;
-            }
+                .message-box.hidden {
+                    display: none;
+                }
 
             .icon {
                 font-size: 23px;
@@ -64,10 +63,10 @@
                 transition: background-color 0.3s ease, transform 0.3s ease;
             }
 
-            .btn-register:hover {
-                background-color: #33FFFF;
-                transform: scale(1.1);
-            }
+                .btn-register:hover {
+                    background-color: #33FFFF;
+                    transform: scale(1.1);
+                }
 
             .header-register {
                 font-size: 30px;
@@ -103,7 +102,7 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-user"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtUsername" runat="server" Placeholder="Enter your username"
+                    <asp:TextBox ID="txtUsername" runat="server" Placeholder="Nhập tên đăng nhập..."
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -116,7 +115,7 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-lock"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Placeholder="Enter your password"
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Placeholder="Nhập mật khẩu..."
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -129,7 +128,7 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-user-circle"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtFullname" runat="server" Placeholder="Enter your full name"
+                    <asp:TextBox ID="txtFullname" runat="server" Placeholder="Nhập họ và tên..."
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -142,7 +141,7 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-map-marker-alt"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtAddress" runat="server" Placeholder="Enter your address"
+                    <asp:TextBox ID="txtAddress" runat="server" Placeholder="Nhập địa chỉ..."
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
@@ -155,26 +154,35 @@
                 <div style="position: relative; width: 70%;">
                     <i class="fas fa-phone"
                         style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
-                    <asp:TextBox ID="txtPhone" runat="server" Placeholder="Enter your phone number"
+                    <asp:TextBox ID="txtPhone" runat="server" Placeholder="Nhập số điện thoại..."
                         Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
                 </div>
             </td>
         </tr>
         <tr>
-            <td class="auto-style4">&nbsp;</td>
-            <td class="auto-style7">
-                <asp:Button ID="btnRegister" runat="server" CssClass="btn-register" Text="Đăng Kí" OnClick="btnRegister_Click" />
+            <td class="auto-style9">
+                <asp:Label ID="Label8" runat="server" CssClass="row-right" Text="Email"></asp:Label>
+            </td>
+            <td class="auto-style8">
+                <div style="position: relative; width: 70%;">
+                    <i class="fas fa-envelope"
+                        style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: gray;"></i>
+                    <asp:TextBox ID="txtEmail" runat="server" Placeholder="Nhập email..."
+                        Style="padding-left: 45px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 25px;" Height="45px" Width="300px"></asp:TextBox>
+                </div>
             </td>
         </tr>
         <tr>
             <td class="auto-style4"></td>
             <td class="auto-style7">
-                <asp:Label ID="lblNotification" runat="server" Visible="False"></asp:Label>
+                <asp:Button ID="btnRegister" runat="server" CssClass="btn-register" Text="Đăng Kí" OnClick="btnRegister_Click" />
             </td>
         </tr>
         <tr>
             <td class="auto-style9">&nbsp;</td>
-            <td class="auto-style8">&nbsp;</td>
+            <td class="auto-style8">
+                <asp:Label ID="lblNotification" runat="server" Visible="False"></asp:Label>
+            </td>
         </tr>
         <tr>
             <td class="auto-style9"></td>
@@ -188,32 +196,27 @@
     </div>
 
     <script>
-    function showNotificationMessage(message, type) {
-        const messageBox = document.getElementById('notificationMessage');
-        const icon = messageBox.querySelector('.icon');
-        const messageText = messageBox.querySelector('.message');
+        function showNotificationMessage(message, type) {
+            const messageBox = document.getElementById('notificationMessage');
+            const icon = messageBox.querySelector('.icon');
+            const messageText = messageBox.querySelector('.message');
 
-        messageText.textContent = message;
+            messageText.textContent = message;
 
-        if (type === 'success') {
-            icon.innerHTML = '<i class="fas fa-check-circle"></i>';
-        } else if (type === 'error') {
-            icon.innerHTML = '<i class="fas fa-times-circle"></i>';
-        }
+            if (type === 'success') {
+                icon.innerHTML = '<i class="fas fa-check-circle"></i>';
+            } else if (type === 'error') {
+                icon.innerHTML = '<i class="fas fa-times-circle"></i>';
+            }
 
-        messageBox.className = `message-box ${type} show`;
+            messageBox.className = `message-box ${type} show`;
 
-        setTimeout(() => {
-            messageBox.classList.remove('show');
             setTimeout(() => {
-                messageBox.classList.add('hidden');
-            }, 300);
-        }, 3000);
-    }
+                messageBox.classList.remove('show');
+                setTimeout(() => {
+                    messageBox.classList.add('hidden');
+                }, 300);
+            }, 3000);
+        }
     </script>
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 </asp:Content>

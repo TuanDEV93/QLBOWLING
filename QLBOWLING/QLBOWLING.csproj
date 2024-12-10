@@ -106,6 +106,7 @@
     <Content Include="Admin\Staff.aspx" />
     <Content Include="Blog.aspx" />
     <Content Include="Booking.aspx" />
+    <Content Include="BookingConfirmation.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -271,6 +272,13 @@
     <Compile Include="Booking.aspx.designer.cs">
       <DependentUpon>Booking.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BookingConfirmation.aspx.cs">
+      <DependentUpon>BookingConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookingConfirmation.aspx.designer.cs">
+      <DependentUpon>BookingConfirmation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BUS\BUS_Account.cs" />
     <Compile Include="BUS\BUS_Booking.cs" />
     <Compile Include="BUS\BUS_Lane.cs" />
@@ -287,6 +295,7 @@
     <Compile Include="DAO\DbConnection.cs" />
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\Booking.cs" />
+    <Compile Include="DTO\Customer.cs" />
     <Compile Include="DTO\Lane.cs" />
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

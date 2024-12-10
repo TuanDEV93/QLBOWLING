@@ -8,7 +8,7 @@
                 border-radius: 20px;
                 background-color: #99FFFF;
                 border: none;
-                padding: 10px 20px; 
+                padding: 10px 20px;
                 text-align: center;
                 font-size: 16px;
                 transition: background-color 0.3s ease, transform 0.3s ease;
@@ -106,7 +106,7 @@
                 </div>
             </td>
             <td class="auto-style2" rowspan="1">
-                <asp:TextBox ID="txtUsername" runat="server" Placeholder="Enter your username" 
+                <asp:TextBox ID="txtUsername" runat="server" Placeholder="Nhập tên đăng nhập..." 
                              Style="padding-left: 55px; width: 70%; height: 45px; box-sizing: border-box; border:1px solid #ccc; border-radius:25px"></asp:TextBox>
             </td>
         </tr>
@@ -117,7 +117,7 @@
                 </div>
             </td>
             <td class="auto-style3" rowspan="1">
-                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" Placeholder="Enter your password" 
+                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" Placeholder="Nhập mật khẩu..." 
                              Style="padding-left: 55px; width: 70%; height: 45px; box-sizing: border-box; border:1px solid #ccc; border-radius:25px"></asp:TextBox>
             </td>
         </tr>
@@ -132,7 +132,6 @@
             <td class="auto-style2" colspan="1" style="text-align: right;" rowspan="1">&nbsp;</td>
             <td class="auto-style2" style="text-align: left;" rowspan="1">
                 <asp:Label ID="lblNotification" runat="server" Text="Label" Visible="False" BackColor="White" ForeColor="Red"></asp:Label>
-
                 <asp:Label ID="Label2" runat="server" Text="Bạn chưa có tài khoản ?"></asp:Label>
                 <asp:LinkButton ID="btnRegister" runat="server" CssClass="btnRegister" PostBackUrl="~/Register.aspx">Đăng Kí</asp:LinkButton>
             </td>
@@ -144,7 +143,6 @@
             <span class="icon"></span>
             <span class="message"></span>
         </div>
-
     </div>
 
     <script>

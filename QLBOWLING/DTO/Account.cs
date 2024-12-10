@@ -13,7 +13,6 @@ namespace QLBOWLING.DTO
             get { return UserID; }
             set { UserID = value; }
         }
-
         private string UserName;
         public string Username
         {
@@ -35,11 +34,11 @@ namespace QLBOWLING.DTO
             set { PassWord = value; }
         }
 
-        private bool Type;
-        public bool type
+        private bool Role;
+        public bool role
         {
-            get { return Type; }
-            set { Type = value; }
+            get { return Role; }
+            set { Role = value; }
         }
 
         private string Address;

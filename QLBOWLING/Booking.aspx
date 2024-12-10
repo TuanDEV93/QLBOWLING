@@ -35,7 +35,7 @@
         <div class="container">
             <div class="row">
                 <!-- Cột trái: Phiếu đặt sân -->
-                <div class="col-md-6">                  
+                <div class="col-md-6">
                    <h3> <asp:Literal runat="server" ID="litTitle" Text=""></asp:Literal></h3>
                     <div class="form-group">
                         <label for="name">Họ tên:</label>

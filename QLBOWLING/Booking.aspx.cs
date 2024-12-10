@@ -106,13 +106,10 @@ namespace QLBOWLING
                 lblMessage1.Visible = true;
                 return;
             }
-            int timeSlotValue;
-           
-            if (!int.TryParse(ddlTimeSlot.SelectedValue, out timeSlotValue))
+            string selectedValue = ddlTimeSlot.SelectedValue;
+
             if (string.IsNullOrEmpty(selectedValue))
             {
-                // Nếu không thể parse được, xử lý lỗi ở đây
-                lblMessage2.Text = "Vui lòng chọn time slot hợp lệ.";
                 // Nếu không chọn timeslot, báo lỗi
                 lblMessage2.Text = "Vui lòng chọn timeslot hợp lệ.";
                 lblMessage2.ForeColor = System.Drawing.Color.Red;

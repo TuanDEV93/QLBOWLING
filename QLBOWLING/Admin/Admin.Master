@@ -13,6 +13,15 @@
     <link href="~/Content/Admin/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="~/Content/Admin/icons.min.css" rel="stylesheet" type="text/css">
     <link href="~/Content/Admin/app.min.css" rel="stylesheet" type="text/css">
+    <style>
+        .disabled {
+            pointer-events: none;
+            color: #999;
+            text-decoration: none;
+            cursor: default;
+            opacity: 0.6;
+        }
+    </style>
 </head>
 <body data-layout="horizontal">
     <form id="form1" runat="server">
@@ -270,7 +279,7 @@
                             <!-- Navigation Menu-->
                             <ul class="navigation-menu">
                                 <li class="">
-                                    <a href="Dashboard.aspx"><i class="mdi mdi-view-dashboard"></i>Bảng điều khiển</a>
+                                    <a id="aDashboard" runat="server" href="Dashboard.aspx"><i class="mdi mdi-view-dashboard"></i>Bảng điều khiển</a>
                                 </li>
                                 <li class="has-submenu">
                                     <a href="BowlingAlley.aspx">
@@ -281,17 +290,17 @@
                                         <li><a href="Booking.aspx">Quản lý đặt lịch</a></li>
                                     </ul>
                                 </li>
-                                <li class="has-submenu">
-                                    <a href="Staff.aspx">
+                                <li class="has-submenu" id="parentMenuStaff">
+                                    <a id="aStaff" runat="server" href="Staff.aspx">
                                         <i class="mdi mdi-account-group"></i>Nhân viên
                                     </a>
                                     <ul class="submenu">
-                                        <li><a href="Staff.aspx">Danh sách Nhân viên</a></li>
-                                        <li><a href="AddStaff.aspx">Thêm nhân viên</a></li>
+                                        <li><a id="aSubMenuStaff" runat="server" href="Staff.aspx">Danh sách Nhân viên</a></li>
+                                        <li><a id="aAddSubMenuStaff" runat="server" href="AddStaff.aspx">Thêm nhân viên</a></li>
                                     </ul>
                                 </li>
                                 <li class="">
-                                    <a href="Customer.aspx">
+                                    <a id="aCustomer" runat="server" href="Customer.aspx">
                                         <i class="mdi mdi-diamond-stone"></i>Khách hàng
                                     </a>
                                 </li>
@@ -306,20 +315,20 @@
                                     </a>
                                 </li>
 
-                                <li class="has-submenu">
-                                    <a href="#"><i class="mdi mdi-comment-text"></i>Bài viết
+                                <li class="has-submenu" id="parentMenuPost">
+                                    <a id="aPost" runat="server" href="#"><i class="mdi mdi-comment-text"></i>Bài viết
                                     </a>
                                     <ul class="submenu">
-                                        <li><a href="blogs-blog-list.html">Danh sách bài viết</a></li>
-                                        <li><a href="blogs-blog-add.html">Thêm bài viết</a></li>
+                                        <li><a id="aSubMenuPost" runat="server" href="blogs-blog-list.html">Danh sách bài viết</a></li>
+                                        <li><a id="aAddSubMenuPost" runat="server" href="blogs-blog-add.html">Thêm bài viết</a></li>
                                     </ul>
                                 </li>
 
-                                <li class="has-submenu">
-                                    <a href="#"><i class="mdi mdi-chart-areaspline-variant"></i>Thống kê báo cáo
+                                <li class="has-submenu" id="parentMenuReport">
+                                    <a id="aReport" runat="server" href="#"><i class="mdi mdi-chart-areaspline-variant"></i>Thống kê báo cáo
                                     </a>
                                     <ul class="submenu">
-                                        <li><a href="#">Tổng quan</a></li>
+                                        <li><a id="aSubMenuReport" runat="server" href="#">Tổng quan</a></li>
                                     </ul>
                                 </li>
 

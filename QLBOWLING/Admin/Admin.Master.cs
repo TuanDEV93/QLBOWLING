@@ -1,7 +1,9 @@
-﻿using System;
+﻿using QLBOWLING.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,6 +13,27 @@ namespace QLBOWLING.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["Role"] != null && Convert.ToInt32(Session["Role"]) == 0)
+                {
+                    DisableAdminButtons();
+                }
+            }
+        }
+
+        private void DisableAdminButtons()
+        {
+            aDashboard.Attributes["class"] += " disabled";
+            aStaff.Attributes["class"] += " disabled";
+            aSubMenuStaff.Attributes["class"] += "disabled";
+            aAddSubMenuStaff.Attributes["class"] += "disabled";
+            aCustomer.Attributes["class"] += " disabled";
+            aPost.Attributes["class"] += " disabled";
+            aSubMenuPost.Attributes["class"] += " disabled";
+            aAddSubMenuPost.Attributes["class"] += " disabled";
+            aReport.Attributes["class"] += " disabled";
+            aSubMenuReport.Attributes["class"] += " disabled";
 
         }
     }

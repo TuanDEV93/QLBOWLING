@@ -29,27 +29,20 @@ namespace QLBOWLING
 
             int role = bus.DangNhapThanhCong(username, password);
 
-            if (role == 1)
+            if (role == 1 || role == 0)
             {
                 Session["Username"] = username;
+                Session["Role"] = role;
 
                 ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
                     "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
 
                 Response.AddHeader("REFRESH", "1;URL=Admin/Dashboard.aspx");
             }
-            else if (role == 0)
-            {
-                Session["Username"] = username;
-
-                ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
-                    "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
-
-                Response.AddHeader("REFRESH", "1;URL=Services.aspx");
-            }
             else if (role == 2)
             {
                 Session["Username"] = username;
+                Session["Role"] = role;
 
                 ClientScript.RegisterStartupScript(this.GetType(), "showMessage",
                     "showSuccessMessage('Đăng nhập thành công!', 'success');", true);
@@ -62,6 +55,7 @@ namespace QLBOWLING
                     "showSuccessMessage('Sai tên đăng nhập hoặc mật khẩu!', 'error');", true);
             }
         }
+
 
     }
 }

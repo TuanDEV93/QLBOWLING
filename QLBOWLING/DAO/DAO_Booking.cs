@@ -1,6 +1,7 @@
 ﻿using QLBOWLING.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace QLBOWLING.DAO
@@ -86,6 +87,147 @@ namespace QLBOWLING.DAO
                 }
             }
         }
+
+        public DataTable LoadTopSan()
+        {
+            using (SqlConnection connection = dbConnection.cnn)
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    // Câu truy vấn lấy sân có lượt đặt nhiều nhất
+                    string query = @"
+                    SELECT TOP 1 WITH TIES LaneID, COUNT(*) AS TotalBookings
+                    FROM Booking
+                    GROUP BY LaneID
+                    ORDER BY COUNT(*) DESC;";
+
+                    // Tạo SqlCommand
+                    using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                    {
+                        // Thực hiện truy vấn và lưu kết quả vào DataReader
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Tạo DataTable để chứa kết quả
+                            DataTable dt = new DataTable();
+                            dt.Load(reader); // Load dữ liệu từ DataReader vào DataTable
+
+                            // Commit transaction sau khi thành công
+                            transaction.Commit();
+
+                            return dt; // Trả về DataTable chứa thông tin sân được đặt nhiều nhất
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Rollback transaction nếu có lỗi
+                    transaction.Rollback();
+                    Console.WriteLine($"Error: {ex.Message}");
+                    return null; // Trả về null nếu có lỗi
+                }
+            }
+        }
+
+        public DataTable LoadTopKhachHang()
+        {
+            using (SqlConnection connection = dbConnection.cnn)
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    // Câu truy vấn lấy sân có lượt đặt nhiều nhất
+                    string query = @"
+                    SELECT TOP 1
+                    UserBooking, Email, Phone, 
+                    COUNT(UserBooking) AS TotalBookings
+                    FROM Booking
+                    GROUP BY UserBooking, Email, Phone
+                    ORDER BY TotalBookings DESC;";
+
+                    // Tạo SqlCommand
+                    using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                    {
+                        // Thực hiện truy vấn và lưu kết quả vào DataReader
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Tạo DataTable để chứa kết quả
+                            DataTable dt = new DataTable();
+                            dt.Load(reader); // Load dữ liệu từ DataReader vào DataTable
+
+                            // Commit transaction sau khi thành công
+                            transaction.Commit();
+
+                            return dt; // Trả về DataTable chứa thông tin sân được đặt nhiều nhất
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Rollback transaction nếu có lỗi
+                    transaction.Rollback();
+                    Console.WriteLine($"Error: {ex.Message}");
+                    return null; // Trả về null nếu có lỗi
+                }
+            }
+        }
+
+        public DataTable LoadDoanhThuTheoThang(int month, int year)
+        {
+            using (SqlConnection connection = dbConnection.cnn)
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    // Câu truy vấn để thống kê doanh thu theo tháng và tổng doanh thu
+                    string query = @"
+                    SELECT 
+                        YEAR(BookingDate) AS Year,
+                        MONTH(BookingDate) AS Month,
+                        SUM(TotalPrice) AS TotalRevenue
+                    FROM Booking
+                    WHERE YEAR(BookingDate) = @Year AND MONTH(BookingDate) = @Month
+                    GROUP BY YEAR(BookingDate), MONTH(BookingDate);";
+
+                    // Tạo SqlCommand
+                    using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                    {
+                        // Thêm tham số cho câu truy vấn
+                        command.Parameters.AddWithValue("@Year", year);
+                        command.Parameters.AddWithValue("@Month", month);
+
+                        // Thực hiện truy vấn và lưu kết quả vào DataReader
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Tạo DataTable để chứa kết quả
+                            DataTable dt = new DataTable();
+                            dt.Load(reader); // Load dữ liệu từ DataReader vào DataTable
+
+                            // Commit transaction sau khi thành công
+                            transaction.Commit();
+
+                            return dt; // Trả về DataTable chứa thông tin doanh thu
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Rollback transaction nếu có lỗi
+                    transaction.Rollback();
+                    Console.WriteLine($"Error: {ex.Message}");
+                    return null; // Trả về null nếu có lỗi
+                }
+            }
+        }
+
+
+
     }
 }
 

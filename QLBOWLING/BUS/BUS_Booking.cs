@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using QLBOWLING.DAO;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace QLBOWLING.BUS
 {
@@ -59,6 +60,24 @@ namespace QLBOWLING.BUS
         public bool AddNewBooking(DTO_Booking booking)
         {
            return bookingDAO.AddNewBooking(booking); // Gọi phương thức DAO thông qua đối tượng
+        }
+
+        public DataTable LoadTopSan()
+        {
+            DAO_Booking daoBooking = new DAO_Booking();
+            return daoBooking.LoadTopSan();
+        }
+
+        public DataTable LoadTopKhachHang()
+        {
+            DAO_Booking daoBooking = new DAO_Booking();
+            return daoBooking.LoadTopKhachHang();
+        }
+
+        public DataTable LoadDoanhThuTheoThang(int month, int year)
+        {
+            DAO_Booking daoBooking = new DAO_Booking();
+            return daoBooking.LoadDoanhThuTheoThang(month, year);
         }
     }
 

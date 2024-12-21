@@ -51,6 +51,24 @@ namespace QLBOWLING.Admin
         protected global::System.Web.UI.WebControls.GridView gvKH;
 
         /// <summary>
+        /// btn_DuyetHuy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_DuyetHuy;
+
+        /// <summary>
+        /// gvHuySan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvHuySan;
+
+        /// <summary>
         /// lblChonThang control.
         /// </summary>
         /// <remarks>

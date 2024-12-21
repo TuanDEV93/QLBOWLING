@@ -51,8 +51,8 @@ namespace QLBOWLING.Admin
             int selectedMonth = int.Parse(ddlThang.SelectedValue);
             int selectedYear = int.Parse(ddlNam.SelectedValue);
 
-            BUS_Booking busBooking = new BUS_Booking();
-            DataTable dt = busBooking.LoadDoanhThuTheoThang(selectedMonth, selectedYear);
+            BUS_Bill busBill = new BUS_Bill();
+            DataTable dt = busBill.LoadDoanhThuTheoThang(selectedMonth, selectedYear);
 
             if (dt != null)
             {
@@ -71,6 +71,21 @@ namespace QLBOWLING.Admin
         protected void btnDoanhThu_Click(object sender, EventArgs e)
         {
             LoadDoanhThuTheoThang();
+        }
+
+        public void LoadTopCanceller()
+        {
+            BUS_Bill busBill = new BUS_Bill();
+            DataTable dt = new DataTable();
+            dt = busBill.LoadTopCanceller();
+
+            gvHuySan.DataSource = dt;
+            gvHuySan.DataBind();
+        }
+
+        protected void btnDuyetHuy_Click(object sender, EventArgs e)
+        {
+            LoadTopCanceller();
         }
     }
 }

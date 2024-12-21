@@ -73,12 +73,6 @@ namespace QLBOWLING.BUS
             DAO_Booking daoBooking = new DAO_Booking();
             return daoBooking.LoadTopKhachHang();
         }
-
-        public DataTable LoadDoanhThuTheoThang(int month, int year)
-        {
-            DAO_Booking daoBooking = new DAO_Booking();
-            return daoBooking.LoadDoanhThuTheoThang(month, year);
-        }
     }
 
 }

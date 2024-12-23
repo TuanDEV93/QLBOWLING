@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using QLBOWLING.DAO;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace QLBOWLING.BUS
 {
@@ -63,8 +64,18 @@ namespace QLBOWLING.BUS
 
         public List<DTO_Booking> LoadSchedule()
         {
-
             return bookingDAO.LoadSchedule();
+        }
+        public DataTable LoadTopSan()
+        {
+            DAO_Booking daoBooking = new DAO_Booking();
+            return daoBooking.LoadTopSan();
+        }
+
+        public DataTable LoadTopKhachHang()
+        {
+            DAO_Booking daoBooking = new DAO_Booking();
+            return daoBooking.LoadTopKhachHang();
         }
     }
 

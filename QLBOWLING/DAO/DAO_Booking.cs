@@ -123,6 +123,94 @@ namespace QLBOWLING.DAO
             connection.Close();
             return ds;
         }
+
+        public DataTable LoadTopSan()
+        {
+            using (SqlConnection connection = dbConnection.cnn)
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    // Câu truy vấn lấy sân có lượt đặt nhiều nhất
+                    string query = @"
+                    SELECT TOP 1 WITH TIES LaneID, COUNT(*) AS TotalBookings
+                    FROM Booking
+                    GROUP BY LaneID
+                    ORDER BY COUNT(*) DESC;";
+
+                    // Tạo SqlCommand
+                    using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                    {
+                        // Thực hiện truy vấn và lưu kết quả vào DataReader
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Tạo DataTable để chứa kết quả
+                            DataTable dt = new DataTable();
+                            dt.Load(reader); // Load dữ liệu từ DataReader vào DataTable
+
+                            // Commit transaction sau khi thành công
+                            transaction.Commit();
+
+                            return dt; // Trả về DataTable chứa thông tin sân được đặt nhiều nhất
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Rollback transaction nếu có lỗi
+                    transaction.Rollback();
+                    Console.WriteLine($"Error: {ex.Message}");
+                    return null; // Trả về null nếu có lỗi
+                }
+            }
+        }
+
+        public DataTable LoadTopKhachHang()
+        {
+            using (SqlConnection connection = dbConnection.cnn)
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    // Câu truy vấn lấy sân có lượt đặt nhiều nhất
+                    string query = @"
+                    SELECT TOP 1
+                    UserBooking, Email, Phone, CustomerID, 
+                    COUNT(UserBooking) AS TotalBookings
+                    FROM Booking
+                    GROUP BY UserBooking, Email, Phone, CustomerID
+                    ORDER BY TotalBookings DESC;";
+
+                    // Tạo SqlCommand
+                    using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                    {
+                        // Thực hiện truy vấn và lưu kết quả vào DataReader
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Tạo DataTable để chứa kết quả
+                            DataTable dt = new DataTable();
+                            dt.Load(reader); // Load dữ liệu từ DataReader vào DataTable
+
+                            // Commit transaction sau khi thành công
+                            transaction.Commit();
+
+                            return dt; // Trả về DataTable chứa thông tin sân được đặt nhiều nhất
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Rollback transaction nếu có lỗi
+                    transaction.Rollback();
+                    Console.WriteLine($"Error: {ex.Message}");
+                    return null; // Trả về null nếu có lỗi
+                }
+            }
+        }
     }
 }
 

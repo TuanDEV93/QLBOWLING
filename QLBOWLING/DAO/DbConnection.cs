@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace QLBOWLING.DAO
         public SqlConnection cnn;
         public DbConnection()
         {
-            string strcnn = "Data Source=DESKTOP-H3558DE\\SQLEXPRESS;Initial Catalog=QLBowling;Trusted_Connection=True;";
+            string strcnn = ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString;
 
             cnn = new SqlConnection(strcnn);
         }

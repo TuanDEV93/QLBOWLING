@@ -5,14 +5,6 @@
         <div class="col-lg-12">
             <div class="card-box">
                 <div class="row">
-                    <div class="col-sm-8">
-                        <form>
-                            <div class="form-group search-box">
-                                <input type="text" id="search-input" class="form-control product-search" placeholder="Search here...">
-                                <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
                     <div class="col-sm-4">
                         <a href="#custom-modal" class="btn btn-success btn-rounded btn-md waves-effect waves-light mb-4" data-animation="fadein" data-plugin="custommodal" data-overlayspeed="200" data-overlaycolor="#36404a"><i class="md md-add"></i>Đăng ký khách hàng</a>
                     </div>
@@ -22,9 +14,8 @@
                     <table class="table table-hover agents-mails-checkbox m-0  table-centered table-actions-bar">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>Mã Khách hàng</th>
                                 <th>Tên</th>
-                                <th>Số CCCD</th>
                                 <th>SĐT</th>
                                 <th>Email</th>
                             </tr>
@@ -33,28 +24,25 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <span class="avatar-sm-box bg-primary">T</span>
+                                    <span class="avatar-sm-box bg-primary">01</span>
                                 </td>
                                 <td>Tên khách hàng</td>
-                                <td>012345678999</td>
                                 <td>+12 3456 789</td>
                                 <td>Vidu@email.com</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <span class="avatar-sm-box bg-primary">T</span>
+                                    <span class="avatar-sm-box bg-primary">02</span>
                                 </td>
                                 <td>Tên khách hàng</td>
-                                <td>012345678999</td>
                                 <td>+12 3456 789</td>
                                 <td>Vidu@email.com</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <span class="avatar-sm-box bg-primary">T</span>
+                                    <span class="avatar-sm-box bg-primary">03</span>
                                 </td>
                                 <td>Tên khách hàng</td>
-                                <td>012345678999</td>
                                 <td>+12 3456 789</td>
                                 <td>Vidu@email.com</td>
                             </tr>

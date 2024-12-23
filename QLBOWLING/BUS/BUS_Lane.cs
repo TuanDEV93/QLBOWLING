@@ -4,18 +4,26 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
-using static QLBOWLING.DTO.Lane;
+using QLBOWLING.DTO;
 
 namespace QLBOWLING.BUS
 {
     public class BUS_Lane
     {
-            public DataTable LoadLane()
+        private DAO_Lane laneDAO;
+        public BUS_Lane()
+        {
+            laneDAO = new DAO_Lane();
+        }
+        public DataTable LoadLane()
             {
                 DAO_Lane daoLane = new DAO_Lane();
                 return daoLane.LoadLane();
             }
-        
 
+        public List<LaneDTO> LoadLaneList()
+        {
+            return laneDAO.LoadLaneList();
+        }
     }
 }

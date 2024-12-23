@@ -209,4 +209,8 @@
         <!-- end col -->
 
     </div>
+
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="foot" runat="server">
+    <script src="../Scripts/Admin/js/pages/dashboard.init.js"></script>
 </asp:Content>

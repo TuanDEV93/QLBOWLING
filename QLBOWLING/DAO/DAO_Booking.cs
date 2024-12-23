@@ -1,6 +1,7 @@
 ﻿using QLBOWLING.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace QLBOWLING.DAO
@@ -85,6 +86,42 @@ namespace QLBOWLING.DAO
                     return false;
                 }
             }
+        }
+
+        public List<DTO_Booking> LoadSchedule()
+        {
+            SqlConnection connection = dbConnection.cnn;
+            connection.Open();
+            List<DTO_Booking> ds = new List<DTO_Booking>();
+            string query = "SELECT * from Booking left join Lane on Lane.LaneID = Booking.LaneID";
+            SqlCommand sqlCmd = new SqlCommand(query, connection);
+            SqlDataReader reader = sqlCmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int scheduleID = reader.GetInt32(0);
+                string nameUser = reader.GetString(1);
+                string emailUser = reader.GetString(2);
+                string phoneUser = reader.GetInt32(3).ToString();
+                DateTime bookingDate = reader.GetDateTime(4);
+                string timeSlot = reader.GetString(5);
+                int playerCount = reader.GetInt32(6);
+                int laneID = reader.GetInt32(7);
+                //string laneName = reader.GetString(10);
+
+                DTO_Booking schedule = new DTO_Booking();
+                schedule.BookingID = scheduleID;
+                schedule.UserBooking = nameUser;
+                schedule.Email = emailUser;
+                schedule.Phone = phoneUser;
+                schedule.BookingDate = bookingDate;
+                schedule.TimeSlot = timeSlot;
+                schedule.PlayerCount = playerCount;
+                schedule.LaneID = laneID;
+
+                ds.Add(schedule);
+            }
+            connection.Close();
+            return ds;
         }
     }
 }

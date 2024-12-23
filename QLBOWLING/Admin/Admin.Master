@@ -7,12 +7,13 @@
     <meta charset="utf-8">
     <title><%: Page.Title %> | DreamGame - Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
-    <link href="~/Content/Admin/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="~/Content/Admin/icons.min.css" rel="stylesheet" type="text/css">
-    <link href="~/Content/Admin/app.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css">
     <style>
         .disabled {
             pointer-events: none;
@@ -353,8 +354,13 @@
                                 </div>
                             </div>
                         </div>
-                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                        </asp:ContentPlaceHolder>
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
                 <footer class="footer">
@@ -369,12 +375,15 @@
             </div>
         </div>
     </form>
-    <!-- Vendor js -->
-    <script src="../Scripts/Admin/vendor.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="../Scripts/Admin/dashboard.init.js"></script>
+    <script src="assets/js/MainScript.js"></script>
+    <!-- Vendor js -->
+    <script src="assets/js/vendor.min.js"></script>
 
     <!-- App js -->
-    <script src="../Scripts/Admin/app.min.js"></script>
+    <script src="assets/js/app.min.js"></script>
+    <asp:ContentPlaceHolder ID="foot" runat="server">
+    </asp:ContentPlaceHolder>
 </body>
 </html>

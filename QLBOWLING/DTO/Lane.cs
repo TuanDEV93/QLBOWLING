@@ -5,24 +5,19 @@ using System.Web;
 
 namespace QLBOWLING.DTO
 {
-    public class Lane
+
+    public class LaneDTO
     {
-
-
-        public class LaneDTO
+        public int LaneID { get; set; }
+        public string LaneName { get; set; }
+        public bool Status { get; set; }
+        public string CssClass
         {
-            public int LaneID { get; set; }
-            public string LaneName { get; set; }
-            public bool Status { get; set; }
-            public string CssClass
+            get
             {
-                get
-                {
-                    return Status? "btn btn-success" : "btn btn-danger";
-                }
+                return Status ? "btn btn-success" : "btn btn-danger";
             }
         }
-
     }
 
 }

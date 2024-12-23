@@ -60,6 +60,12 @@ namespace QLBOWLING.BUS
         {
            return bookingDAO.AddNewBooking(booking); // Gọi phương thức DAO thông qua đối tượng
         }
+
+        public List<DTO_Booking> LoadSchedule()
+        {
+
+            return bookingDAO.LoadSchedule();
+        }
     }
 
 }

@@ -100,12 +100,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Admin\AddCustomer.aspx" />
     <Content Include="Admin\AddStaff.aspx" />
     <Content Include="Admin\Bill.aspx" />
     <Content Include="Admin\Booking.aspx" />
     <Content Include="Admin\BowlingAlley.aspx" />
     <Content Include="Admin\Customer.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\Report.aspx" />
     <Content Include="Admin\Staff.aspx" />
     <Content Include="Blog.aspx" />
     <Content Include="Booking.aspx" />
@@ -134,14 +136,32 @@
     <Content Include="Global.asax" />
     <Content Include="Images\bg1.jpg" />
     <Content Include="Images\Bowling.jpg" />
+    <Content Include="Images\Bowling10.jpg" />
+    <Content Include="Images\Bowling11.jpg" />
+    <Content Include="Images\Bowling12.jpg" />
+    <Content Include="Images\Bowling13.jpg" />
+    <Content Include="Images\Bowling16.jpg" />
     <Content Include="Images\Bowling2.jpg" />
+    <Content Include="Images\Bowling20.jpg" />
     <Content Include="Images\Bowling3.jpg" />
     <Content Include="Images\Bowling4.jpg" />
     <Content Include="Images\Bowling5.jpg" />
+    <Content Include="Images\Bowling6.jpg" />
+    <Content Include="Images\Bowling7.jpg" />
+    <Content Include="Images\Bowling8.jpg" />
+    <Content Include="Images\Bowling9.jpg" />
     <Content Include="Images\button_login.png" />
+    <Content Include="Images\img 16.jpg" />
+    <Content Include="Images\img 18.jpg" />
+    <Content Include="Images\img 19.jpg" />
+    <Content Include="Images\img 20.jpg" />
+    <Content Include="Images\img 21.jpg" />
+    <Content Include="Images\img 23.jpg" />
     <Content Include="Images\menu_bg.jpg" />
+    <Content Include="Images\QRCode.jpg" />
     <Content Include="Lane.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="QRCode.aspx" />
     <Content Include="QuanLy.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\Admin\app.min.js" />
@@ -209,14 +229,19 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Services.aspx" />
     <Content Include="Site.Master" />
-    <Content Include="Team.aspx" />
-    <Content Include="test.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AddCustomer.aspx.cs">
+      <DependentUpon>AddCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddCustomer.aspx.designer.cs">
+      <DependentUpon>AddCustomer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AddStaff.aspx.cs">
       <DependentUpon>AddStaff.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -266,6 +291,13 @@
     <Compile Include="Admin\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Staff.aspx.cs">
       <DependentUpon>Staff.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -303,9 +335,13 @@
     <Compile Include="BookingConfirmation.aspx.designer.cs">
       <DependentUpon>BookingConfirmation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BUS\BUS_Bill.cs" />
+    <Compile Include="BUS\BUS_BookingConfirmation.cs" />
     <Compile Include="BUS\BUS_Account.cs" />
     <Compile Include="BUS\BUS_Booking.cs" />
+    <Compile Include="BUS\BUS_Customer.cs" />
     <Compile Include="BUS\BUS_Lane.cs" />
+    <Compile Include="BUS\BUS_Staff.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -313,14 +349,22 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAO\DAO_Bill.cs" />
+    <Compile Include="DAO\DAO_BookingConfirmation.cs" />
     <Compile Include="DAO\DAO_Account.cs" />
     <Compile Include="DAO\DAO_Booking.cs" />
+    <Compile Include="DAO\DAO_Customer.cs" />
     <Compile Include="DAO\DAO_Lane.cs" />
+    <Compile Include="DAO\DAO_Staff.cs" />
     <Compile Include="DAO\DbConnection.cs" />
     <Compile Include="DTO\Account.cs" />
+    <Compile Include="DTO\BillDTO.cs" />
     <Compile Include="DTO\Booking.cs" />
-    <Compile Include="DTO\Customer.cs" />
-    <Compile Include="DTO\Lane.cs" />
+    <Compile Include="DTO\BookingConfirmationDTO.cs" />
+    <Compile Include="DTO\CustomerDTO.cs" />
+    <Compile Include="DTO\LaneDTO.cs" />
+    <Compile Include="DTO\QRCode.cs" />
+    <Compile Include="DTO\StaffDTO.cs" />
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -346,6 +390,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QRCode.aspx.cs">
+      <DependentUpon>QRCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QRCode.aspx.designer.cs">
+      <DependentUpon>QRCode.aspx</DependentUpon>
+    </Compile>
     <Compile Include="QuanLy.aspx.cs">
       <DependentUpon>QuanLy.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -380,20 +431,6 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Team.aspx.cs">
-      <DependentUpon>Team.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Team.aspx.designer.cs">
-      <DependentUpon>Team.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

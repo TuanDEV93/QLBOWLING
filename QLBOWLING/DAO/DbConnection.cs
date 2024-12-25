@@ -10,11 +10,18 @@ namespace QLBOWLING.DAO
     public class DbConnection
     {
         public SqlConnection cnn;
+        private string _strCnn ;
         public DbConnection()
         {
-            string strcnn = "Data Source=DESKTOP-H3558DE\\SQLEXPRESS;Initial Catalog=QLBowling;Trusted_Connection=True;";
+            _strCnn = "Data Source=DESKTOP-H3558DE\\SQLEXPRESS;Initial Catalog=QLBowling;Integrated Security=True;Encrypt=False ";
 
-            cnn = new SqlConnection(strcnn);
+            cnn = new SqlConnection(_strCnn);
+        }
+
+        public DbConnection(string strCnn)
+        {
+            this._strCnn = strCnn;
+            cnn= new SqlConnection(_strCnn);
         }
         public void Open()
         {

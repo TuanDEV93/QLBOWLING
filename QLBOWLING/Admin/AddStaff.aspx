@@ -5,70 +5,41 @@
         <div class="col-md-12">
             <div class="card-box">
                 <h4 class="header-title mt-0">Điền vào mẫu</h4>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="p-4">
-                                <div class="form-group">
-                                    <label for="staffName">Họ tên nhân viên</label>
-                                    <input type="text" class="form-control" id="staffName" placeholder="Nguyễn Văn A">
-                                </div>
-                                <div class="form-group">
-                                    <label for="userName">Tên đăng nhập</label>
-                                    <input type="text" class="form-control" id="userName" placeholder="nguyenvana">
-                                </div>
-                                <div class="form-group">
-                                    <label for="passWord">Mật khẩu</label>
-                                    <input type="text" class="form-control" id="passWord" placeholder="********">
-                                </div>
-                                <div class="form-group">
-                                    <label for="staff-desc">Ghi chú</label>
-                                    <textarea class="form-control" id="staff-desc" rows="5"></textarea>
-                                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="p-4">
+                            <div class="form-group">
+                                <label for="txtDisplayName">Họ tên nhân viên</label>
+                                <asp:TextBox ID="txtDisplayName" runat="server" CssClass="form-control" Placeholder="Nguyễn Văn A"></asp:TextBox>
                             </div>
-                            <!-- end class p-20 -->
-
-                        </div>
-                        <!-- end col -->
-
-                        <div class="col-lg-6">                           
-                            <div class="p-4">
-                                <div class="form-group mb-4">
-                                    <label class="mb-2">Giới tính</label>
-                                    <br>
-                                    <div class="radio radio-info form-check-inline">
-                                        <input type="radio" id="" value="option1" name="gender" checked="">
-                                        <label for="">Nam</label>
-                                    </div>
-                                    <div class="radio radio-info form-check-inline">
-                                        <input type="radio" id="" value="option2" name="gender">
-                                        <label for="">Nữ</label>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="numberPhone">SĐT</label>
-                                    <input type="text" class="form-control" id="numberPhone" placeholder="0123456789">
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="address">Địa chỉ</label>
-                                    <input type="text" class="form-control" id="address" placeholder="Hà Nội">
-                                </div>
+                            <div class="form-group">
+                                <label for="txtUserName">Tên đăng nhập</label>
+                                <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control" Placeholder="nguyenvana"></asp:TextBox>
                             </div>
-                            <!-- end class p-20 -->
+                            <div class="form-group">
+                                <label for="txtPassword">Mật khẩu</label>
+                                <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="********"></asp:TextBox>
+                            </div>
                         </div>
-                        <!-- end col -->
-
                     </div>
-                    <!-- end row -->
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success waves-effect waves-light">Xác nhận</button>
-                        <button type="button" class="btn btn-danger waves-effect waves-light">Hủy</button>
+                    <div class="col-lg-6">
+                        <div class="p-4">
+                            <div class="form-group">
+                                <label for="txtPhone">SĐT</label>
+                                <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control" Placeholder="0123456789"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtAddress">Địa chỉ</label>
+                                <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" Placeholder="Hà Nội"></asp:TextBox>
+                            </div>
+                        </div>
                     </div>
-                <!-- end form -->
-
+                </div>
+                <div class="text-center">
+                    <asp:Button ID="BtnSubmit" runat="server" CssClass="btn btn-success waves-effect waves-light" Text="Xác nhận" OnClick="BtnSubmit_Click" />
+                    <asp:Button ID="BtnCancel" runat="server" CssClass="btn btn-danger waves-effect waves-light" Text="Hủy" OnClick="BtnCancel_Click" />
+                </div>
             </div>
-            <!-- end card-box -->
         </div>
-        <!-- end col -->
     </div>
 </asp:Content>

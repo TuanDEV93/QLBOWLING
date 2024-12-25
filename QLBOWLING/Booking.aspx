@@ -7,29 +7,33 @@
             <p>Form đặt sân nhanh chóng và thuận tiện!</p>
         </div>
         <style>
-            .time-slot-container {
-                display: flex;
-                flex-wrap: wrap;
-                 gap: 10px;
-            }
+        .time-slot-container {
+            display: block;  /* Đảm bảo mỗi khung giờ sẽ hiển thị trên một dòng */
+            margin-top:30px;
+        }
 
-            .time-slot {
-                padding: 20px 25px;
-                text-align: center;
-                border-radius: 5px;
-                font-weight: bold;
-                color: white;
-                cursor: pointer;
-            }
+        .time-slot {
+            display: block;  /* Các khung giờ phải là block element */
+            width: 100%;  /* Đảm bảo mỗi khung giờ chiếm hết chiều rộng */
+            margin-bottom: 30px;  /* Tạo khoảng cách giữa các khung giờ */
+            text-align: center;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-            .time-slot.available {
-                background-color: green;
-            }
+        .time-slot.available {
+           color: #25e025;  
+           
+        }
 
-            .time-slot.booked {
-                background-color: red;
-                cursor: not-allowed;
-            }
+        .time-slot.booked {
+            color: #f20a1f;  
+            cursor: not-allowed;
+            pointer-events: none; /* Ngăn người dùng click */
+            opacity: 0.6; /* Làm mờ khung giờ đã đặt */
+            
+        }
 
         </style>
         <div class="container">
@@ -60,22 +64,14 @@
                     <asp:Button ID="btnLoadTimeSlot" runat="server" Text="Tải danh sách khung giờ " OnClick="btnLoadTimeSlot_Click" />
                      <div class="form-group">
                      <label for="timeslot">Khung giờ:</label>
-                     <asp:DropDownList ID="ddlTimeSlot" runat="server" CssClass="form-control">
-                         <asp:ListItem Text="--Chọn--" Value="" />
-                         <asp:ListItem Text="10:00 AM - 11:00 AM" Value="10:00 AM - 11:00 AM"></asp:ListItem>
-                         <asp:ListItem Text="11:30 AM - 12:30 PM" Value="11:30 AM - 12:30 PM"></asp:ListItem>
-                         <asp:ListItem Text="1:00 PM - 2:00 PM" Value="1:00 PM - 2:00 PM"></asp:ListItem>
-                         <asp:ListItem Text="2:30 PM - 3:30 PM" Value="2:30 PM - 3:30 PM"></asp:ListItem>
-                         <asp:ListItem Text="4:00 PM - 5:00 PM" Value="4:00 PM - 5:00 PM"></asp:ListItem>
-                         <asp:ListItem Text="5:30 PM - 6:30 PM" Value="5:30 PM - 6:30 PM"></asp:ListItem>
-                         <asp:ListItem Text="7:00 PM - 8:00 PM" Value="7:00 PM - 8:00 PM"></asp:ListItem>
-                         <asp:ListItem Text="8:30 PM - 9:30 PM" Value="8:30 PM - 9:30 PM"></asp:ListItem>
-                     </asp:DropDownList>
+                      <asp:TextBox ID="txtSelectedTimes" runat="server" CssClass="form-control" ReadOnly="true" placeholder="Chọn khung giờ"></asp:TextBox>
                       <asp:Label ID="lblMessage2" runat="server" CssClass="text-danger" Enabled="False"></asp:Label>
+                     
                      </div>
+                    <asp:HiddenField ID="hfSelectedTimes" runat="server" />
                     <div class="form-group">
                         <label for="countplayer">Số người chơi:</label>
-                        <asp:DropDownList ID="ddlCountPlayer" runat="server" CssClass="form-control">
+                        <asp:DropDownList ID="ddlPlayerCount" runat="server" CssClass="form-control">
                             <asp:ListItem Text="--Chọn--" Value="" />
                             <asp:ListItem Text="1" Value="1"></asp:ListItem>
                             <asp:ListItem Text="2" Value="2"></asp:ListItem>
@@ -85,11 +81,15 @@
                         </asp:DropDownList>
                         <asp:Label ID="lblMessage5" runat="server" CssClass="text-danger"></asp:Label>
                     </div>
-                    <div class="form-group">
+                    <%--<div class="form-group">
                         <label for="laneid">Tên Sân:</label>
                         <asp:TextBox ID="txtLaneID" runat="server" CssClass="form-control" ></asp:TextBox>
+                    </div>--%>
+                    <div class="form-group">
+                    <label for="price">Giá tiền:</label>
+                    <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" ReadOnly="true" placeholder="Giá tiền sẽ được tự động hiển thị"></asp:TextBox>
                     </div>
-                    <asp:Button ID="btnSubmit" runat="server" Text="Đặt ngay" CssClass="btn btn-primary btn-block" OnClick ="btnSubmit_Click"/>
+                    <asp:Button ID="btnSubmit" style="margin-bottom:30px;" runat="server" Text="Đặt ngay" CssClass="btn btn-primary btn-block" OnClientClick="return validateTimeSlot();" OnClick ="btnSubmit_Click"/>
                 </div>
 
                 <!-- Cột phải: Bảng hiển thị khung giờ -->
@@ -97,19 +97,77 @@
                     <h3>Danh sách các khung giờ</h3>
                     <asp:Repeater ID="rptTimeSlots" runat="server">
                     <ItemTemplate>
-                        <div class='<%# Convert.ToBoolean(Eval("IsBooked")) ? "time-slot booked" : "time-slot available" %>'>
-                        <%# Eval("TimeSlot") %>
+                        <div class='<%# Convert.ToBoolean(Eval("IsBooked")) ? "time-slot booked" : "time-slot available" %>' 
+                             data-timeslot="<%# Eval("TimeSlot") %>" 
+                             onclick="addTimeSlot('<%# Eval("TimeSlot") %>')">
+                             <%# Eval("TimeSlot") %>
                         </div>
                     </ItemTemplate>
-                    </asp:Repeater>
+                </asp:Repeater>
                 </div>
             </div>
         </div>
 
-        <div class="alert alert-info text-center">
-            <strong>Hỗ trợ 24/7:</strong> Mọi chi tiết liên hệ qua email: DreamGame@gmail.com hoặc qua số điện thoại: 0373596758
-        </div>
     </div>
+ <script>
+     // JavaScript để thêm hoặc xóa khung giờ khi người dùng chọn
+     function addTimeSlot(timeSlot) {
+         var txtSelectedTimes = document.getElementById('<%= txtSelectedTimes.ClientID %>');
+         var hfSelectedTimes = document.getElementById('<%= hfSelectedTimes.ClientID %>');
+         var currentValue = txtSelectedTimes.value;
+
+         // Lấy danh sách khung giờ hiện có trong TextBox, loại bỏ các giá trị rỗng
+         var selectedTimes = currentValue.split(', ').filter(function (item) { return item.trim() !== ''; });
+
+         // Kiểm tra nếu khung giờ đã tồn tại trong danh sách đã chọn
+         var timeSlotIndex = selectedTimes.indexOf(timeSlot);
+
+         if (timeSlotIndex !== -1) {
+             // Nếu khung giờ đã được chọn, xóa khung giờ đó
+             selectedTimes.splice(timeSlotIndex, 1);
+         } else {
+             // Nếu khung giờ chưa được chọn, thêm khung giờ vào
+             selectedTimes.push(timeSlot);
+         }
+
+         // Cập nhật giá trị của TextBox
+         txtSelectedTimes.value = selectedTimes.join(', ');
+         var updatedValue = selectedTimes.join(', ');
+         txtSelectedTimes.value = updatedValue;
+         hfSelectedTimes.value = updatedValue; // Cập nhật HiddenField
+         //Cập nhật tổng tiền luôn
+         updateTotalPrice();
+
+     }
+
+     // Gán giá trị từ textbox vào HiddenField khi xảy ra thay đổi
+     function selectTimeSlot(timeSlot) {
+         document.getElementById('<%= hfSelectedTimes.ClientID %>').value = timeSlot;
+         document.getElementById('<%= txtSelectedTimes.ClientID %>').value = timeSlot;
+         //Cập nhật tổng tiền luôn
+         updateTotalPrice();
+    }
+
+    function validateTimeSlot() {
+        const selectedTimes = document.getElementById('<%= txtSelectedTimes.ClientID %>').value;
+         if (!selectedTimes) {
+             alert('Vui lòng chọn time slot.');
+             return false; // Ngăn form gửi lên server
+         }
+         return true;
+     }
+     function updateTotalPrice() {
+         var selectedTimes = document.getElementById('<%= hfSelectedTimes.ClientID %>').value;
+        var timeSlots = selectedTimes.split(', '); // Tách các khung giờ đã chọn
+        var pricePerSlot = 300000; 
+
+        // Tính tổng tiền
+        var totalPrice = timeSlots.length * pricePerSlot;
+
+        // Cập nhật tổng tiền vào TextBox
+          document.getElementById('<%= txtPrice.ClientID %>').value = totalPrice;
+      }
+ </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

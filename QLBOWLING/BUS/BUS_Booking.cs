@@ -82,10 +82,6 @@ namespace QLBOWLING.BUS
         {
            return bookingDAO.AddNewBooking(booking); // Gọi phương thức DAO thông qua đối tượng
         }
-        public List<DTO_Booking> LoadSchedule()
-        {
-            return bookingDAO.LoadSchedule();
-        }
         public DataTable LoadTopSan()
         {
             DAO_Booking daoBooking = new DAO_Booking();
@@ -96,6 +92,14 @@ namespace QLBOWLING.BUS
         {
             DAO_Booking daoBooking = new DAO_Booking();
             return daoBooking.LoadTopKhachHang();
+        }
+        public List<DTO_Booking> LoadSchedule()
+        {
+            return bookingDAO.LoadSchedule();
+        }
+        public bool UpdateSchedule(DTO_Booking booking)
+        {
+            return bookingDAO.UpdateSchedule(booking);
         }
     }
 

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Policy;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Script.Serialization;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
@@ -24,7 +27,7 @@ namespace QLBOWLING.Admin
             }
         }
 
-        private void ShowSchedule()
+        protected void ShowSchedule()
         {
             BUS_Booking bookingBUS = new BUS_Booking();
             List<DTO_Booking> ds = bookingBUS.LoadSchedule();
@@ -38,6 +41,7 @@ namespace QLBOWLING.Admin
                 start = item.BookingDate,
                 date = item.BookingDate.ToString("yyyy-MM-dd"),
                 count = item.PlayerCount,
+                lane = item.LaneID,
                 className = null,
             }).ToList();
             for(int k = 0, i = 0; i< schedules.Count(); i++)
@@ -79,7 +83,7 @@ namespace QLBOWLING.Admin
             hiddenData.Value = jsonData;
         }
 
-        public class Schedule
+        private class Schedule
         {
             public int ScheduleID { get; set; }
             public string title { get; set; }
@@ -89,21 +93,338 @@ namespace QLBOWLING.Admin
             public DateTime start { get; set; }
             public string date { get; set; }
             public int count { get; set; }
+            public int lane { get; set; }
             public string className { get; set; }
         }
 
-        public void BindDDLane()
+        protected void BindDDLane()
         {
             BUS_Lane laneBUS = new BUS_Lane();
-            List<LaneDTO> ds = laneBUS.LoadLaneList();
+            List<LaneDTO> ds = laneBUS.GetLanes();
             ddLaneID.DataSource = ds;
             ddLaneID.DataTextField = "LaneName";
             ddLaneID.DataValueField = "LaneID";
             ddLaneID.DataBind();
+            ddLane.DataSource = ds;
+            ddLane.DataTextField = "LaneName";
+            ddLane.DataValueField = "LaneID";
+            ddLane.DataBind();
         }
-        private void addSchedule()
+        protected void ClearMsg()
+<<<<<<< Updated upstream
+        {
+            SuccMsg.Text = null;
+            ErrMsg.Text = null;
+            ErrMsgName.Text = null;
+            ErrMsgEmail.Text = null;
+            ErrMsgPhone.Text = null;
+            ErrMsgLane.Text = null;
+            ErrMsgCount.Text = null;
+            ErrMsgDate.Text = null;
+            ErrMsgTime.Text = null;
+        }
+        protected void ClearFeild()
+        {
+            txtName.Text = null;
+            txtEmail.Text = null;
+            txtPhone.Text = null;
+            ddlCountPlayer.SelectedIndex = 0;
+            cblTimeSlot.Text = null;
+        }
+        protected void OpenModal(object sender, EventArgs e)
+=======
+>>>>>>> Stashed changes
+        {
+            SuccMsg.Text = null;
+            ErrMsg.Text = null;
+            ErrMsgName.Text = null;
+            ErrMsgEmail.Text = null;
+            ErrMsgPhone.Text = null;
+            ErrMsgLane.Text = null;
+            ErrMsgCount.Text = null;
+            ErrMsgDate.Text = null;
+            ErrMsgTime.Text = null;
+        }
+        protected void ClearFeild()
+        {
+            txtName.Text = null;
+            txtEmail.Text = null;
+            txtPhone.Text = null;
+            ddlCountPlayer.SelectedIndex = 0;
+            cblTimeSlot.Text = null;
+        }
+        protected void OpenModal(object sender, EventArgs e)
         {
 
+        }
+
+        protected void AddSchedule(object sender, EventArgs e)
+        {
+            ClearMsg();
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                ErrMsgName.Text = "Vui lòng nhập tên";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                ErrMsgEmail.Text = "Vui lòng nhập Email";
+                return;
+            }
+            if (!Regex.IsMatch(txtEmail.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+            {
+                ErrMsgEmail.Text = "Email không hợp lệ. Vui lòng nhập email đúng định dạng.";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                ErrMsgPhone.Text = "Vui lòng nhập SDT";
+                return;
+            }
+            if (!Regex.IsMatch(txtPhone.Text, @"^0\d{9,10}$"))
+            {
+                ErrMsgPhone.Text = "Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại có 10-11 chữ số và bắt đầu bằng số 0.";
+                return;
+            }
+            if (ddLaneID.SelectedIndex == -1)
+            {
+                ErrMsgLane.Text = "Vui lòng chọn sân";
+                return;
+            }
+            if (ddlCountPlayer.SelectedIndex == 0)
+            {
+                ErrMsgCount.Text = "Vui lòng chọn số người chơi";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtDate.Text))
+            {
+                ErrMsgDate.Text = "Vui lòng chọn ngày";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cblTimeSlot.Text))
+            {
+                ErrMsgTime.Text = "Vui lòng chọn ít nhất một khung giờ";
+                return;
+            }
+            DTO_Booking booking = new DTO_Booking
+            {
+                UserBooking = txtName.Text,
+                Email = txtEmail.Text,
+                Phone = txtPhone.Text,
+                BookingDate = DateTime.Parse(txtDate.Text),
+                TimeSlot = cblTimeSlot.SelectedValue,
+                PlayerCount = int.Parse(ddlCountPlayer.SelectedValue),
+                LaneID = int.Parse(ddLaneID.SelectedValue)
+            };
+            BUS_Booking busBooking = new BUS_Booking();
+
+            bool isSuccess = busBooking.AddNewBooking(booking);
+
+            if (isSuccess)
+            {
+                SuccAddMsg.Text = "Đặt sân thành công!";
+                ClearFeild();
+            }
+            else
+            {
+                ErrAddMsg.Text = "Có lỗi xảy ra. Vui lòng thử lại.";
+            }
+        }
+        protected void UpdateSchedule(object sender, EventArgs e)
+        {
+            ClearMsg();
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                ErrMsg.Text = "Vui lòng nhập tên";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                ErrMsg.Text = "Vui lòng nhập Email";
+                return;
+            }
+            if (!Regex.IsMatch(txtEmail.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+            {
+                ErrMsg.Text = "Email không hợp lệ. Vui lòng nhập email đúng định dạng.";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                ErrMsg.Text = "Vui lòng nhập SDT";
+                return;
+            }
+            if (!Regex.IsMatch(txtPhone.Text, @"^0\d{9,10}$"))
+            {
+                ErrMsg.Text = "Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại có 10-11 chữ số và bắt đầu bằng số 0.";
+                return;
+            }
+            if (ddLaneID.SelectedIndex == -1)
+            {
+                ErrMsg.Text = "Vui lòng chọn sân";
+                return;
+            }
+            if (ddlCountPlayer.SelectedIndex == 0)
+            {
+                ErrMsg.Text = "Vui lòng chọn số người chơi";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtDate.Text))
+            {
+                ErrMsg.Text = "Vui lòng chọn ngày";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cblTimeSlot.Text))
+            {
+                ErrMsg.Text = "Vui lòng chọn ít nhất một khung giờ";
+                return;
+            }
+
+        }
+
+        protected void AddSchedule(object sender, EventArgs e)
+        {
+            ClearMsg();
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                ErrMsgName.Text = "Vui lòng nhập tên";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                ErrMsgEmail.Text = "Vui lòng nhập Email";
+                return;
+            }
+            if (!Regex.IsMatch(txtEmail.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+            {
+                ErrMsgEmail.Text = "Email không hợp lệ. Vui lòng nhập email đúng định dạng.";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                ErrMsgPhone.Text = "Vui lòng nhập SDT";
+                return;
+            }
+            if (!Regex.IsMatch(txtPhone.Text, @"^0\d{9,10}$"))
+            {
+                ErrMsgPhone.Text = "Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại có 10-11 chữ số và bắt đầu bằng số 0.";
+                return;
+            }
+            if (ddLaneID.SelectedIndex == -1)
+            {
+                ErrMsgLane.Text = "Vui lòng chọn sân";
+                return;
+            }
+            if (ddlCountPlayer.SelectedIndex == 0)
+            {
+                ErrMsgCount.Text = "Vui lòng chọn số người chơi";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtDate.Text))
+            {
+                ErrMsgDate.Text = "Vui lòng chọn ngày";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cblTimeSlot.Text))
+            {
+                ErrMsgTime.Text = "Vui lòng chọn ít nhất một khung giờ";
+                return;
+            }
+            DTO_Booking booking = new DTO_Booking
+            {
+                UserBooking = txtName.Text,
+                Email = txtEmail.Text,
+                Phone = txtPhone.Text,
+                BookingDate = DateTime.Parse(txtDate.Text),
+                TimeSlot = cblTimeSlot.SelectedValue,
+                PlayerCount = int.Parse(ddlCountPlayer.SelectedValue),
+                LaneID = int.Parse(ddLaneID.SelectedValue)
+            };
+            BUS_Booking busBooking = new BUS_Booking();
+
+            bool isSuccess = busBooking.AddNewBooking(booking);
+
+            if (isSuccess)
+            {
+                SuccAddMsg.Text = "Đặt sân thành công!";
+                ClearFeild();
+            }
+            else
+            {
+                ErrAddMsg.Text = "Có lỗi xảy ra. Vui lòng thử lại.";
+            }
+        }
+        protected void UpdateSchedule(object sender, EventArgs e)
+        {
+            ClearMsg();
+            if (string.IsNullOrWhiteSpace(cName.Value))
+            {
+                ErrMsg.Text = "Vui lòng nhập tên";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cEmail.Value))
+            {
+                ErrMsg.Text = "Vui lòng nhập Email";
+                return;
+            }
+            if (!Regex.IsMatch(cEmail.Value, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+            {
+                ErrMsg.Text = "Email không hợp lệ. Vui lòng nhập email đúng định dạng.";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cPhone.Value))
+            {
+                ErrMsg.Text = "Vui lòng nhập SDT";
+                return;
+            }
+            if (!Regex.IsMatch(cPhone.Value, @"^0\d{9,10}$"))
+            {
+                ErrMsg.Text = "Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại có 10-11 chữ số và bắt đầu bằng số 0.";
+                return;
+            }
+            if (ddLane.SelectedIndex == -1)
+            {
+                ErrMsg.Text = "Vui lòng chọn sân";
+                return;
+            }
+            if (player.SelectedIndex == 0)
+            {
+                ErrMsg.Text = "Vui lòng chọn số người chơi";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(date.Text))
+            {
+                ErrMsg.Text = "Vui lòng chọn ngày";
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(timeSlot.Text))
+            {
+                ErrMsg.Text = "Vui lòng chọn ít nhất một khung giờ";
+                return;
+            }
+            DTO_Booking booking = new DTO_Booking
+            {
+                BookingID = int.Parse(sID.Value),
+                UserBooking = cName.Value,
+                Email = cEmail.Value,
+                Phone = cPhone.Value,
+                BookingDate = DateTime.Parse(date.Text),
+                TimeSlot = timeSlot.SelectedValue,
+                PlayerCount = int.Parse(player.SelectedValue),
+                LaneID = int.Parse(ddLane.SelectedValue)
+            };
+            BUS_Booking busBooking = new BUS_Booking();
+
+            bool result = busBooking.UpdateSchedule(booking);
+            if (result)
+            {
+                SuccMsg.Text = "Cập nhật thành công";
+                return;
+            }
+            else
+            {
+                ErrMsg.Text = "Có lỗi xảy ra. Vui lòng thử lại.";
+                return;
+            }
         }
     }
 }

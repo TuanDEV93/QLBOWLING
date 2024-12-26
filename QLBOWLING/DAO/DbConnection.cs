@@ -26,11 +26,13 @@ namespace QLBOWLING.DAO
         }
         public void Open()
         {
-            cnn.Open();
+            if (cnn.State == ConnectionState.Closed)
+                cnn.Open();
         }
         public void Close()
         {
-            cnn.Close();
+            if (cnn.State == ConnectionState.Open)
+                cnn.Close();
         }
         // Phương thức thực thi truy vấn trả về DataTable
         public DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)

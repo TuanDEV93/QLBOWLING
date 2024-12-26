@@ -124,7 +124,6 @@ namespace QLBOWLING.DAO
         public List<DTO_Booking> LoadSchedule()
         {
             SqlConnection connection = dbConnection.cnn;
-            connection.Open();
             List<DTO_Booking> ds = new List<DTO_Booking>();
             string query = "SELECT * from Booking left join Lane on Lane.LaneID = Booking.LaneID";
             SqlCommand sqlCmd = new SqlCommand(query, connection);
@@ -241,6 +240,31 @@ namespace QLBOWLING.DAO
                     Console.WriteLine($"Error: {ex.Message}");
                     return null; // Trả về null nếu có lỗi
                 }
+            }
+        }
+        public bool UpdateSchedule(DTO_Booking booking)
+        {
+            SqlConnection connection = dbConnection.cnn;
+            string query = "Update Booking set UserBooking = @Name, Email = @Email, phone = @Phone, BookingDate = @Date, TimeSlot = @Time, PlayerCount = @Count, LaneID = @Lane where BookingID = @ID";
+            SqlCommand sqlCommand = new SqlCommand(query, connection);
+            sqlCommand.Parameters.AddWithValue("@Name", booking.UserBooking);
+            sqlCommand.Parameters.AddWithValue("@Email", booking.Email);
+            sqlCommand.Parameters.AddWithValue("@Phone", booking.Phone);
+            sqlCommand.Parameters.AddWithValue("@Date", booking.BookingDate);
+            sqlCommand.Parameters.AddWithValue("@Time", booking.TimeSlot);
+            sqlCommand.Parameters.AddWithValue("@Count", booking.PlayerCount);
+            sqlCommand.Parameters.AddWithValue("@Lane", booking.LaneID);
+            sqlCommand.Parameters.AddWithValue("@ID", booking.BookingID);
+            int result = sqlCommand.ExecuteNonQuery();
+            if (result > 0)
+            {
+                connection.Close();
+                return true;
+            }
+            else
+            {
+                connection.Close();
+                return false;
             }
         }
     }

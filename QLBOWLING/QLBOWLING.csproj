@@ -692,32 +692,14 @@
     <Content Include="Global.asax" />
     <Content Include="Images\bg1.jpg" />
     <Content Include="Images\Bowling.jpg" />
-    <Content Include="Images\Bowling10.jpg" />
-    <Content Include="Images\Bowling11.jpg" />
-    <Content Include="Images\Bowling12.jpg" />
-    <Content Include="Images\Bowling13.jpg" />
-    <Content Include="Images\Bowling16.jpg" />
     <Content Include="Images\Bowling2.jpg" />
-    <Content Include="Images\Bowling20.jpg" />
     <Content Include="Images\Bowling3.jpg" />
     <Content Include="Images\Bowling4.jpg" />
     <Content Include="Images\Bowling5.jpg" />
-    <Content Include="Images\Bowling6.jpg" />
-    <Content Include="Images\Bowling7.jpg" />
-    <Content Include="Images\Bowling8.jpg" />
-    <Content Include="Images\Bowling9.jpg" />
     <Content Include="Images\button_login.png" />
-    <Content Include="Images\img 16.jpg" />
-    <Content Include="Images\img 18.jpg" />
-    <Content Include="Images\img 19.jpg" />
-    <Content Include="Images\img 20.jpg" />
-    <Content Include="Images\img 21.jpg" />
-    <Content Include="Images\img 23.jpg" />
     <Content Include="Images\menu_bg.jpg" />
-    <Content Include="Images\QRCode.jpg" />
     <Content Include="Lane.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="QRCode.aspx" />
     <Content Include="QuanLy.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -944,10 +926,10 @@
     <Compile Include="BookingConfirmation.aspx.designer.cs">
       <DependentUpon>BookingConfirmation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BUS\BUS_Bill.cs" />
-    <Compile Include="BUS\BUS_BookingConfirmation.cs" />
     <Compile Include="BUS\BUS_Account.cs" />
+    <Compile Include="BUS\BUS_Bill.cs" />
     <Compile Include="BUS\BUS_Booking.cs" />
+    <Compile Include="BUS\BUS_BookingConfirmation.cs" />
     <Compile Include="BUS\BUS_Customer.cs" />
     <Compile Include="BUS\BUS_Lane.cs" />
     <Compile Include="BUS\BUS_Staff.cs" />
@@ -958,15 +940,16 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DAO\DAO_Bill.cs" />
-    <Compile Include="DAO\DAO_BookingConfirmation.cs" />
     <Compile Include="DAO\DAO_Account.cs" />
+    <Compile Include="DAO\DAO_Bill.cs" />
     <Compile Include="DAO\DAO_Booking.cs" />
+    <Compile Include="DAO\DAO_BookingConfirmation.cs" />
     <Compile Include="DAO\DAO_Customer.cs" />
     <Compile Include="DAO\DAO_Lane.cs" />
     <Compile Include="DAO\DAO_Staff.cs" />
     <Compile Include="DAO\DbConnection.cs" />
     <Compile Include="DTO\Account.cs" />
+    <Compile Include="DTO\Bill.cs" />
     <Compile Include="DTO\BillDTO.cs" />
     <Compile Include="DTO\Booking.cs" />
     <Compile Include="DTO\BookingConfirmationDTO.cs" />
@@ -999,13 +982,6 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QRCode.aspx.cs">
-      <DependentUpon>QRCode.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="QRCode.aspx.designer.cs">
-      <DependentUpon>QRCode.aspx</DependentUpon>
-    </Compile>
     <Compile Include="QuanLy.aspx.cs">
       <DependentUpon>QuanLy.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

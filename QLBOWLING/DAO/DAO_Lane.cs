@@ -9,7 +9,6 @@ using System.Data.Odbc;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using static QLBOWLING.DTO.LaneDTO;
 namespace QLBOWLING.DAO
 {
     public class DAO_Lane : DbConnection

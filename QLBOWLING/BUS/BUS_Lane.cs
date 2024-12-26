@@ -25,9 +25,5 @@ namespace QLBOWLING.BUS
         {
             return daoLane.GetLanes();
         }
-        public List<LaneDTO> LoadLaneList()
-        {
-            return laneDAO.LoadLaneList();
-        }
     }
 }

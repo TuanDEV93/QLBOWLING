@@ -1,6 +1,7 @@
 ﻿using QLBOWLING.DTO;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
@@ -8,14 +9,16 @@ using System.Data.Odbc;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-
+using static QLBOWLING.DTO.LaneDTO;
 namespace QLBOWLING.DAO
 {
     public class DAO_Lane : DbConnection
     {
+        private DbConnection dbConnection;
         public DAO_Lane()
         {
             dbConnection = new DbConnection();
+            dbConnection.Open();
         }
         public DataTable LoadLane()
         {
@@ -29,31 +32,50 @@ namespace QLBOWLING.DAO
             daoLane.Close();
             return ds;
         }
-
-        private DbConnection dbConnection;
-        public List<LaneDTO> LoadLaneList()
+        public int GetLanePrice(int laneID)
         {
-            SqlConnection connection = dbConnection.cnn;
-            connection.Open();
-            List<LaneDTO> ds = new List<LaneDTO>();
-            string query = "SELECT * from Lane";
-            SqlCommand sqlCmd = new SqlCommand(query, connection);
-            SqlDataReader reader = sqlCmd.ExecuteReader();
-            while (reader.Read())
+            int price = 0;
+
+            string query = "SELECT PriceLane FROM Lane WHERE LaneID = @LaneID";
+            using (SqlCommand command = new SqlCommand(query, dbConnection.cnn))
             {
-                int laneID = reader.GetInt32(0);
-                string nameLane = reader.GetString(1);
-                bool status = reader.GetBoolean(2);
+                // Thêm tham số cho câu truy vấn
+                command.Parameters.AddWithValue("@LaneID", laneID);
 
-                LaneDTO lane = new LaneDTO();
-                lane.LaneID = laneID;
-                lane.LaneName = nameLane;
-                lane.Status = status;
+                // Thực hiện truy vấn và lấy giá trị trả về
+                object result = command.ExecuteScalar();  // ExecuteScalar() chỉ trả về một giá trị đầu tiên của truy vấn
 
-                ds.Add(lane);
+                if (result != null)
+                {
+                    price = Convert.ToInt32(result);  // Chuyển đổi kết quả từ object sang int
+                }
             }
-            connection.Close();
-            return ds;
+
+            return price;
+        }
+        public List<LaneDTO> GetLanes()
+        {
+            List<LaneDTO> lanes = new List<LaneDTO>();
+
+            using (SqlConnection connection = new SqlConnection(dbConnection.cnn.ConnectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT TOP 6 LaneId, LaneName, Status FROM Lane", connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    LaneDTO lane = new LaneDTO
+                    {
+                        LaneID = reader.GetInt32(0),
+                        LaneName = reader.GetString(1),
+                        Status = reader.GetBoolean(2)
+                    };
+                    lanes.Add(lane);
+                }
+
+                return lanes;
+            }
         }
     }
 }

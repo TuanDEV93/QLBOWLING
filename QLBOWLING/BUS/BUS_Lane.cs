@@ -1,4 +1,5 @@
 ﻿using QLBOWLING.DAO;
+using QLBOWLING.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,17 +11,20 @@ namespace QLBOWLING.BUS
 {
     public class BUS_Lane
     {
-        private DAO_Lane laneDAO;
-        public BUS_Lane()
-        {
-            laneDAO = new DAO_Lane();
-        }
+        DAO_Lane daoLane = new DAO_Lane();
         public DataTable LoadLane()
-            {
-                DAO_Lane daoLane = new DAO_Lane();
-                return daoLane.LoadLane();
-            }
-
+        {
+               
+            return daoLane.LoadLane();
+        }
+        public int GetLanePrice(int laneID)
+        {
+            return daoLane.GetLanePrice(laneID);
+        }
+        public List<LaneDTO> GetLanes()
+        {
+            return daoLane.GetLanes();
+        }
         public List<LaneDTO> LoadLaneList()
         {
             return laneDAO.LoadLaneList();

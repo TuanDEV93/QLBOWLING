@@ -105,13 +105,13 @@ namespace QLBOWLING
         protected global::System.Web.UI.WebControls.Button btnLoadTimeSlot;
 
         /// <summary>
-        /// ddlTimeSlot control.
+        /// txtSelectedTimes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTimeSlot;
+        protected global::System.Web.UI.WebControls.TextBox txtSelectedTimes;
 
         /// <summary>
         /// lblMessage2 control.
@@ -123,13 +123,22 @@ namespace QLBOWLING
         protected global::System.Web.UI.WebControls.Label lblMessage2;
 
         /// <summary>
-        /// ddlCountPlayer control.
+        /// hfSelectedTimes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCountPlayer;
+        protected global::System.Web.UI.WebControls.HiddenField hfSelectedTimes;
+
+        /// <summary>
+        /// ddlPlayerCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPlayerCount;
 
         /// <summary>
         /// lblMessage5 control.
@@ -141,13 +150,13 @@ namespace QLBOWLING
         protected global::System.Web.UI.WebControls.Label lblMessage5;
 
         /// <summary>
-        /// txtLaneID control.
+        /// txtPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLaneID;
+        protected global::System.Web.UI.WebControls.TextBox txtPrice;
 
         /// <summary>
         /// btnSubmit control.

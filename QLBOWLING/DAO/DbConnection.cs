@@ -11,11 +11,18 @@ namespace QLBOWLING.DAO
     public class DbConnection
     {
         public SqlConnection cnn;
+        private string _strCnn ;
         public DbConnection()
         {
-            string strcnn = ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString;
+            _strCnn = ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString;
 
-            cnn = new SqlConnection(strcnn);
+            cnn = new SqlConnection(_strCnn);
+        }
+
+        public DbConnection(string strCnn)
+        {
+            this._strCnn = strCnn;
+            cnn= new SqlConnection(_strCnn);
         }
         public void Open()
         {

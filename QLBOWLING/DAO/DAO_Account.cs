@@ -12,7 +12,7 @@ namespace QLBOWLING.DAO
 
     public class DAO_Account:DbConnection
     {
-        public void GhiThongTinKhachHang(Customer customer)
+        public void GhiThongTinKhachHang(CustomerDTO customer)
         {
             DAO_Account dao = new DAO_Account();
             dao.Open();

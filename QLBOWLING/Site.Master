@@ -52,7 +52,7 @@
                                 <div class="top_1l clearfix">
                                     <ul>
                                         <li><i class="fa fa-envelope-o col_1"></i><a class="col_2" href="#">dreamgame@gmail.com</a></li>
-                                        <li class="col_2"><i class="fa fa-street-view col_1"></i>4rd Floor AEON MAIL.</li>
+                                        <li class="col_2"><i class="fa fa-street-view col_1"></i>3rd Floor AEON MAIL.</li>
                                         <li><i class="fa fa-phone col_1"></i><a class="col_2" href="#">+123 4567 890</a></li>
                                         <li>
                                             <i class="bi bi-door-open-fill"></i>
@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="header_t1m clearfix">
-                                    <p class="col_2">Official Website For BOWLING</p>
+                                    <p class="col_2">Chào mừng đến với thế giới bowling</p>
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -126,28 +126,28 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li><a class="m_tag active_tab" href="Home.aspx">Home</a></li>
-                                <li><a class="m_tag " href="Lane.aspx">Booking</a></li>
-                                <li><a class="m_tag" href="About.aspx">About</a></li>
-                                <li><a class="m_tag" href="Services.aspx">Services</a></li>
-                                <li class="dropdown">
-                                    <a class="m_tag" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Blog<span class="caret"></span></a>
+                                <li><a class="m_tag active_tab" href="Home.aspx">Trang chủ</a></li>
+                                <li><a class="m_tag " href="Lane.aspx">Đặt sân</a></li>
+                                <li><a class="m_tag" href="About.aspx">Về chúng tôi</a></li>
+                                <li><a class="m_tag" href="Services.aspx">Dịch vụ</a></li>
+                                <li><a class="m_tag" href="Blog.aspx">Bài viết</a></li>
+                                <%--<li class="dropdown">
+                                    <a class="m_tag" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Bài viết<span class="caret"></span></a>
                                     <ul class="dropdown-menu drop_3" role="menu">
                                         <li><a href="Blog.aspx">Blog</a></li>
                                         <li><a class="border_none" href="blog_detail.html">Blog Detail</a></li>
                                     </ul>
-                                </li>
-                                <li><a class="m_tag" href="Team.aspx">Team</a></li>
-                                <li><a class="m_tag" href="Contact.aspx">Contact</a></li>
-                                <li class="dropdown">
+                                </li>--%>
+                                <li><a class="m_tag" href="BookingConfirmation.aspx">Lịch sử đặt sân</a></li>
+                                <li><a class="m_tag" href="Contact.aspx">Liên hệ</a></li>
+                                <%--<li class="dropdown">
                                     <a class="m_tag" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Pages<span class="caret"></span></a>
                                     <ul class="dropdown-menu drop_3" role="menu">
                                         <li><a href="About.aspx">About</a></li>
                                         <li><a href="Services.aspx">Services</a></li>
-                                        <li><a href="Team.aspx">Team</a></li>
                                         <li><a class="border_none" href="contact.html">Contact</a></li>
                                     </ul>
-                                </li>
+                                </li>--%>
                             </ul>
                         </div>
                         <!-- /.navbar-collapse -->
@@ -161,57 +161,53 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </main>
-        <footer>
+       <footer>
             <section id="footer">
                 <div class="container">
                     <div class="row">
                         <div class="footer_1 clearfix">
                             <div class="col-sm-4">
                                 <div class="footer_1l clearfix">
-                                    <h4 class="mgt head_1 col">ABOUT US</h4>
-                                    <h5 class="col_3">Rash that more and Disrespect fully grunt less. Through tarantula before wherever</h5>
-                                    <p class="font_16 col_2">Before wherever frog far across ubiquitously and rash that more and disrespect fully grunt less. Best Through tarantula before wherever frog far across ubiquitously and rash that more and disrespect fully</p>
-                                    <h6 class="col_2">Address : 269 Main Street<br>
-                                        London England<br>
+                                    <h4 class="mgt head_1 col">Về chúng tôi</h4>
+                                    <h5 class="col_3">Chào mừng bạn đến với trung tâm Bowling hàng đầu tại AEON Mall Long Biên. </h5>
+                                    <p class="font_16 col_2">Hãy tận hưởng không gian giải trí hiện đại, phù hợp cho mọi lứa tuổi.</p>
+                                    <h6 class="col_2">Địa chỉ: Tầng 4, AEON Mall<br>
+                                       Long Biên, Hà Nội<br>
                                         Call : +1800-222-3333</h6>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="footer_1m  clearfix">
-                                    <h4 class="mgt head_1 col">FLICKR GALLERY</h4>
+
                                     <ul>
                                         <li><a href="#">
-                                            <img src="img/20.jpg" width="100" height="100" alt="abc"></a></li>
+                                            <img src="Images/Bowling2.jpg" style="width:100px; height:100px; object-fit:cover" alt="abc"></a></li>
                                         <li><a href="#">
-                                            <img src="img/21.jpg" width="100" height="100" alt="abc"></a></li>
+                                            <img src="Images/Bowling3.jpg" style="width:100px; height:100px; object-fit:cover" alt="abc"></a></li>
                                         <li><a href="#">
-                                            <img src="img/22.jpg" width="100" height="100" alt="abc"></a></li>
+                                            <img src="Images/Bowling4.jpg"style="width:100px; height:100px; object-fit:cover" alt="abc"></a></li>
                                         <li><a href="#">
-                                            <img src="img/23.jpg" width="100" height="100" alt="abc"></a></li>
+                                            <img src="Images/Bowling5.jpg" style="width:100px; height:100px; object-fit:cover" alt="abc"></a></li>
                                         <li><a href="#">
-                                            <img src="img/24.jpg" width="100" height="100" alt="abc"></a></li>
+                                            <img src="Images/Bowling6.jpg" style="width:100px; height:100px; object-fit:cover" alt="abc"></a></li>
                                         <li><a href="#">
-                                            <img src="img/25.jpg" width="100" height="100" alt="abc"></a></li>
+                                            <img src="Images/Bowling7.jpg"style="width:100px; height:100px; object-fit:cover" alt="abc"></a></li>
                                         <li><a href="#">
-                                            <img src="img/26.jpg" width="100" height="100" alt="abc"></a></li>
+                                            <img src="Images/Bowling8.jpg"style="width:100px; height:100px; object-fit:cover" alt="abc"></a></li>
                                         <li><a href="#">
-                                            <img src="img/27.jpg" width="100" height="100" alt="abc"></a></li>
+                                            <img src="Images/Bowling9.jpg" style="width:100px; height:100px; object-fit:cover" alt="abc"></a></li>
                                         <li><a href="#">
-                                            <img src="img/28.jpg" width="100" height="100" alt="abc"></a></li>
+                                            <img src="Images/Bowling10.jpg" style="width:100px; height:100px; object-fit:cover" alt="abc"></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="footer_1r clearfix">
-                                    <h4 class="mgt head_1 col">WEEKLY NEWSLETTER</h4>
-                                    <p class="col_2 font_16">Through tarantula before wherever frog far across ubiquitously and rash that more and disrespectful.Before wherever frog far across ubiquitously and rash that more and disrespect fully grunt less. Best Through tarantula before wherever frog far across ubiquitously and rash that more and disrespect fully</p>
-                                    <div class="input-group clearfix">
-                                        <input type="text" class="form-control" placeholder="Sign Up">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary" type="button">
-                                                Go</button>
-                                        </span>
-                                    </div>
+                                    <h4 class="mgt head_1 col">BẢN TIN HÀNG TUẦN</h4>
+                                    <p class="col_2 font_16">Hãy luôn cập nhật thông tin về các chương trình khuyến mãi, sự kiện, và 
+                                                                lịch thi đấu Bowling tại AEON Mall Long Biên. Đăng ký ngay hôm nay 
+                                                                để không bỏ lỡ bất kỳ cơ hội nào!</p>
+                                    
                                     <ul class="social-network social-circle">
                                         <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
                                         <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>

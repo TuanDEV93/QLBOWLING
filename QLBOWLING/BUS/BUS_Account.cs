@@ -10,7 +10,7 @@ namespace QLBOWLING.BUS
 {
     public class BUS_Account
     {
-        public void GhiThongTinKhachHang(Customer customer)
+        public void GhiThongTinKhachHang(CustomerDTO customer)
         {
             DAO_Account dao = new DAO_Account();
             dao.GhiThongTinKhachHang(customer);

@@ -45,7 +45,7 @@ namespace QLBOWLING
                 }  
                 else
                 {
-                    Customer customer = new Customer();
+                    CustomerDTO customer = new CustomerDTO();
                     customer.customerName = txtUsername.Text;
                     customer.passWord = txtPassword.Text;
                     customer.displayName = txtFullname.Text;

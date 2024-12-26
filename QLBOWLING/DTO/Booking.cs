@@ -81,7 +81,6 @@ namespace QLBOWLING.DTO
             get { return customerId; }
             set { customerId = value; }
         }
-
         private int totalPrice;
         public int TotalPrice
         {

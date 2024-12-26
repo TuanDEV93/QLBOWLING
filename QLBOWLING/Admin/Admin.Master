@@ -306,7 +306,7 @@
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="#">
+                                    <a href="Bill.aspx">
                                         <i class="mdi mdi-book-multiple"></i>Thanh toán
                                     </a>
                                 </li>
@@ -329,7 +329,7 @@
                                     <a id="aReport" runat="server" href="#"><i class="mdi mdi-chart-areaspline-variant"></i>Thống kê báo cáo
                                     </a>
                                     <ul class="submenu">
-                                        <li><a id="aSubMenuReport" runat="server" href="#">Tổng quan</a></li>
+                                        <li><a id="aSubMenuReport" runat="server" href="Report.aspx">Tổng quan</a></li>
                                     </ul>
                                 </li>
 

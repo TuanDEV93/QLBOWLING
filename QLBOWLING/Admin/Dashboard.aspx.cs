@@ -23,8 +23,10 @@ namespace QLBOWLING.Admin
 
             if (role != 0 && role != 1)
             {
-                Session.Abandon();
-                Response.Redirect("~/Login.aspx");
+
+                Response.Redirect("~/Home.aspx");
+                //Session.Abandon();
+                //Response.Redirect("~/Login.aspx");
             }
 
         }

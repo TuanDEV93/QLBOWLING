@@ -311,30 +311,15 @@
                                 </a>
                             </li>
                             <li class="">
-                                <a href="#" data-ajax="true">
+                                <a href="Bill.aspx" data-ajax="true">
                                     <i class="mdi mdi-book-multiple"></i>Thanh toán
                                 </a>
                             </li>
-                            <li class="">
-                                <a href="#" data-ajax="true">
-                                    <i class="mdi mdi-gift"></i>Khuyến mãi
-                                </a>
-                            </li>
-
-                            <li class="has-submenu" id="parentMenuPost">
-                                <a id="aPost" runat="server" href="#" data-ajax="true"><i class="mdi mdi-comment-text"></i>Bài viết
-                                </a>
-                                <ul class="submenu">
-                                    <li><a id="aSubMenuPost" runat="server" href="blogs-blog-list.html" data-ajax="true">Danh sách bài viết</a></li>
-                                    <li><a id="aAddSubMenuPost" runat="server" href="blogs-blog-add.html" data-ajax="true">Thêm bài viết</a></li>
-                                </ul>
-                            </li>
-
                             <li class="has-submenu" id="parentMenuReport">
                                 <a id="aReport" runat="server" href="#" data-ajax="true"><i class="mdi mdi-chart-areaspline-variant"></i>Thống kê báo cáo
                                 </a>
                                 <ul class="submenu">
-                                    <li><a id="aSubMenuReport" runat="server" href="#" data-ajax="true">Tổng quan</a></li>
+                                    <li><a id="aSubMenuReport" runat="server" href="Report.aspx" data-ajax="true">Tổng quan</a></li>
                                 </ul>
                             </li>
 
@@ -345,10 +330,6 @@
                     </div>
                     <!-- end #navigation -->
                 </div>
-<<<<<<< Updated upstream
-=======
-                <!-- end container -->
->>>>>>> Stashed changes
             </div>
             <!-- end navbar-custom -->
         </header>

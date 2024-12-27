@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
-using QLBOWLING.DTO;
+
 
 namespace QLBOWLING.BUS
 {
@@ -24,6 +24,10 @@ namespace QLBOWLING.BUS
         public List<LaneDTO> GetLanes()
         {
             return daoLane.GetLanes();
+        }
+        public bool UpdateLaneStatus(int laneID, bool newStatus)
+        {
+            return daoLane.UpdateLaneStatus(laneID, newStatus);
         }
     }
 }

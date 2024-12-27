@@ -25,8 +25,7 @@ namespace QLBOWLING.Admin
             {
 
                 Response.Redirect("~/Home.aspx");
-                //Session.Abandon();
-                //Response.Redirect("~/Login.aspx");
+                
             }
 
         }

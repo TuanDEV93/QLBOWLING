@@ -76,5 +76,26 @@ namespace QLBOWLING.DAO
                 return lanes;
             }
         }
+        public bool UpdateLaneStatus(int laneID, bool newStatus)
+        {
+            try
+            {
+                string query = "UPDATE Lane SET Status = @Status WHERE LaneID = @LaneID";
+                using (SqlCommand cmd = new SqlCommand(query, dbConnection.cnn))
+                {
+                    cmd.Parameters.AddWithValue("@LaneID", laneID);
+                    cmd.Parameters.AddWithValue("@Status", newStatus);
+
+                    int rowsAffected = cmd.ExecuteNonQuery(); // Số hàng bị ảnh hưởng
+                    return rowsAffected > 0; // Trả về true nếu có hàng được cập nhật
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log lỗi nếu cần thiết
+                throw new Exception("Có lỗi xảy ra khi cập nhật trạng thái", ex);
+            }
+        }
+
     }
 }

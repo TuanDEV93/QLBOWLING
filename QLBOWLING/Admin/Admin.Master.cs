@@ -29,9 +29,6 @@ namespace QLBOWLING.Admin
             aSubMenuStaff.Attributes["class"] += "disabled";
             aAddSubMenuStaff.Attributes["class"] += "disabled";
             aCustomer.Attributes["class"] += " disabled";
-            aPost.Attributes["class"] += " disabled";
-            aSubMenuPost.Attributes["class"] += " disabled";
-            aAddSubMenuPost.Attributes["class"] += " disabled";
             aReport.Attributes["class"] += " disabled";
             aSubMenuReport.Attributes["class"] += " disabled";
 

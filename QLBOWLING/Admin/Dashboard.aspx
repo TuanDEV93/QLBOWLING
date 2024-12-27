@@ -10,8 +10,8 @@
                     </div>
                     <div class="overflow-hidden">
                         <p class="text-uppercase font-weight-medium text-truncate mb-2">Truy cập</p>
-                        <h2 class="mb-0"><span data-plugin="counterup">34578</span> <i class="mdi mdi-arrow-up text-success font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Trước:</span> 30.4k</p>
+                        <h2 class="mb-0"><span data-plugin="counterup">348</span> <i class="mdi mdi-arrow-up text-success font-24"></i></h2>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Trước:</span> 1.4k</p>
                     </div>
                 </div>
             </div>
@@ -178,11 +178,10 @@
                                     <span class="avatar-sm-box bg-success">L</span>
                                 </th>
                                 <td>
-                                    <h5 class="m-0 font-15">Louis Hansen</h5>
+                                    <h5 class="m-0 font-15">Quyết</h5>
                                     <p class="m-0 text-muted"><small>Quản lý</small></p>
                                 </td>
-                                <td>+12 3456 789</td>
-                                <td>USA</td>
+                                <td>032 3456 789</td>
                                 <td>07/08/2016</td>
                             </tr>
 
@@ -191,11 +190,11 @@
                                     <span class="avatar-sm-box bg-primary">C</span>
                                 </th>
                                 <td>
-                                    <h5 class="m-0 font-15">Craig Hause</h5>
+                                    <h5 class="m-0 font-15">Đức</h5>
                                     <p class="m-0 text-muted"><small>Nhân viên</small></p>
                                 </td>
-                                <td>+89 345 6789</td>
-                                <td>Canada</td>
+                                <td>038 345 6789</td>
+                                
                                 <td>29/07/2016</td>
                             </tr>
                         </tbody>

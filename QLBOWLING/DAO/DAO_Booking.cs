@@ -90,6 +90,7 @@ namespace QLBOWLING.DAO
                         command.Parameters.Add(new SqlParameter("@TimeSlot", booking.TimeSlot));
                         command.Parameters.Add(new SqlParameter("@PlayerCount", booking.PlayerCount));
                         command.Parameters.Add(new SqlParameter("@LaneID", booking.LaneID));
+                        //Cho phep customerID null :v
                         if (customerId.HasValue)
                         {
                             command.Parameters.Add(new SqlParameter("@CustomerID", customerId.Value));

@@ -1,4 +1,5 @@
-﻿using QLBOWLING.DTO;
+﻿using QLBOWLING.Admin;
+using QLBOWLING.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -46,44 +47,38 @@ namespace QLBOWLING.DAO
         {
             using (SqlConnection connection = dbConnection.cnn)
             {
-               
                 SqlTransaction transaction = dbConnection.cnn.BeginTransaction();
 
                 try
                 {
-                    // Lấy CustomerID từ CustomerName
-                    string customerName = HttpContext.Current.Session["Username"]?.ToString();
-                    if (string.IsNullOrEmpty(customerName))
-                    {
-                        throw new Exception("Không tìm thấy thông tin khách hàng trong Session.");
-                    }
+                    // Lấy vai trò và tên người dùng từ Session
+                    string role = HttpContext.Current.Session["Role"]?.ToString();
+                    string username = HttpContext.Current.Session["Username"]?.ToString();
 
-                    string getCustomerIdQuery = "SELECT CustomerID FROM dbo.Customer WHERE CustomerName = @CustomerName";
-                    int customerId;
+                    int? customerId = null;
 
-                    try
+                    // Nếu không phải admin hoặc nhân viên, lấy CustomerID
+                    if (role != "0" && role != "1")
                     {
+                        if (string.IsNullOrEmpty(username))
+                        {
+                            throw new Exception("Không tìm thấy thông tin khách hàng trong Session.");
+                        }
+
+                        string getCustomerIdQuery = "SELECT CustomerID FROM dbo.Customer WHERE CustomerName = @CustomerName";
                         using (SqlCommand getCommand = new SqlCommand(getCustomerIdQuery, connection, transaction))
                         {
-                            // Thêm tham số truy vấn
-                            getCommand.Parameters.AddWithValue("@CustomerName", customerName);
-
-                            // Thực thi lệnh và lấy kết quả
+                            getCommand.Parameters.AddWithValue("@CustomerName", username);
                             object result = getCommand.ExecuteScalar();
 
-                            if (result == null || !int.TryParse(result.ToString(), out customerId))
+                            if (result == null || !int.TryParse(result.ToString(), out int tempCustomerId))
                             {
-                                throw new Exception($"Không tìm thấy CustomerID hoặc dữ liệu không hợp lệ cho CustomerName: {customerName}");
+                                throw new Exception($"Không tìm thấy CustomerID hoặc dữ liệu không hợp lệ cho CustomerName: {username}");
                             }
+                            customerId = tempCustomerId;
                         }
                     }
-                    catch (SqlException sqlEx)
-                    {
-                        // Ghi log lỗi truy vấn SQL
-                        throw new Exception("Lỗi truy vấn cơ sở dữ liệu: " + sqlEx.Message, sqlEx);
-                    }
 
-                    // Thực hiện INSERT
                     string query = "INSERT INTO dbo.Booking (UserBooking, Email, Phone, BookingDate, TimeSlot, PlayerCount, LaneID, CustomerID, TotalPrice) " +
                                    "VALUES (@UserBooking, @Email, @Phone, @BookingDate, @TimeSlot, @PlayerCount, @LaneID, @CustomerID, @TotalPrice)";
                     using (SqlCommand command = new SqlCommand(query, connection, transaction))
@@ -95,7 +90,14 @@ namespace QLBOWLING.DAO
                         command.Parameters.Add(new SqlParameter("@TimeSlot", booking.TimeSlot));
                         command.Parameters.Add(new SqlParameter("@PlayerCount", booking.PlayerCount));
                         command.Parameters.Add(new SqlParameter("@LaneID", booking.LaneID));
-                        command.Parameters.Add(new SqlParameter("@CustomerID", customerId));
+                        if (customerId.HasValue)
+                        {
+                            command.Parameters.Add(new SqlParameter("@CustomerID", customerId.Value));
+                        }
+                        else
+                        {
+                            command.Parameters.Add(new SqlParameter("@CustomerID", DBNull.Value));
+                        }
                         command.Parameters.Add(new SqlParameter("@TotalPrice", booking.TotalPrice));
                         command.ExecuteNonQuery();
                     }

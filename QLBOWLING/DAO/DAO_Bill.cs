@@ -149,7 +149,7 @@ namespace QLBOWLING.DAO
             string query = @"
             SELECT TOP 1 BookingID
             FROM Booking
-            WHERE CustomerID = 2
+            WHERE CustomerID = @CustomerID
             ORDER BY BookingID DESC";
 
             using (SqlConnection connection = new SqlConnection(dbConnection.cnn.ConnectionString))

@@ -700,6 +700,7 @@
     <Content Include="Images\menu_bg.jpg" />
     <Content Include="Lane.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="QRCode.aspx" />
     <Content Include="QuanLy.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -982,6 +983,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QRCode.aspx.cs">
+      <DependentUpon>QRCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QRCode.aspx.designer.cs">
+      <DependentUpon>QRCode.aspx</DependentUpon>
+    </Compile>
     <Compile Include="QuanLy.aspx.cs">
       <DependentUpon>QuanLy.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

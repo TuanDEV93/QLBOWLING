@@ -18,6 +18,7 @@ namespace QLBOWLING.Admin
                 if (Session["Role"] != null && Convert.ToInt32(Session["Role"]) == 0)
                 {
                     DisableAdminButtons();
+                 
                 }
             }
         }
@@ -33,5 +34,6 @@ namespace QLBOWLING.Admin
             aSubMenuReport.Attributes["class"] += " disabled";
 
         }
+        
     }
 }

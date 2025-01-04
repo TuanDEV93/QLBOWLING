@@ -18,12 +18,23 @@ namespace QLBOWLING.Admin
 
         public void LoadTopKhachHang()
         {
-            BUS_Booking busBooking = new BUS_Booking();
-            DataTable dt = new DataTable();
-            dt = busBooking.LoadTopKhachHang();
+            int selectedMonth = int.Parse(ddlMonthCustomer.SelectedValue);
+            int selectedYear = int.Parse(ddlYearCustomer.SelectedValue);
 
-            gvTop.DataSource = dt.DefaultView;
-            gvTop.DataBind();
+            BUS_Booking busBooking = new BUS_Booking();
+            DataTable dt = busBooking.LoadTopKhachHang(selectedMonth, selectedYear);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                gvTop.DataSource = dt;
+                gvTop.DataBind();
+            }
+            else
+            {
+                gvTop.DataSource = null;
+                gvTop.DataBind();
+
+            }
         }
 
         protected void btnDuyet_Click(object sender, EventArgs e)
@@ -34,55 +45,80 @@ namespace QLBOWLING.Admin
 
         public void LoadTopSan()
         {
-            BUS_Booking busBooking = new BUS_Booking();
-            DataTable dt = new DataTable();
-            dt = busBooking.LoadTopSan();
+            int selectedMonth = int.Parse(ddlMonthLane.SelectedValue);
+            int selectedYear = int.Parse(ddlYearLane.SelectedValue);
 
-            gvKH.DataSource = dt.DefaultView;
-            gvKH.DataBind();
+            BUS_Booking busBooking = new BUS_Booking();
+            DataTable dt = busBooking.LoadTopSan(selectedMonth, selectedYear);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                gvLane.DataSource = dt;
+                gvLane.DataBind();
+            }
+            else
+            {
+                gvLane.DataSource = null;
+                gvLane.DataBind();
+                
+            }
         }
         protected void btnDuyetSan_Click(object sender, EventArgs e)
         {
             LoadTopSan();
         }
 
-        public void LoadDoanhThuTheoThang()
+        public void LoadDoanhThuTheoKhoangThoiGian()
         {
-            int selectedMonth = int.Parse(ddlThang.SelectedValue);
-            int selectedYear = int.Parse(ddlNam.SelectedValue);
+            DateTime startDate = DateTime.Parse(txtNgayBatDau.Value);
+            DateTime endDate = DateTime.Parse(txtNgayKetThuc.Value);
 
             BUS_Bill busBill = new BUS_Bill();
-            DataTable dt = busBill.LoadDoanhThuTheoThang(selectedMonth, selectedYear);
+            DataTable dt = busBill.LoadDoanhThuTheoKhoangThoiGian(startDate, endDate);
 
-            if (dt != null)
+            if (dt != null && dt.Rows.Count > 0)
             {
+                dt.Columns.Add("TimeRange", typeof(string));
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["TimeRange"] = $"{startDate:dd/MM/yyyy} - {endDate:dd/MM/yyyy}";
+                }
+
                 GridViewRevenue.DataSource = dt;
                 GridViewRevenue.DataBind();
             }
             else
             {
-                // Hiển thị thông báo không có dữ liệu
                 GridViewRevenue.DataSource = null;
                 GridViewRevenue.DataBind();
-                lblMessage.Text = "Không có dữ liệu doanh thu.";
             }
         }
 
-        protected void btnDoanhThu_Click(object sender, EventArgs e)
+        protected void btnThongKe_Click (object sender, EventArgs e)
         {
-            LoadDoanhThuTheoThang();
+            LoadDoanhThuTheoKhoangThoiGian();
         }
-
         public void LoadTopCanceller()
         {
+            int selectedMonth = int.Parse(ddlMonthCancel.SelectedValue);
+            int selectedYear = int.Parse(ddlYearCancel.SelectedValue);
+
             BUS_Bill busBill = new BUS_Bill();
-            DataTable dt = new DataTable();
-            dt = busBill.LoadTopCanceller();
+            DataTable topCancellers = busBill.LoadTopCanceller(selectedMonth, selectedYear);
 
-            gvHuySan.DataSource = dt;
-            gvHuySan.DataBind();
+            if (topCancellers != null && topCancellers.Rows.Count > 0)
+            {
+                gvHuySan.DataSource = topCancellers;
+                gvHuySan.DataBind();
+            }
+            else
+            {
+                gvHuySan.DataSource = null;
+                gvHuySan.DataBind();
+
+            }
+
         }
-
         protected void btnDuyetHuy_Click(object sender, EventArgs e)
         {
             LoadTopCanceller();

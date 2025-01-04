@@ -6,6 +6,7 @@ using System.Web;
 using QLBOWLING.DAO;
 using System.Data.SqlClient;
 using System.Data;
+using System.Drawing;
 
 namespace QLBOWLING.BUS
 {
@@ -61,6 +62,7 @@ namespace QLBOWLING.BUS
 
             return timeSlotStatus;
         }
+        //Hàm hiện tổng tiền tại phiếu booking
         public int CalculateTotalPrice(int laneID, string selectedTimes)
         {
             BUS_Lane busLane = new BUS_Lane();
@@ -82,16 +84,16 @@ namespace QLBOWLING.BUS
         {
            return bookingDAO.AddNewBooking(booking); // Gọi phương thức DAO thông qua đối tượng
         }
-        public DataTable LoadTopSan()
+        public DataTable LoadTopSan(int month, int year)
         {
             DAO_Booking daoBooking = new DAO_Booking();
-            return daoBooking.LoadTopSan();
+            return daoBooking.LoadTopSan(month, year);
         }
 
-        public DataTable LoadTopKhachHang()
+        public DataTable LoadTopKhachHang(int month, int year)
         {
             DAO_Booking daoBooking = new DAO_Booking();
-            return daoBooking.LoadTopKhachHang();
+            return daoBooking.LoadTopKhachHang(month, year);
         }
         public List<DTO_Booking> LoadSchedule()
         {

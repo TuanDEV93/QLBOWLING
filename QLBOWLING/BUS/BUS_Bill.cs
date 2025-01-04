@@ -16,16 +16,16 @@ namespace QLBOWLING.BUS
             daoBill = new DAO_Bill();
         }
 
-        public DataTable LoadDoanhThuTheoThang(int month, int year)
+        public DataTable LoadDoanhThuTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
         {
             DAO_Bill daoBill = new DAO_Bill();
-            return daoBill.LoadDoanhThuTheoThang(month, year);
+            return daoBill.LoadDoanhThuTheoKhoangThoiGian(startDate, endDate);
         }
 
-        public DataTable LoadTopCanceller()
+        public DataTable LoadTopCanceller(int month, int year)
         {
             DAO_Bill daoBill = new DAO_Bill();
-            return daoBill.LoadTopCanceller();
+            return daoBill.LoadTopCanceller(month, year);
         }
         //Cập nhật trạng thái
         public void UpdateBillStatus(int bookingID, int status)
@@ -53,6 +53,14 @@ namespace QLBOWLING.BUS
             }
 
             return daoBill.UpdateBillStatus(bookingID, status, null, checkOutDate); // Không thay đổi CheckIn, chỉ thay đổi CheckOut
+        }
+        public List<BillDTO> GetBillsByDate(DateTime date)
+        {
+            return daoBill.GetBillsByDate(date);
+        }
+        public List<BillDTO> GetBillsByMonthYear(int month, int year)
+        {
+            return daoBill.GetBillsByMonthYear(month, year);
         }
     }
 }

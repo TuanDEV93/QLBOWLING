@@ -34,7 +34,13 @@
             opacity: 0.6; /* Làm mờ khung giờ đã đặt */
             
         }
-
+        .Border-timeSlot{
+            
+            border: 1px solid;
+            padding-top: 30px;
+            margin-top: 20px;
+        }
+        }
         </style>
         <div class="container">
             <div class="row">
@@ -94,7 +100,9 @@
 
                 <!-- Cột phải: Bảng hiển thị khung giờ -->
                 <div class="col-md-6">
+
                     <h3>Danh sách các khung giờ</h3>
+                    <div class ="Border-timeSlot">
                     <asp:Repeater ID="rptTimeSlots" runat="server">
                     <ItemTemplate>
                         <div class='<%# Convert.ToBoolean(Eval("IsBooked")) ? "time-slot booked" : "time-slot available" %>' 
@@ -104,6 +112,7 @@
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
+                 </div>
                 </div>
             </div>
         </div>

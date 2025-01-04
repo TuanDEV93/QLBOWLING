@@ -56,5 +56,39 @@ namespace QLBOWLING.Admin
                 }
             }
         }
+        protected void btnToday_Click(object sender, EventArgs e)
+        {
+            BUS_Bill billBus = new BUS_Bill();
+            DateTime today = DateTime.Today;
+            gvBill.DataSource = billBus.GetBillsByDate(today);
+            gvBill.DataBind();
+        }
+        protected void btnFilter_Click(object sender, EventArgs e)
+        {
+            int selectedMonth = int.Parse(ddlMonth.SelectedValue);
+            int selectedYear = int.Parse(ddlYear.SelectedValue);
+
+            BUS_Bill billBus = new BUS_Bill();
+
+            gvBill.DataSource = billBus.GetBillsByMonthYear(selectedMonth, selectedYear);
+            gvBill.DataBind();
+
+
+            ToggleTodayButtonVisibility(false);
+
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            BUS_Bill billBus = new BUS_Bill();
+            gvBill.DataSource = billBus.GetBills(); // Lấy lại toàn bộ danh sách hóa đơn
+            gvBill.DataBind();
+
+            ToggleTodayButtonVisibility(true);
+        }
+        private void ToggleTodayButtonVisibility(bool isVisible)
+        {
+            btnToday.Visible = isVisible;
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace QLBOWLING.DAO
             dbConnection = new DbConnection();
         }
 
-        public DataTable LoadDoanhThuTheoThang(int month, int year)
+        public DataTable LoadDoanhThuTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
         {
             using (SqlConnection connection = dbConnection.cnn)
             {
@@ -26,52 +26,45 @@ namespace QLBOWLING.DAO
 
                 try
                 {
-                    // Câu truy vấn để tính doanh thu theo tháng và năm
                     string query = @"
                     SELECT 
-                        YEAR(CheckOut) AS Year,
-                        MONTH(CheckOut) AS Month,
+                        @StartDate AS StartDate,  -- Ngày bắt đầu được truyền vào
+                        @EndDate AS EndDate,      -- Ngày kết thúc được truyền vào
                         SUM(CASE 
                         WHEN Status = 0 THEN TotalPrice  -- Đã thanh toán
                         WHEN Status = 1 OR Status = 3 THEN DepositPrice  -- Đã đặt cọc hoặc bị hủy
                         ELSE 0
                         END) AS TotalRevenue
                     FROM Bill
-                    WHERE YEAR(CheckOut) = @Year AND MONTH(CheckOut) = @Month
-                    GROUP BY YEAR(CheckOut), MONTH(CheckOut);";
+                    WHERE CheckOut >= @StartDate AND CheckOut <= @EndDate;";
 
-                    // Tạo SqlCommand
                     using (SqlCommand command = new SqlCommand(query, connection, transaction))
                     {
-                        // Thêm tham số vào truy vấn
-                        command.Parameters.AddWithValue("@Year", year);
-                        command.Parameters.AddWithValue("@Month", month);
+                        command.Parameters.AddWithValue("@StartDate", startDate);
+                        command.Parameters.AddWithValue("@EndDate", endDate);
 
-                        // Thực thi truy vấn và lưu kết quả vào DataReader
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            // Tạo DataTable để chứa kết quả
                             DataTable dt = new DataTable();
-                            dt.Load(reader); // Load dữ liệu từ DataReader vào DataTable
+                            dt.Load(reader);
 
-                            // Commit transaction sau khi thành công
                             transaction.Commit();
 
-                            return dt; // Trả về DataTable chứa doanh thu
+                            return dt;
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Rollback transaction nếu xảy ra lỗi
                     transaction.Rollback();
                     Console.WriteLine($"Error: {ex.Message}");
-                    return null; // Trả về null nếu có lỗi
+                    return null;
                 }
             }
         }
 
-        public DataTable LoadTopCanceller()
+
+        public DataTable LoadTopCanceller(int month, int year)
         {
             using (SqlConnection connection = dbConnection.cnn)
             {
@@ -80,47 +73,46 @@ namespace QLBOWLING.DAO
 
                 try
                 {
-                    // Câu truy vấn để lấy người hủy nhiều nhất và thông tin liên quan
                     string query = @"
                     SELECT TOP 1 
                         B.UserBooking, 
                         B.CustomerID,
                         B.Email, 
                         B.Phone, 
-                    COUNT(A.BillID) AS CancelCount
+                        COUNT(A.BillID) AS CancelCount
                     FROM Bill A
                     INNER JOIN Booking B ON A.BookingID = B.BookingID
-                    WHERE A.Status = 3
+                    WHERE A.Status = 3 
+                      AND MONTH(A.CheckOut) = @Month 
+                      AND YEAR(A.CheckOut) = @Year
                     GROUP BY B.UserBooking, B.CustomerID, B.Email, B.Phone
                     ORDER BY CancelCount DESC;";
 
-                    // Tạo SqlCommand
                     using (SqlCommand command = new SqlCommand(query, connection, transaction))
                     {
-                        // Thực thi truy vấn và lưu kết quả vào DataReader
+                        command.Parameters.AddWithValue("@Month", month);
+                        command.Parameters.AddWithValue("@Year", year);
+
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            // Tạo DataTable để chứa kết quả
                             DataTable dt = new DataTable();
-                            dt.Load(reader); // Load dữ liệu từ DataReader vào DataTable
+                            dt.Load(reader);
 
-                            // Commit transaction sau khi thành công
                             transaction.Commit();
 
-                            return dt; // Trả về DataTable chứa thông tin người hủy nhiều nhất
+                            return dt;
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Rollback transaction nếu xảy ra lỗi
                     transaction.Rollback();
                     Console.WriteLine($"Error: {ex.Message}");
-                    return null; // Trả về null nếu có lỗi
+                    return null;
                 }
             }
         }
-        //Cập nhật trạng thái bill
+        //Sự kiện tự động cập nhật trạng thái bill khi đặt cọc thành công...:>
         public int GetCustomerIDByUsername(string username)
         {
             int customerID = 0;
@@ -271,5 +263,99 @@ namespace QLBOWLING.DAO
             }
 
         }
+        public List<BillDTO> GetBillsByDate(DateTime date)
+        {
+            List<BillDTO> billList = new List<BillDTO>();
+            string query = @"
+                SELECT 
+                    b.CheckIn, 
+                    b.CheckOut, 
+                    b.Status, 
+                    b.DepositPrice, 
+                    b.TotalPrice, 
+                    b.BookingID, 
+                    bk.UserBooking,
+                    b.LaneID
+                FROM dbo.Bill b
+                INNER JOIN dbo.Booking bk ON b.BookingID = bk.BookingID
+                WHERE CAST(b.CheckIn AS DATE) = @Date";
+
+            using (SqlConnection connection = new SqlConnection(dbConnection.cnn.ConnectionString))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Date", date.Date);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            BillDTO bill = new BillDTO
+                            {
+                                CheckOut = reader.IsDBNull(reader.GetOrdinal("CheckOut")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("CheckOut")),
+                                CheckIn = reader.GetDateTime(reader.GetOrdinal("CheckIn")),
+                                Status = MapStatusToText(reader["Status"].ToString()),
+                                DepositPrice = Convert.ToDecimal(reader["DepositPrice"]),
+                                TotalPrice = Convert.ToDecimal(reader["TotalPrice"]),
+                                UserBooking = reader["UserBooking"].ToString(),
+                                BookingID = reader.GetInt32(reader.GetOrdinal("BookingID")),
+                                LaneID = reader.GetInt32(reader.GetOrdinal("LaneID"))
+                            };
+                            billList.Add(bill);
+                        }
+                    }
+                }
+            }
+
+            return billList;
+        }
+        public List<BillDTO> GetBillsByMonthYear(int month, int year)
+        {
+            List<BillDTO> billList = new List<BillDTO>();
+            string query = @"
+                    SELECT 
+                        b.CheckIn, 
+                        b.CheckOut, 
+                        b.Status, 
+                        b.DepositPrice, 
+                        b.TotalPrice, 
+                        b.BookingID, 
+                        bk.UserBooking,
+                        b.LaneID
+                    FROM dbo.Bill b
+                    INNER JOIN dbo.Booking bk ON b.BookingID = bk.BookingID
+                    WHERE MONTH(b.CheckIn) = @Month AND YEAR(b.CheckIn) = @Year";
+
+            using (SqlConnection connection = new SqlConnection(dbConnection.cnn.ConnectionString))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Month", month);
+                    cmd.Parameters.AddWithValue("@Year", year);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            BillDTO bill = new BillDTO
+                            {   
+                                CheckOut = reader.IsDBNull(reader.GetOrdinal("CheckOut")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("CheckOut")),
+                                CheckIn = reader.GetDateTime(reader.GetOrdinal("CheckIn")),
+                                Status = MapStatusToText(reader["Status"].ToString()),
+                                DepositPrice = Convert.ToDecimal(reader["DepositPrice"]),
+                                TotalPrice = Convert.ToDecimal(reader["TotalPrice"]),
+                                UserBooking = reader["UserBooking"].ToString(),
+                                BookingID = reader.GetInt32(reader.GetOrdinal("BookingID")),
+                                LaneID = reader.GetInt32(reader.GetOrdinal("LaneID"))
+                            };
+                            billList.Add(bill);
+                        }
+                    }
+                }   
+            }
+
+            return billList;
+        }
+
     }
 }

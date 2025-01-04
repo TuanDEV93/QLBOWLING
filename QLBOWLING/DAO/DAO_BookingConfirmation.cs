@@ -47,9 +47,12 @@ namespace QLBOWLING.DAO
             List<BookingConfirmationDTO> bookingList = new List<BookingConfirmationDTO>();
 
             //Câu truy vấn lấy thông tin từ bill và từ booking
-            string query = @"SELECT B.*, L.LaneName, BL.DepositPrice,BL.Status FROM Booking B
-        INNER JOIN Lane L ON B.LaneID = L.LaneID LEFT JOIN Bill BL ON B.BookingID = BL.BookingID
-        WHERE B.CustomerID =@CustomerID";
+            string query = @"SELECT B.*, L.LaneName, BL.DepositPrice, BL.Status 
+                            FROM Booking B
+                            INNER JOIN Lane L ON B.LaneID = L.LaneID 
+                            LEFT JOIN Bill BL ON B.BookingID = BL.BookingID
+                            WHERE B.CustomerID = @CustomerID
+                            ORDER BY B.BookingID DESC";
             using (SqlConnection connection = new SqlConnection(dbConnection.cnn.ConnectionString))
             {
                 connection.Open();

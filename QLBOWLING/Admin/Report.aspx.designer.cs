@@ -15,13 +15,49 @@ namespace QLBOWLING.Admin
     {
 
         /// <summary>
-        /// btnDuyet control.
+        /// lblChonThangCustomer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDuyet;
+        protected global::System.Web.UI.WebControls.Label lblChonThangCustomer;
+
+        /// <summary>
+        /// ddlMonthCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMonthCustomer;
+
+        /// <summary>
+        /// lblChonNamCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChonNamCustomer;
+
+        /// <summary>
+        /// ddlYearCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlYearCustomer;
+
+        /// <summary>
+        /// btnDuyetCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDuyetCustomer;
 
         /// <summary>
         /// gvTop control.
@@ -33,6 +69,51 @@ namespace QLBOWLING.Admin
         protected global::System.Web.UI.WebControls.GridView gvTop;
 
         /// <summary>
+        /// lblMessageCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessageCustomer;
+
+        /// <summary>
+        /// lblChonThangLane control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChonThangLane;
+
+        /// <summary>
+        /// ddlMonthLane control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMonthLane;
+
+        /// <summary>
+        /// lblChonNamLane control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChonNamLane;
+
+        /// <summary>
+        /// ddlYearLane control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlYearLane;
+
+        /// <summary>
         /// btnDuyetSan control.
         /// </summary>
         /// <remarks>
@@ -42,22 +123,58 @@ namespace QLBOWLING.Admin
         protected global::System.Web.UI.WebControls.Button btnDuyetSan;
 
         /// <summary>
-        /// gvKH control.
+        /// gvLane control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvKH;
+        protected global::System.Web.UI.WebControls.GridView gvLane;
 
         /// <summary>
-        /// btn_DuyetHuy control.
+        /// lblChonThangHuy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_DuyetHuy;
+        protected global::System.Web.UI.WebControls.Label lblChonThangHuy;
+
+        /// <summary>
+        /// ddlMonthCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMonthCancel;
+
+        /// <summary>
+        /// lblChonNamHuy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblChonNamHuy;
+
+        /// <summary>
+        /// ddlYearCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlYearCancel;
+
+        /// <summary>
+        /// btnDuyetHuy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDuyetHuy;
 
         /// <summary>
         /// gvHuySan control.
@@ -69,49 +186,31 @@ namespace QLBOWLING.Admin
         protected global::System.Web.UI.WebControls.GridView gvHuySan;
 
         /// <summary>
-        /// lblChonThang control.
+        /// txtNgayBatDau control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblChonThang;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtNgayBatDau;
 
         /// <summary>
-        /// ddlThang control.
+        /// txtNgayKetThuc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlThang;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtNgayKetThuc;
 
         /// <summary>
-        /// lblChonNam control.
+        /// btnThongKe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblChonNam;
-
-        /// <summary>
-        /// ddlNam control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlNam;
-
-        /// <summary>
-        /// btnDoanhThu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDoanhThu;
+        protected global::System.Web.UI.WebControls.Button btnThongKe;
 
         /// <summary>
         /// GridViewRevenue control.
@@ -121,14 +220,5 @@ namespace QLBOWLING.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewRevenue;
-
-        /// <summary>
-        /// lblMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
     }
 }

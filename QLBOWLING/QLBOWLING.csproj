@@ -950,7 +950,6 @@
     <Compile Include="DAO\DAO_Staff.cs" />
     <Compile Include="DAO\DbConnection.cs" />
     <Compile Include="DTO\Account.cs" />
-    <Compile Include="DTO\Bill.cs" />
     <Compile Include="DTO\BillDTO.cs" />
     <Compile Include="DTO\Booking.cs" />
     <Compile Include="DTO\BookingConfirmationDTO.cs" />

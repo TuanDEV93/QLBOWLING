@@ -14,5 +14,8 @@ namespace QLBOWLING.DTO
         public string Status { get; set; }
         public decimal DepositPrice { get; set; }
         public decimal TotalPrice { get; set; }
+        public decimal PayAble { get; set; }
+        public int LaneID { get; set; }
+        
     }
 }

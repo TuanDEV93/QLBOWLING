@@ -50,12 +50,12 @@ namespace QLBOWLING.Admin
             {
                 foreach (DataRow dr in dt.Rows)
                 {
-                    sales.Text = dr[3].ToString();
+                    sales.Text = dr[2].ToString();
                 }
                 dt = busBill.LoadDoanhThuTheoKhoangThoiGian(firstDayOfPreviousMonth, lastDayOfPreviousMonth);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    salesMonth.Text = dr[3].ToString();
+                    salesMonth.Text = dr[2].ToString();
                 }
             }
 

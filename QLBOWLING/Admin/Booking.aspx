@@ -85,14 +85,14 @@
                                         <div class="col-md-6">
                                             <label class="control-label">Khung giờ<span class="text-danger">*</span></label>
                                             <asp:CheckBoxList ID="cblTimeSlot" runat="server" CssClass="form-group" data-parsley-multiple="groups">
-                                                <asp:ListItem Text="10:00 AM - 11:00 AM" Value="1" CssClass="checkbox" />
-                                                <asp:ListItem Text="11:30 AM - 12:30 PM" Value="2" CssClass="checkbox" />
-                                                <asp:ListItem Text="1:00 PM - 2:00 PM" Value="3" CssClass="checkbox" />
-                                                <asp:ListItem Text="2:30 PM - 3:30 PM" Value="4" CssClass="checkbox" />
-                                                <asp:ListItem Text="4:00 PM - 5:00 PM" Value="5" CssClass="checkbox" />
-                                                <asp:ListItem Text="5:30 PM - 6:30 PM" Value="6" CssClass="checkbox" />
-                                                <asp:ListItem Text="7:00 PM - 8:00 PM" Value="7" CssClass="checkbox" />
-                                                <asp:ListItem Text="8:30 PM - 9:30 PM" Value="8" CssClass="checkbox" />
+                                                <asp:ListItem Text="10:00 AM - 11:00 AM" Value="10:00 AM - 11:00 AM" CssClass="checkbox" />
+                                                <asp:ListItem Text="11:30 AM - 12:30 PM" Value="11:30 AM - 12:30 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="1:00 PM - 2:00 PM" Value="1:00 PM - 2:00 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="2:30 PM - 3:30 PM" Value="2:30 PM - 3:30 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="4:00 PM - 5:00 PM" Value="4:00 PM - 5:00 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="5:30 PM - 6:30 PM" Value="5:30 PM - 6:30 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="7:00 PM - 8:00 PM" Value="7:00 PM - 8:00 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="8:30 PM - 9:30 PM" Value="8:30 PM - 9:30 PM" CssClass="checkbox" />
                                             </asp:CheckBoxList>
                                             <asp:Label runat="server" ID="ErrMsgTime" class="text-danger"></asp:Label>
                                         </div>
@@ -162,14 +162,14 @@
                                         <div class="col-md-6">
                                             <label class="control-label">Khung giờ<span class="text-danger">*</span></label>
                                             <asp:CheckBoxList ID="timeSlot" runat="server" CssClass="form-group" data-parsley-multiple="groups">
-                                                <asp:ListItem Text="10:00 AM - 11:00 AM" Value="1" CssClass="checkbox" />
-                                                <asp:ListItem Text="11:30 AM - 12:30 PM" Value="2" CssClass="checkbox" />
-                                                <asp:ListItem Text="1:00 PM - 2:00 PM" Value="3" CssClass="checkbox" />
-                                                <asp:ListItem Text="2:30 PM - 3:30 PM" Value="4" CssClass="checkbox" />
-                                                <asp:ListItem Text="4:00 PM - 5:00 PM" Value="5" CssClass="checkbox" />
-                                                <asp:ListItem Text="5:30 PM - 6:30 PM" Value="6" CssClass="checkbox" />
-                                                <asp:ListItem Text="7:00 PM - 8:00 PM" Value="7" CssClass="checkbox" />
-                                                <asp:ListItem Text="8:30 PM - 9:30 PM" Value="8" CssClass="checkbox" />
+                                                <asp:ListItem Text="10:00 AM - 11:00 AM" Value="10:00 AM - 11:00 AM" CssClass="checkbox" />
+                                                <asp:ListItem Text="11:30 AM - 12:30 PM" Value="11:30 AM - 12:30 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="1:00 PM - 2:00 PM" Value="1:00 PM - 2:00 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="2:30 PM - 3:30 PM" Value="2:30 PM - 3:30 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="4:00 PM - 5:00 PM" Value="4:00 PM - 5:00 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="5:30 PM - 6:30 PM" Value="5:30 PM - 6:30 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="7:00 PM - 8:00 PM" Value="7:00 PM - 8:00 PM" CssClass="checkbox" />
+                                                <asp:ListItem Text="8:30 PM - 9:30 PM" Value="8:30 PM - 9:30 PM" CssClass="checkbox" />
                                             </asp:CheckBoxList>
                                         </div>
                                     </div>

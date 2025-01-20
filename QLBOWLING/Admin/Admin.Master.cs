@@ -29,7 +29,7 @@ namespace QLBOWLING.Admin
             aStaff.Attributes["class"] += " disabled";
             aSubMenuStaff.Attributes["class"] += "disabled";
             aAddSubMenuStaff.Attributes["class"] += "disabled";
-            aCustomer.Attributes["class"] += " disabled";
+            //aCustomer.Attributes["class"] += " disabled";
             aReport.Attributes["class"] += " disabled";
             aSubMenuReport.Attributes["class"] += " disabled";
 

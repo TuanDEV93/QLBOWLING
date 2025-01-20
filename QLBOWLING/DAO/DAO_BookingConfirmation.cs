@@ -23,7 +23,7 @@ namespace QLBOWLING.DAO
             int customerID = 0;
             string query = "SELECT CustomerID FROM Customer WHERE CustomerName = @CustomerName";
 
-            using (SqlConnection connection = new SqlConnection(dbConnection.cnn.ConnectionString)) // Sử dụng SqlConnection mới cho mỗi truy vấn
+            using (SqlConnection connection = new SqlConnection(dbConnection.cnn.ConnectionString)) 
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))

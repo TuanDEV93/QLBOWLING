@@ -73,14 +73,13 @@ namespace QLBOWLING
 
             if (statusPayment)
             {
-                //không kế thừa từ System.Web.UI.Page, bạn cần truy cập HttpContext.Current.Session để lấy dữ liệu từ Session
+                // tạo biến cục bộ và truy cập HttpContext.Current.Session để lấy username từ Session
                 string username = HttpContext.Current.Session["Username"] as string;
                 BUS_Bill billBus = new BUS_Bill();
                 DAO_Bill daoBill = new DAO_Bill();
                 int customerID = daoBill.GetCustomerIDByUsername(username);
                 int bookingId = daoBill.GetLatestBookingIDByCustomerID(customerID);
 
-                // Cập nhật trạng thái bill (Status = 1)
                 billBus.UpdateBillStatus(bookingId, status);
             }
             else return false;
@@ -106,13 +105,13 @@ namespace QLBOWLING
         {
             string contentPayment = LitGuid.Text.Trim();
             string totalPayment = LitDepositPrice.Text.Trim();
-            int status = 1;
+            int status = 2;
 
             if (checkPayment(status, contentPayment,totalPayment))
             {
                 string alert = "aler(\"Thanh toan thanh cong\")";
                 ClientScript.RegisterStartupScript(this.GetType(), "PaymentSuccess", alert, true);
-                // Chuyen den trang cam on
+                
                 Response.Redirect("BookingConfirmation.aspx");
             }
             

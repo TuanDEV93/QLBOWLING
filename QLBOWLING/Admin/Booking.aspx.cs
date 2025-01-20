@@ -38,14 +38,25 @@ namespace QLBOWLING.Admin
                 name = item.UserBooking,
                 email = item.Email,
                 phone = item.Phone,
-                start = item.BookingDate,
                 date = item.BookingDate.ToString("yyyy-MM-dd"),
                 count = item.PlayerCount,
                 lane = item.LaneID,
-                className = null,
             }).ToList();
             for(int k = 0, i = 0; i< schedules.Count(); i++)
             {
+                string[] timeSlots = ds[i].TimeSlot.Split(',');
+                for(int j = 0; j < timeSlots.Length; j++)
+                    timeSlots[j] = timeSlots[j].TrimStart();
+                schedules[i].timeSlots = timeSlots;
+                string startTime = timeSlots[0].Split('-')[0].Trim();
+                DateTime.TryParse(startTime, out DateTime parsedStartTime);
+                schedules[i].start = ds[i].BookingDate.AddDays(1).AddHours(parsedStartTime.Hour - 17).AddMinutes(parsedStartTime.Minute);
+                foreach (string timeSlot in timeSlots)
+                {
+                    string endTime = timeSlot.Split('-')[1].Trim();
+                    DateTime.TryParse(endTime, out DateTime parsedEndTime);
+                    schedules[i].end = ds[i].BookingDate.AddDays(1).AddHours(parsedEndTime.Hour - 17).AddMinutes(parsedEndTime.Minute);
+                }
                 switch (k)
                 {
                     case 0:
@@ -92,9 +103,12 @@ namespace QLBOWLING.Admin
             public string phone { get; set; }
             public DateTime start { get; set; }
             public string date { get; set; }
+            public DateTime end { get; set; }
             public int count { get; set; }
             public int lane { get; set; }
+            public string[] timeSlots { get; set; }
             public string className { get; set; }
+            public string test {  get; set; }
         }
 
         protected void BindDDLane()
@@ -198,7 +212,7 @@ namespace QLBOWLING.Admin
                 Email = txtEmail.Text,
                 Phone = txtPhone.Text,
                 BookingDate = DateTime.Parse(txtDate.Text),
-                TimeSlot = cblTimeSlot.SelectedValue,
+                TimeSlot = string.Join(", ", cblTimeSlot.Items.Cast<ListItem>().Where(item => item.Selected).Select(item => item.Value).ToList()),
                 PlayerCount = int.Parse(ddlCountPlayer.SelectedValue),
                 LaneID = int.Parse(ddLaneID.SelectedValue),
                 CustomerID = 0
@@ -272,7 +286,7 @@ namespace QLBOWLING.Admin
                 Email = cEmail.Value,
                 Phone = cPhone.Value,
                 BookingDate = DateTime.Parse(date.Text),
-                TimeSlot = timeSlot.SelectedValue,
+                TimeSlot = string.Join(", ", timeSlot.Items.Cast<ListItem>().Where(item => item.Selected).Select(item => item.Value)),
                 PlayerCount = int.Parse(player.SelectedValue),
                 LaneID = int.Parse(ddLane.SelectedValue)
             };

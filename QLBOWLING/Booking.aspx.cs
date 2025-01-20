@@ -109,12 +109,12 @@ namespace QLBOWLING
                 lblMessage1.Visible = true;
                 return;
             }
-            // Tách các khung giờ (giả sử chúng được phân cách bằng dấu phẩy)
+            // Tách các khung giờ 
             string[] timeSlots = selectedTimes.Split(',');
 
             foreach (string timeSlot in timeSlots)
             {
-                // Tách giờ bắt đầu từ chuỗi, giả sử định dạng "10:00 AM - 11:00 AM"
+                // Tách giờ bắt đầu từ chuỗi
                 string startTime = timeSlot.Split('-')[0].Trim();
 
                 // Chuyển đổi giờ bắt đầu thành DateTime
@@ -180,19 +180,18 @@ namespace QLBOWLING
         {
             try
             {
-                // Lấy giá trị LaneID từ   QueryString 
+               
                 int laneID = int.Parse(Request.QueryString["laneID"]);
 
                 // Kiểm tra nếu TextBox ngày trống
                 if (string.IsNullOrEmpty(txtDate.Text))
                 {
-                    // Thông báo lỗi nếu người dùng chưa chọn ngày
                     string script = "alert('Vui lòng chọn ngày.');";
                     ClientScript.RegisterStartupScript(this.GetType(), "EmptyDate", script, true);
                     return;
                 }
 
-                // Sử dụng DateTime.TryParse để tránh lỗi nếu định dạng không hợp lệ
+                
                 DateTime selectedDate;
                 if (!DateTime.TryParse(txtDate.Text, out selectedDate))
                 {
@@ -202,10 +201,9 @@ namespace QLBOWLING
                     return;
                 }
 
-                // Gọi BUS để lấy danh sách trạng thái khung giờ
+            
                 List<DTO_Booking> slotStatuses = busBooking.GetAllTimeSlots(laneID, selectedDate);
 
-                // Gán dữ liệu vào Repeater và cập nhật giao diện
                 rptTimeSlots.DataSource = slotStatuses;
                 rptTimeSlots.DataBind();
             }

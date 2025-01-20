@@ -32,7 +32,7 @@ namespace QLBOWLING.DAO
                         @EndDate AS EndDate,      -- Ngày kết thúc được truyền vào
                         SUM(CASE 
                         WHEN Status = 0 THEN TotalPrice  -- Đã thanh toán
-                        WHEN Status = 1 OR Status = 3 THEN DepositPrice  -- Đã đặt cọc hoặc bị hủy
+                        WHEN Status = 3 THEN DepositPrice  -- Đã bị hủy
                         ELSE 0
                         END) AS TotalRevenue
                     FROM Bill

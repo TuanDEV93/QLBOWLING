@@ -14,7 +14,7 @@ namespace QLBOWLING.DAO
         private string _strCnn ;
         public DbConnection()
         {
-            _strCnn = "Data Source=DESKTOP-H3558DE\\SQLEXPRESS;Initial Catalog=QLBL;Integrated Security=True;Encrypt=False ";
+            _strCnn = ConfigurationManager.ConnectionStrings["QLBowlingConnectionString"].ConnectionString;
 
             cnn = new SqlConnection(_strCnn);
         }

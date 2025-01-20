@@ -12,10 +12,10 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet"/>
-	<link href="~/Content/global.css" rel="stylesheet"/>
-	<link href="~/Content/index.css" rel="stylesheet"/>
-	<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css"/>
+    <link href="./Content/bootstrap.min.css" rel="stylesheet"/>
+	<link href="./Content/global.css" rel="stylesheet"/>
+	<link href="./Content/index.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="./Content/font-awesome.min.css"/>
 	<link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet"/>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <script src="Scripts/jquery-2.1.1.min.js"></script>
@@ -93,18 +93,7 @@
                                     <p class="col_2">Chào mừng đến với thế giới bowling</p>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="header_t1r clearfix">
-                                    <div class="input-group clearfix">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -31,119 +31,13 @@
             <!-- Topbar Start -->
             <div class="navbar-custom">
                 <div class="container-fluid">
-                    <ul class="list-unstyled topnav-menu float-right mb-0">
-                        <li class="dropdown notification-list">
-                            <!-- Mobile menu toggle-->
-                            <a class="navbar-toggle nav-link">
-                                <div class="lines">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </a>
-                            <!-- End mobile menu toggle-->
-                        </li>
-                        <li class="dropdown notification-list">
-                            <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <i class="mdi mdi-bell noti-icon"></i>
-                                <span class="badge badge-success rounded-circle noti-icon-badge">4</span>
-                                <div class="noti-dot">
-                                    <span class="dot"></span>
-                                    <span class="pulse"></span>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                                <!-- item-->
-                                <div class="dropdown-item noti-title">
-                                    <h5 class="font-16 m-0">
-                                        <span class="float-right">
-                                            <a href="#" class="text-dark">
-                                                <small>Xóa tất cả</small>
-                                            </a>
-                                        </span>Thông báo
-                                    </h5>
-                                </div>
-
-                                <div class="slimscroll noti-scroll">
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0)" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-success">
-                                            <i class="mdi mdi-settings-outline"></i>
-                                        </div>
-                                        <p class="notify-details">
-                                            Cài đặt mới
-                                                        <small class="text-muted">Có sẵn các cài đặt mới</small>
-                                        </p>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0)" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-info">
-                                            <i class="mdi mdi-bell-outline"></i>
-                                        </div>
-                                        <p class="notify-details">
-                                            Cập nhật
-                                                        <small class="text-muted">Có 2 bản cập nhật mới</small>
-                                        </p>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0)" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-danger">
-                                            <i class="mdi mdi-account-plus"></i>
-                                        </div>
-                                        <p class="notify-details">
-                                            Người dùng mới
-                                                        <small class="text-muted">Bạn có 10 tin nhắn chưa đọc</small>
-                                        </p>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0)" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-info">
-                                            <i class="mdi mdi-comment-account-outline"></i>
-                                        </div>
-                                        <p class="notify-details">
-                                            Người dùng đã bình luận
-                                                        <small class="text-muted">4 ngày trước</small>
-                                        </p>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0)" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-secondary">
-                                            <i class="mdi mdi-heart"></i>
-                                        </div>
-                                        <p class="notify-details">
-                                            Người dùng đã quan tâm
-                                                        <b>Admin</b>
-                                            <small class="text-muted">13 ngày trước</small>
-                                        </p>
-                                    </a>
-                                </div>
-
-                                <!-- All-->
-                                <a href="javascript:void(0)" class="dropdown-item text-center text-primary notify-item notify-all">See all Notification
-                                                <i class="fi-arrow-right"></i>
-                                </a>
-
-                            </div>
-                        </li>
-                        <li class="dropdown notification-list">
-                            <a class="nav-link nav-user mr-0 waves-effect waves-light" href="javascript:void(0);" onclick="logout()">
-                                <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
-                                <span>Đăng xuất</span>
-                            </a>
-                        </li>
-                    </ul>
+                    
 
                     <!-- LOGO -->
                     <div class="logo-box">
-                        <a href="index.html" class="logo text-center">
+                        <a  class="logo text-center">
                             <span class="logo-lg">
-                                <img src="assets\images\logo.png" alt="" height="30">
+                                <img src="assets\images\logo-admin3.png" alt="" height="80" width="180">
                             </span>
                             <span class="logo-sm">
                                 <img src="assets\images\logo-sm.png" alt="" height="22">
@@ -157,14 +51,7 @@
                         <li class="d-none d-sm-block">
                             <div class="app-search">
                                 <div class="app-search-box">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                                        <div class="input-group-append">
-                                            <button class="btn" type="submit">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </li>
@@ -267,9 +154,8 @@
     </asp:ContentPlaceHolder>
     <script type="text/javascript">
         function logout() {
-            // Xóa tất cả thông tin đăng nhập (token, session, cookie)
             localStorage.clear(); // Xóa dữ liệu lưu trữ trong trình duyệt
-            sessionStorage.clear(); // Xóa dữ liệu session
+            sessionStorage.clear(); 
            
 
             // Chuyển hướng người dùng ra ngoài giao diện admin

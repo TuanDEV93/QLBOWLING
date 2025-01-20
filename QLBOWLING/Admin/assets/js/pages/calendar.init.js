@@ -19,9 +19,17 @@ var data = JSON.parse(hiddenField.value);
             optionPlayer = ddlCountPlayer.querySelector('option[value="' + n.count + '"]'),
             ddLane = document.getElementById('MainContent_ddLane'),
             optionLane = ddLane.querySelector('option[value="' + n.lane + '"]'),
+            checkboxs = document.querySelectorAll('#MainContent_timeSlot input[type="checkbox"]'),
             a = this;
         optionPlayer.selected = true;
         optionLane.selected = true;
+        checkboxs.forEach(function (checkbox) {
+            checkbox.checked = false;
+        });
+        for (let i = 0; i < n.timeSlots.length; i++) {
+            let checkTime = document.querySelector('#MainContent_timeSlot input[type="checkbox"][value="' + n.timeSlots[i] + '"]');
+            checkTime.checked = true;
+        };
         a.$modal.modal({ backdrop: "static" }),
             a.$modal.find(".modal-title").empty().append("Thông tin lịch đặt").end().
                 find("#MainContent_cName").empty().val(n.name).end().
